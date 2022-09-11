@@ -12,5 +12,8 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "vercel": "^28.2.4"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^0.1.29"
   }
 }
