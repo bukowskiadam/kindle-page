@@ -1,7 +1,7 @@
 import { createCanvas } from "@napi-rs/canvas";
-import { Readable } from "stream";
+import { losslessCompressPngSync } from "@napi-rs/image";
 
-export function createPage(): Readable {
+export function createPage(): Buffer {
   const width = 600;
   const height = 800;
 
@@ -23,6 +23,7 @@ export function createPage(): Readable {
   context.fillText(time, width / 2, (height / 4) * 3);
 
   const buffer = canvas.toBuffer("image/png");
+  const compressed = losslessCompressPngSync(buffer);
 
-  return Readable.from(buffer);
+  return compressed;
 }

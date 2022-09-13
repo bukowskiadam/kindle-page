@@ -1,7 +1,7 @@
 import { Client } from "basic-ftp";
 import { Readable } from "stream";
 
-export async function upload(fileStream: Readable) {
+export async function upload(fileStream: Buffer) {
   const client = new Client();
 
   try {
@@ -11,7 +11,8 @@ export async function upload(fileStream: Readable) {
       password: process.env.FTP_PASS,
     });
 
-    await client.uploadFrom(fileStream, process.env.FTP_FILE!);
+    const readable = Readable.from(fileStream);
+    await client.uploadFrom(readable, process.env.FTP_FILE!);
   } finally {
     client.close();
   }

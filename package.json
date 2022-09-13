@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.29",
+    "@napi-rs/image": "^1.4.0",
     "basic-ftp": "^5.0.2"
   }
 }

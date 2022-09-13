@@ -9,6 +9,11 @@ export default (req: VercelRequest, res: VercelResponse) => {
   }
   const kindlePage = createPage();
 
+  if (req.query?.preview) {
+    res.setHeader("Content-Type", "image/png");
+    return res.send(kindlePage);
+  }
+
   return upload(kindlePage)
     .then(() => res.json({ status: "ok" }))
     .catch((error) => res.json({ status: "error", error }));
