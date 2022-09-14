@@ -22,17 +22,16 @@ export async function createPage(): Promise<Buffer> {
   const date = now
     .toLocaleString("pl-PL", {
       weekday: "long",
-      year: "numeric",
-      month: "long",
+      month: "numeric",
       day: "numeric",
     })
     .toLocaleUpperCase();
-  context.font = "regular 20px hack";
-  context.textAlign = "center";
+  context.font = "regular 30px hack";
+  context.textAlign = "right";
   context.fillStyle = "#000000";
   context.textBaseline = "top";
-  context.fillText(date, width / 2, currentY);
-  currentY += 26;
+  context.fillText(date, width - 10, currentY);
+  currentY += 34;
 
   // DIVIDER LINE
   context.fillRect(0, currentY, width, 1);
@@ -42,7 +41,19 @@ export async function createPage(): Promise<Buffer> {
   const weatherImage = await loadImage(
     "https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl"
   );
-  context.drawImage(weatherImage, 15, 0, 600, 630, 0, currentY, 600, 630);
+  const sourceX = weatherImage.width > 600 ? 15 : 0;
+  const sourceW = weatherImage.width > 600 ? 600 : weatherImage.width;
+  context.drawImage(
+    weatherImage,
+    sourceX,
+    0,
+    sourceW,
+    630,
+    Math.floor((600 - sourceW) / 2),
+    currentY,
+    sourceW,
+    630
+  );
   currentY += 630 + 2;
 
   // DIVIDER LINE
@@ -55,7 +66,7 @@ export async function createPage(): Promise<Buffer> {
     hour: "2-digit",
     minute: "2-digit",
   });
-  context.font = "regular 14px hack";
+  context.font = "regular 16px hack";
   context.textAlign = "right";
   context.fillStyle = "#000000";
   context.textBaseline = "alphabetic";
