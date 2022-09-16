@@ -1,14 +1,20 @@
 import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
 import { losslessCompressPngSync, Transformer } from "@napi-rs/image";
 
-export async function createPage(): Promise<Buffer> {
+function formatBatteryLevel(battery: number): string {
+  return Number.isNaN(battery)
+    ? "--%"
+    : battery.toString().padStart(2, " ") + "%";
+}
+
+export async function createPage(battery: number): Promise<Buffer> {
   GlobalFonts.registerFromPath(
     __dirname + "/../fonts/hack-regular.ttf",
     "hack"
   );
   const width = 600;
   const height = 800;
-  let currentY = 2;
+  let currentY = 6;
 
   const canvas = createCanvas(width, height);
   const context = canvas.getContext("2d");
@@ -26,12 +32,12 @@ export async function createPage(): Promise<Buffer> {
       day: "numeric",
     })
     .toLocaleUpperCase();
-  context.font = "regular 30px hack";
-  context.textAlign = "right";
+  context.font = "regular 40px hack";
+  context.textAlign = "center";
   context.fillStyle = "#000000";
   context.textBaseline = "top";
-  context.fillText(date, width - 10, currentY);
-  currentY += 34;
+  context.fillText(date, width / 2, currentY);
+  currentY += 50;
 
   // DIVIDER LINE
   context.fillRect(0, currentY, width, 1);
@@ -66,11 +72,17 @@ export async function createPage(): Promise<Buffer> {
     hour: "2-digit",
     minute: "2-digit",
   });
-  context.font = "regular 16px hack";
+  context.font = "regular 20px hack";
   context.textAlign = "right";
   context.fillStyle = "#000000";
   context.textBaseline = "alphabetic";
-  context.fillText(time, width - 2, height - 3);
+  context.fillText(
+    `Generated: ${time}  |  Battery: ${formatBatteryLevel(battery)}`,
+    width - 5,
+    height - 5
+  );
+
+  context.fillText(``, width - 5, height - 28);
 
   // EXPORT OPTIMIZED PNG
   const buffer = canvas.toBuffer("image/png");
