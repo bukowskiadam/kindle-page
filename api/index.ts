@@ -5,7 +5,7 @@ import { createPage } from "../src/create";
 export default async (req: VercelRequest, res: VercelResponse) => {
   const { auth, battery = "" } = req.query || {};
 
-  if (auth !== "test") {
+  if (auth !== process.env.AUTH_TOKEN) {
     return res.status(401).json({ status: "no auth" });
   }
 
