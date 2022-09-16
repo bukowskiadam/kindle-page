@@ -1,5 +1,9 @@
 import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
-import { losslessCompressPngSync, Transformer } from "@napi-rs/image";
+import {
+  losslessCompressPngSync,
+  Orientation,
+  Transformer,
+} from "@napi-rs/image";
 
 function formatBatteryLevel(battery: number): string {
   return Number.isNaN(battery)
@@ -86,7 +90,11 @@ export async function createPage(battery: number): Promise<Buffer> {
 
   // EXPORT OPTIMIZED PNG
   const buffer = canvas.toBuffer("image/png");
-  const grayscale = new Transformer(buffer).grayscale().pngSync();
+  const grayscale = new Transformer(buffer)
+    .grayscale()
+    .rotate(Orientation.Rotate180) // rotating because my kindle is upside-down
+    .pngSync();
+
   const compressed = losslessCompressPngSync(grayscale);
 
   return compressed;
