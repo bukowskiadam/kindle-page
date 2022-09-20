@@ -11,7 +11,6 @@ export function imageForKindle(
 ): Buffer {
   const grayscale = new Transformer(buffer)
     .grayscale()
-    .invert()
     // rotating because my kindle is upside-down
     .rotate(rotate ? Orientation.Rotate180 : null)
     .pngSync();
