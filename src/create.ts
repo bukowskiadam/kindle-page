@@ -1,9 +1,6 @@
 import { createCanvas, loadImage, GlobalFonts } from "@napi-rs/canvas";
-import {
-  losslessCompressPngSync,
-  Orientation,
-  Transformer,
-} from "@napi-rs/image";
+import { imageForKindle } from "./forKindle";
+import { StatusPageOpts } from "./types";
 
 function formatBatteryLevel(battery: number): string {
   return Number.isNaN(battery)
@@ -11,15 +8,10 @@ function formatBatteryLevel(battery: number): string {
     : battery.toString().padStart(2, " ") + "%";
 }
 
-type PageOpts = {
-  battery: number;
-  rotate: boolean;
-};
-
 export async function createPage({
   battery,
   rotate,
-}: PageOpts): Promise<Buffer> {
+}: StatusPageOpts): Promise<Buffer> {
   GlobalFonts.registerFromPath(
     __dirname + "/../fonts/hack-regular.ttf",
     "hack"
@@ -96,15 +88,7 @@ export async function createPage({
 
   context.fillText(``, width - 5, height - 28);
 
-  // EXPORT OPTIMIZED PNG
   const buffer = canvas.toBuffer("image/png");
-  const grayscale = new Transformer(buffer)
-    .grayscale()
-    .invert()
-    .rotate(rotate ? Orientation.Rotate180 : null) // rotating because my kindle is upside-down
-    .pngSync();
 
-  const compressed = losslessCompressPngSync(grayscale);
-
-  return compressed;
+  return imageForKindle(buffer, { rotate });
 }
