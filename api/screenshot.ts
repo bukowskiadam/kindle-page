@@ -3,16 +3,19 @@ import { imageForKindle } from "../src/forKindle";
 import { takeScreenshot } from "../src/screenshot";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const { VERCEL_ENV, AUTH_TOKEN } = process.env;
-  const { auth } = req.query || {};
+  const { VERCEL_ENV, AUTH_TOKEN, VERCEL_URL } = process.env;
+  const { auth, battery = "" } = req.query || {};
 
-  if (VERCEL_ENV !== "development" && auth !== AUTH_TOKEN) {
+  const isDevelopment = VERCEL_ENV === "development";
+
+  if (!isDevelopment && auth !== AUTH_TOKEN) {
     return res.status(401).json({ status: "no auth" });
   }
 
-  const rotate = VERCEL_ENV !== "development";
+  const rotate = !isDevelopment;
+  const protocol = isDevelopment ? "http" : "https";
   const image = await takeScreenshot(
-    "https://weather.com/pl-PL/pogoda/dzisiaj/l/e5137ad59d68e86155f4cf59f3f44bb5e7bfe3b64adb102d1e81c677e3bb3ec3"
+    `${protocol}://${VERCEL_URL}/api/page?battery=${battery}`
   );
   const forKindle = imageForKindle(image, { rotate });
 

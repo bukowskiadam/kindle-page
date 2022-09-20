@@ -12,11 +12,13 @@
   "author": "",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@types/nunjucks": "^3.2.1",
     "vercel": "^28.2.4"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.29",
     "@napi-rs/image": "^1.4.0",
+    "nunjucks": "^3.2.3",
     "playwright-aws-lambda": "^0.9.0",
     "playwright-core": "^1.25.2"
   }
