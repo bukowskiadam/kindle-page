@@ -11,7 +11,15 @@ function formatBatteryLevel(battery: number): string {
     : battery.toString().padStart(2, " ") + "%";
 }
 
-export async function createPage(battery: number): Promise<Buffer> {
+type PageOpts = {
+  battery: number;
+  rotate: boolean;
+};
+
+export async function createPage({
+  battery,
+  rotate,
+}: PageOpts): Promise<Buffer> {
   GlobalFonts.registerFromPath(
     __dirname + "/../fonts/hack-regular.ttf",
     "hack"
@@ -92,7 +100,8 @@ export async function createPage(battery: number): Promise<Buffer> {
   const buffer = canvas.toBuffer("image/png");
   const grayscale = new Transformer(buffer)
     .grayscale()
-    .rotate(Orientation.Rotate180) // rotating because my kindle is upside-down
+    .invert()
+    .rotate(rotate ? Orientation.Rotate180 : null) // rotating because my kindle is upside-down
     .pngSync();
 
   const compressed = losslessCompressPngSync(grayscale);
