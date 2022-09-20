@@ -12,7 +12,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   nunjucks.configure(__dirname + "/../templates", { autoescape: true });
 
-  const pageHtml = nunjucks.render("status-page.njk", {
+  const pageHtml = nunjucks.render("status-page.html", {
     battery,
   });
 

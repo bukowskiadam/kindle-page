@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 600px;
+        height: 800px;
+        position: relative;
+      }
+
+      #tp-widget-default {
+        height: 440px !important;
+        transform: scale(1.8);
+        transform-origin: top center;
+        margin: auto;
+      }
+      #tp-widget-bottom-default {
+        display: none !important;
+      }
+      #tp-widget-default.tp-widget-default-light {
+        border: none !important;
+      }
+
+      .battery {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 10px;
+        font-size: 20px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="tp-widget-default"
+      class="tp-widget-default-light"
+      data-city="200122"
+      data-version="2.0.0"
+    >
+      <div id="tp-widget-bottom-default">
+        <a
+          id="tp-widget-flink-default"
+          href="https://www.twojapogoda.pl/prognoza-godzinowa-polska/malopolskie-krakow/"
+          >Godzina po godzinie</a
+        >
+        <a
+          id="tp-widget-flink-second"
+          href="https://www.twojapogoda.pl/prognoza-16dni-polska/malopolskie-krakow/"
+          >Na 16 dni</a
+        >
+        <a
+          id="tp-widget-mlink-default"
+          href="https://www.twojapogoda.pl"
+          title="TwojaPogoda.pl - Pogoda w Polsce i na świecie - pogoda na 16 dni"
+        ></a>
+      </div>
+      <script type="text/javascript">
+        (function (t, p, w, d, g) {
+          if (t.getElementById(w)) return;
+          (d = t.getElementsByTagName(p)[0]), (g = t.createElement(p));
+          g.id = w;
+          g.src = "https://widget.twojapogoda.pl/default/main.js";
+          g.charset = "UTF-8";
+          d.parentNode.appendChild(g);
+        })(document, "script", "tp-widget-script-default");
+      </script>
+    </div>
+
+    <div class="battery">Battery {{battery}}%</div>
+  </body>
+</html>
