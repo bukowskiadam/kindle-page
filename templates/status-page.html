@@ -5,7 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --battery: {{battery}}%;
+      }
+
       html,
       body {
         margin: 0;
@@ -34,10 +44,9 @@
       .status-bar {
         display: flex;
         align-self: stretch;
-        font-size: 17px;
-        font-weight: bold;
-        font-family: monospace;
-        margin: 0 8px;
+        font-size: 30px;
+        font-family: "VT323", monospace;
+        margin: 2px 8px 0;
         box-sizing: border-box;
       }
 
@@ -46,11 +55,15 @@
       }
 
       .battery-icon {
-        background-color: black;
-        border-top-width: 3px;
+        border: 3px solid black;
+        background: linear-gradient(
+          90deg,
+          black var(--battery),
+          white var(--battery)
+        );
         box-sizing: border-box;
-        width: 20px;
-        height: 12px;
+        width: 32px;
+        height: 16px;
         display: inline-block;
         clip-path: polygon(
           0 0,
@@ -62,8 +75,6 @@
           90% 100%,
           0 100%
         );
-        vertical-align: top;
-        margin-top: 4px;
         position: relative;
       }
 
@@ -75,12 +86,21 @@
 
       .meteo {
         width: 600px;
-        height: 573px;
+        height: 196px;
         background-image: url("https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl");
         background-position: top center;
         background-position-y: -30px;
         background-repeat: no-repeat;
-        border-top: 2px solid black;
+        border-top: 2px solid #cccccc;
+      }
+
+      .meteo-2 {
+        width: 600px;
+        height: 82px;
+        background-image: url("https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl");
+        background-position: top center;
+        background-position-y: -522px;
+        background-repeat: no-repeat;
       }
     </style>
   </head>
@@ -93,6 +113,14 @@
       </div>
     </div>
     <h1 class="date">{{date}}</h1>
-    <div class="meteo"></div>
+    <div class="weather">
+      <img
+        class="preload-image"
+        src="https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl"
+        onload="this.remove()"
+      />
+      <div class="meteo"></div>
+      <div class="meteo-2"></div>
+    </div>
   </body>
 </html>
