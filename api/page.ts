@@ -12,7 +12,23 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   nunjucks.configure(__dirname + "/../templates", { autoescape: true });
 
+  const now = new Date();
+
+  const time = now.toLocaleString("pl-PL", {
+    timeZone: "Europe/Warsaw",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  const date = now.toLocaleString("pl-PL", {
+    weekday: "long",
+    month: "numeric",
+    day: "numeric",
+  });
+
   const pageHtml = nunjucks.render("status-page.html", {
+    time,
+    date,
     battery,
   });
 

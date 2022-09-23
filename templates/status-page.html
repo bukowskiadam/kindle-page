@@ -10,70 +10,89 @@
       body {
         margin: 0;
         padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      html {
+        background-color: black;
+        height: 100vh;
+        width: 100vw;
+        justify-content: center;
+      }
+
+      body {
         width: 600px;
         height: 800px;
         position: relative;
+        background-color: white;
+        justify-content: space-between;
+        font-family: sans-serif;
       }
 
-      #tp-widget-default {
-        height: 440px !important;
-        transform: scale(1.8);
-        transform-origin: top center;
-        margin: auto;
-      }
-      #tp-widget-bottom-default {
-        display: none !important;
-      }
-      #tp-widget-default.tp-widget-default-light {
-        border: none !important;
+      .status-bar {
+        display: flex;
+        align-self: stretch;
+        font-size: 17px;
+        font-weight: bold;
+        font-family: monospace;
+        margin: 0 8px;
+        box-sizing: border-box;
       }
 
       .battery {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 10px;
-        font-size: 20px;
-        font-family: monospace;
+        margin-left: auto;
+      }
+
+      .battery-icon {
+        background-color: black;
+        border-top-width: 3px;
+        box-sizing: border-box;
+        width: 20px;
+        height: 12px;
+        display: inline-block;
+        clip-path: polygon(
+          0 0,
+          90% 0,
+          90% 20%,
+          100% 20%,
+          100% 80%,
+          90% 80%,
+          90% 100%,
+          0 100%
+        );
+        vertical-align: top;
+        margin-top: 4px;
+        position: relative;
+      }
+
+      .date {
+        text-transform: capitalize;
+        font-size: 56px;
+        letter-spacing: 1px;
+      }
+
+      .meteo {
+        width: 600px;
+        height: 573px;
+        background-image: url("https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl");
+        background-position: top center;
+        background-position-y: -30px;
+        background-repeat: no-repeat;
+        border-top: 2px solid black;
       }
     </style>
   </head>
   <body>
-    <div
-      id="tp-widget-default"
-      class="tp-widget-default-light"
-      data-city="200122"
-      data-version="2.0.0"
-    >
-      <div id="tp-widget-bottom-default">
-        <a
-          id="tp-widget-flink-default"
-          href="https://www.twojapogoda.pl/prognoza-godzinowa-polska/malopolskie-krakow/"
-          >Godzina po godzinie</a
-        >
-        <a
-          id="tp-widget-flink-second"
-          href="https://www.twojapogoda.pl/prognoza-16dni-polska/malopolskie-krakow/"
-          >Na 16 dni</a
-        >
-        <a
-          id="tp-widget-mlink-default"
-          href="https://www.twojapogoda.pl"
-          title="TwojaPogoda.pl - Pogoda w Polsce i na świecie - pogoda na 16 dni"
-        ></a>
+    <div class="status-bar">
+      <div class="time">Generated: {{time}}</div>
+      <div class="battery">
+        <span class="battery-icon"></span>
+        <span class="battery-percentage">{{battery}}%</span>
       </div>
-      <script type="text/javascript">
-        (function (t, p, w, d, g) {
-          if (t.getElementById(w)) return;
-          (d = t.getElementsByTagName(p)[0]), (g = t.createElement(p));
-          g.id = w;
-          g.src = "https://widget.twojapogoda.pl/default/main.js";
-          g.charset = "UTF-8";
-          d.parentNode.appendChild(g);
-        })(document, "script", "tp-widget-script-default");
-      </script>
     </div>
-
-    <div class="battery">Battery {{battery}}%</div>
+    <h1 class="date">{{date}}</h1>
+    <div class="meteo"></div>
   </body>
 </html>
