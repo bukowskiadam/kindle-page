@@ -84,6 +84,21 @@
         letter-spacing: 1px;
       }
 
+      .calendar {
+        overflow: hidden;
+        max-width: 500px;
+      }
+
+      .calendar h3 {
+        text-transform: capitalize;
+        font-size: 100%;
+        margin-bottom: 0.25em;
+      }
+
+      .calendar p {
+        margin: 0.2em 0 0.2em 2em;
+      }
+
       .meteo {
         width: 600px;
         height: 196px;
@@ -113,6 +128,18 @@
       </div>
     </div>
     <h1 class="date">{{date}}</h1>
+    <div class="calendar">
+      {% for day in calendar %}
+      <div class="day">
+        <h3>{{day.day}}</h3>
+        {% for ev in day.allDay %}
+        <p>{{ev.title}} ({{ev.calendar}})</p>
+        {% endfor %} {% for ev in day.time %}
+        <p>{{ev.start}} - {{ev.end}}: {{ev.title}} ({{ev.calendar}})</p>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
     <div class="weather">
       <img
         class="preload-image"
