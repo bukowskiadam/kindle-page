@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -38,16 +38,18 @@
         position: relative;
         background-color: white;
         justify-content: space-between;
-        font-family: sans-serif;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
       }
 
       .status-bar {
         display: flex;
         align-self: stretch;
-        font-size: 30px;
-        font-family: "VT323", monospace;
+        font-size: 20px;
         margin: 2px 8px 0;
         box-sizing: border-box;
+        border-bottom: 1px solid #666;
+        padding-bottom: 2.5px;
       }
 
       .battery {
@@ -76,6 +78,7 @@
           0 100%
         );
         position: relative;
+        top: 1px;
       }
 
       h1.date {
