@@ -78,25 +78,53 @@
         position: relative;
       }
 
-      .date {
+      h1.date {
         text-transform: capitalize;
-        font-size: 56px;
+        font-size: 40px;
         letter-spacing: 1px;
+        text-align: center;
+        margin: 0 8px;
+      }
+
+      .columns {
+        display: flex;
+      }
+
+      .left-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
       }
 
       .calendar {
         overflow: hidden;
-        max-width: 500px;
+        margin: 0 12px;
+        display: flex;
+        flex-direction: column;
       }
 
-      .calendar h3 {
+      .calendar .day {
+        padding: 4px 0;
+      }
+
+      .calendar .day:first-child {
+        color: #b7b7b7;
+      }
+
+      .calendar .day:not(:last-child) {
+        border-bottom: 1px solid #b7b7b7;
+      }
+
+      .calendar .day-title {
         text-transform: capitalize;
-        font-size: 100%;
-        margin-bottom: 0.25em;
       }
 
       .calendar p {
-        margin: 0.2em 0 0.2em 2em;
+        margin: 0.2em 0 0 1em;
+      }
+
+      .calendar p.empty {
+        color: #b7b7b7;
       }
 
       .meteo {
@@ -127,18 +155,36 @@
         <span class="battery-percentage">{{battery}}%</span>
       </div>
     </div>
-    <h1 class="date">{{date}}</h1>
-    <div class="calendar">
-      {% for day in calendar %}
-      <div class="day">
-        <h3>{{day.day}}</h3>
-        {% for ev in day.allDay %}
-        <p>{{ev.title}} ({{ev.calendar}})</p>
-        {% endfor %} {% for ev in day.time %}
-        <p>{{ev.start}} - {{ev.end}}: {{ev.title}} ({{ev.calendar}})</p>
-        {% endfor %}
+    <div class="columns">
+      <div class="left-column">
+        <h1 class="date">{{date}}</h1>
+        <div class="calendar">
+          {% for day in calendar %}
+          <div class="day">
+            <strong class="day-title">{{day.day}}</strong>
+            {% for ev in day.allDay %}
+            <p>{{ev.title}} ({{ev.calendar}})</p>
+            {% endfor %} {% for ev in day.time %}
+            <p>{{ev.start}} - {{ev.end}}: {{ev.title}} ({{ev.calendar}})</p>
+            {% endfor %} {% if day.noEvents %}
+            <p class="empty">brak wydarzeń</p>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% endfor %}
+      <div class="right-column">
+        <script
+          src="https://airly.org/map/airly.js"
+          type="text/javascript"
+        ></script>
+        <iframe
+          id="airly_2140977923"
+          src="https://airly.org/map/widget.html#w=290&h=480&m=true&i=true&d=false&ah=false&aw=false&l=pl&it=AIRLY_CAQI&us=metric&ut=celsius&lat=50.0786224527&lng=19.9208715159"
+          style="width: 280px; height: 480px; border: none"
+          scrolling="no"
+        ></iframe>
+      </div>
     </div>
     <div class="weather">
       <img

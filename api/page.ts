@@ -7,7 +7,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const { VERCEL_ENV, AUTH_TOKEN, CALENDAR_EVENTS } = process.env;
   const { auth, battery = "" } = req.query || {};
 
-  if (VERCEL_ENV !== "development" && auth !== AUTH_TOKEN) {
+  const isDevelopment = VERCEL_ENV === "development";
+
+  if (!isDevelopment && auth !== AUTH_TOKEN) {
     return res.status(401).json({ status: "no auth" });
   }
 
@@ -50,6 +52,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
           minute: "2-digit",
         });
       });
+
+      row.noEvents = !row.allDay.length && !row.time.length;
 
       return row;
     });
