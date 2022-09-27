@@ -23,7 +23,9 @@ export async function takeScreenshot(
     await warmupCalendarCache;
 
     await page.goto(url);
-    // await page.addStyleTag({ content: "* { -webkit-font-smoothing: none; }" });
+    await page.addStyleTag({
+      content: "* { -webkit-font-smoothing: antialiased; }",
+    });
 
     return await page.screenshot();
   } catch (error) {
