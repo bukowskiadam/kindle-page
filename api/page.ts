@@ -1,10 +1,10 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import axios from "axios";
 
 import * as nunjucks from "nunjucks";
+import { getCalendarData } from "../src/calendar";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const { VERCEL_ENV, AUTH_TOKEN, CALENDAR_EVENTS } = process.env;
+  const { VERCEL_ENV, AUTH_TOKEN, CALENDAR_EVENTS = "" } = process.env;
   const { auth, battery = "" } = req.query || {};
 
   const isDevelopment = VERCEL_ENV === "development";
@@ -30,33 +30,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     day: "numeric",
   });
 
-  const calendar =
-    CALENDAR_EVENTS &&
-    (await axios.get(CALENDAR_EVENTS)).data.map((row) => {
-      row.day = new Date(row.day).toLocaleString("pl-PL", {
-        timeZone: "Europe/Warsaw",
-        weekday: "long",
-        month: "numeric",
-        day: "numeric",
-      });
-
-      row.time.forEach((ev) => {
-        ev.start = new Date(ev.start).toLocaleString("pl-PL", {
-          timeZone: "Europe/Warsaw",
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-        ev.end = new Date(ev.end).toLocaleString("pl-PL", {
-          timeZone: "Europe/Warsaw",
-          hour: "2-digit",
-          minute: "2-digit",
-        });
-      });
-
-      row.noEvents = !row.allDay.length && !row.time.length;
-
-      return row;
-    });
+  const calendar = await getCalendarData(CALENDAR_EVENTS, isDevelopment);
 
   const pageHtml = nunjucks.render("status-page.html", {
     time,
