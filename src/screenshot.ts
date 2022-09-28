@@ -27,6 +27,11 @@ export async function takeScreenshot(
       content: "* { -webkit-font-smoothing: antialiased; }",
     });
 
+    await page
+      .frameLocator("#airly-widget")
+      .locator("body", { hasText: "Temperatura" })
+      .waitFor();
+
     return await page.screenshot();
   } catch (error) {
     throw error;
