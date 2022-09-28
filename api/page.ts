@@ -39,5 +39,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     calendar,
   });
 
-  return res.send(pageHtml);
+  res.setHeader("Cache-Control", "max-age=0, s-maxage=30");
+
+  return res.status(200).send(pageHtml);
 };

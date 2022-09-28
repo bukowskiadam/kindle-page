@@ -2,14 +2,11 @@ import type { ChromiumBrowser } from "playwright-core";
 import { launchChromium } from "playwright-aws-lambda";
 import axios from "axios";
 
-export async function takeScreenshot(
-  url: string,
-  calendarEventsUrl: string
-): Promise<Buffer> {
+export async function takeScreenshot(url: string): Promise<Buffer> {
   let browser: ChromiumBrowser | null = null;
 
   try {
-    const warmupCalendarCache = axios.get(calendarEventsUrl);
+    const warmupPageCache = axios.get(url);
 
     browser = await launchChromium({ headless: true });
     const context = await browser.newContext({
@@ -20,7 +17,7 @@ export async function takeScreenshot(
     const page = await context.newPage();
     await page.setViewportSize({ width: 600, height: 800 });
 
-    await warmupCalendarCache;
+    await warmupPageCache;
 
     await page.goto(url);
     await page.addStyleTag({
