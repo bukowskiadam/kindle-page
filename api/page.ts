@@ -2,6 +2,7 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 import * as nunjucks from "nunjucks";
 import { getCalendarData } from "../src/calendar";
+import { getRandomQuote } from "../src/quotable";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const { VERCEL_ENV, AUTH_TOKEN, CALENDAR_EVENTS = "" } = process.env;
@@ -30,13 +31,17 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     day: "numeric",
   });
 
-  const calendar = await getCalendarData(CALENDAR_EVENTS, isDevelopment);
+  const [calendar, quote] = await Promise.all([
+    getCalendarData(CALENDAR_EVENTS, isDevelopment),
+    getRandomQuote(),
+  ]);
 
   const pageHtml = nunjucks.render("status-page.html", {
     time,
     date,
     battery,
     calendar,
+    quote,
   });
 
   res.setHeader("Cache-Control", "max-age=0, s-maxage=30");
