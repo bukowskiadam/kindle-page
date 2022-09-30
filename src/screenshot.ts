@@ -10,6 +10,7 @@ export async function takeScreenshot(url: string): Promise<Buffer> {
 
     browser = await launchChromium({ headless: true });
     const context = await browser.newContext({
+      locale: "pl-PL",
       userAgent:
         "Mozilla/5.0 (Linux; Android 10; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Mobile Safari/537.36",
     });
@@ -24,10 +25,15 @@ export async function takeScreenshot(url: string): Promise<Buffer> {
       content: "* { -webkit-font-smoothing: antialiased; }",
     });
 
-    await page
-      .frameLocator("#airly-widget")
-      .locator("body", { hasText: "Temperatura" })
-      .waitFor();
+    await Promise.all([
+      page
+        .frameLocator("#airly-widget")
+        .locator("body", { hasText: "Temperatura" })
+        .waitFor(),
+      page.frameLocator("#windy").locator(".detail.open").waitFor(),
+    ]);
+
+    await page.waitForTimeout(500);
 
     return await page.screenshot();
   } catch (error) {

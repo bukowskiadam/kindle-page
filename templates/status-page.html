@@ -130,25 +130,6 @@
       .calendar p.empty {
         color: #b7b7b7;
       }
-
-      .meteo {
-        width: 600px;
-        height: 196px;
-        background-image: url("https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl");
-        background-position: top center;
-        background-position-y: -30px;
-        background-repeat: no-repeat;
-        border-top: 2px solid #cccccc;
-      }
-
-      .meteo-2 {
-        width: 600px;
-        height: 82px;
-        background-image: url("https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl");
-        background-position: top center;
-        background-position-y: -522px;
-        background-repeat: no-repeat;
-      }
     </style>
   </head>
   <body>
@@ -190,14 +171,12 @@
         ></iframe>
       </div>
     </div>
-    <div class="weather">
-      <img
-        class="preload-image"
-        src="https://www.meteo.pl/um/metco/mgram_pict.php?ntype=0u&row=466&col=232&lang=pl"
-        onload="this.remove()"
-      />
-      <div class="meteo"></div>
-      <div class="meteo-2"></div>
-    </div>
+    <iframe
+      id="windy"
+      height="180"
+      width="600"
+      frameborder="0"
+      src="https://www.windy.com/embed2.html?lat=47.458&lon=19.951&detailLat=50.064&detailLon=19.973&width=600&height=400&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=default&metricTemp=default&radarRange=-1&embedMake=true"
+    ></iframe>
   </body>
 </html>
