@@ -134,7 +134,6 @@
 
       .quote {
         margin: auto 8px;
-        font-size: 12px;
         overflow: hidden;
       }
 
@@ -163,6 +162,18 @@
         font-size: 12px;
         padding: 3px;
         text-transform: uppercase;
+      }
+
+      .weather {
+        overflow: hidden;
+        max-width: 100%;
+        position: relative;
+        height: 149px;
+      }
+
+      .meteogram {
+        position: relative;
+        top: -111px;
       }
     </style>
   </head>
@@ -210,15 +221,13 @@
       <div class="quote-text">{{quote.content}}</div>
       <div class="quote-author">{{quote.author}}</div>
     </div>
+    <div class="weather-header">Pogoda</div>
     <div class="weather">
-      <div class="weather-header">Pogoda</div>
-      <iframe
-        id="windy"
-        height="180"
-        width="600"
-        frameborder="0"
-        src="https://www.windy.com/embed2.html?lat=47.458&lon=19.951&detailLat=50.064&detailLon=19.973&width=600&height=400&zoom=5&level=surface&overlay=wind&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=true&metricWind=default&metricTemp=default&radarRange=-1&embedMake=true"
-      ></iframe>
+      <img
+        class="meteogram"
+        alt="meteogram"
+        src="https://www.yr.no/en/content/2-3094802/meteogram.svg"
+      />
     </div>
   </body>
 </html>

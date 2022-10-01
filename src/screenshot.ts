@@ -30,7 +30,6 @@ export async function takeScreenshot(url: string): Promise<Buffer> {
         .frameLocator("#airly-widget")
         .locator("body", { hasText: "Temperatura" })
         .waitFor(),
-      page.frameLocator("#windy").locator("#detail-data-table").waitFor(),
     ]);
 
     await page.waitForTimeout(500);
