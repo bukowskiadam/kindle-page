@@ -21,5 +21,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   res.setHeader("Content-Type", "image/png");
 
+  // return number of minutes when kindle should refresh again - it does not work yet on kindle
+  res.setHeader("X-Next-Refresh", "60");
+
   return res.send(forKindle);
 };
