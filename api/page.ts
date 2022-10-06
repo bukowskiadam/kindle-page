@@ -1,6 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 import * as nunjucks from "nunjucks";
+import { getAirlyData } from "../src/airly";
 import { getCalendarData } from "../src/calendar";
 import { getRandomQuote } from "../src/quotable";
 
@@ -31,9 +32,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     day: "numeric",
   });
 
-  const [calendar, quote] = await Promise.all([
+  const [calendar, quote, airly] = await Promise.all([
     getCalendarData(CALENDAR_EVENTS, isDevelopment),
     getRandomQuote(),
+    getAirlyData(),
   ]);
 
   const pageHtml = nunjucks.render("status-page.html", {
@@ -42,6 +44,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     battery,
     calendar,
     quote,
+    airly,
   });
 
   res.setHeader("Cache-Control", "max-age=0, s-maxage=30");
