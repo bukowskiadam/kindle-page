@@ -43,6 +43,10 @@
         align-items: stretch;
       }
 
+      body * {
+        flex-shrink: 0;
+      }
+
       .status-bar {
         display: flex;
         font-size: 20px;
@@ -55,7 +59,7 @@
       }
 
       .time span {
-        color: #999999;
+        color: #5a5a5a;
       }
 
       .battery {
@@ -107,6 +111,7 @@
       h1.date {
         text-transform: capitalize;
         font-size: 40px;
+        line-height: 48px;
         letter-spacing: 1px;
         text-align: center;
         margin: 16px 0;
@@ -116,6 +121,8 @@
         overflow: hidden;
         display: flex;
         flex-direction: column;
+        font-size: 18px;
+        line-height: 20px;
       }
 
       .calendar .day {
@@ -123,11 +130,11 @@
       }
 
       .calendar .day:first-child {
-        color: #999999;
+        color: #5a5a5a;
       }
 
       .calendar .day:not(:last-child) {
-        border-bottom: 1px solid #999999;
+        border-bottom: 1px solid #5a5a5a;
       }
 
       .calendar .day-title {
@@ -135,22 +142,24 @@
       }
 
       .calendar p {
-        margin: 0.2em 0 0 1em;
+        margin: 3px 0 0 16px;
       }
 
       .calendar p.empty {
-        color: #999999;
+        color: #5a5a5a;
       }
 
       .temperature {
         margin-top: 10px;
         font-size: 66px;
+        line-height: 80px;
         text-align: center;
         font-weight: bold;
       }
 
       .air-quality-value {
         font-size: 30px;
+        line-height: 36px;
         margin: 16px 0;
         display: flex;
         justify-content: space-around;
@@ -164,6 +173,7 @@
       .air-quality-description {
         text-align: center;
         font-size: 20px;
+        line-height: 24px;
         margin: 16px 0;
       }
 
@@ -176,46 +186,50 @@
       }
 
       .weather-values .legend {
-        color: #999999;
+        color: #5a5a5a;
         font-size: 16px;
+        line-height: 20px;
+        margin-top: 8px;
       }
 
       .weather-values .value {
-        font-size: 22px;
+        font-size: 24px;
+        line-height: 28px;
         font-weight: bold;
       }
 
       .quote {
-        margin: auto 8px;
+        margin: auto 8px 8px;
         overflow: hidden;
+        font-size: 18px;
+        line-height: 22px;
+        flex-shrink: 1;
       }
 
       .quote-title {
         font-weight: bold;
         text-align: center;
-        margin-bottom: 0.5em;
+        margin-bottom: 8px;
       }
 
       .quote-text {
         font-style: italic;
         text-align: center;
-        margin-bottom: 0.5em;
+        margin-bottom: 8px;
       }
 
       .quote-author {
         text-align: right;
-        color: #999999;
+        color: #5a5a5a;
       }
 
       .weather-header {
         text-align: center;
         font-weight: bold;
         color: black;
-        background: #eeeeee;
-        font-size: 12px;
-        margin: 3px;
-        text-transform: uppercase;
-        width: 150px;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 8px;
         align-self: center;
       }
 
@@ -228,7 +242,8 @@
 
       .meteogram {
         position: relative;
-        top: -111px;
+        top: -111.756px;
+        left: -0.3px;
       }
     </style>
   </head>
@@ -300,7 +315,7 @@
       <div class="quote-text">{{quote.content}}</div>
       <div class="quote-author">{{quote.author}}</div>
     </div>
-    <div class="weather-header">Pogoda</div>
+    <div class="weather-header">Pogoda:</div>
     <div class="weather">
       <img
         class="meteogram"
