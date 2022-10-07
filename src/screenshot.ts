@@ -25,13 +25,6 @@ export async function takeScreenshot(url: string): Promise<Buffer> {
       content: "* { -webkit-font-smoothing: antialiased; }",
     });
 
-    await Promise.all([
-      page
-        .frameLocator("#airly-widget")
-        .locator("body", { hasText: "Temperatura" })
-        .waitFor(),
-    ]);
-
     await page.waitForTimeout(500);
 
     return await page.screenshot();
