@@ -39,24 +39,26 @@ export async function getAirlyData(): Promise<AirlyData | AirlyError> {
   let data = storedAirlyData;
 
   if (!isDevelopment) {
-    const response = await axios.get(
-      `https://airapi.airly.eu/v2/measurements/point?lat=${AIRLY_LAT}&lng=${AIRLY_LNG}`,
-      {
-        headers: {
-          "accept-language": "pl-PL",
-          apikey: AIRLY_API_KEY,
-        },
-      }
-    );
+    try {
+      const response = await axios.get(
+        `https://airapi.airly.eu/v2/measurements/point?lat=${AIRLY_LAT}&lng=${AIRLY_LNG}`,
+        {
+          headers: {
+            "accept-language": "pl-PL",
+            apikey: AIRLY_API_KEY,
+          },
+        }
+      );
 
-    if (response.status !== 200) {
+      data = response.data;
+    } catch (error) {
       return {
         type: "error",
-        error: `Error fetching data: ${response.statusText}`,
+        error:
+          "Something went wrong when fething airly: " +
+          (error.response ? error.response.statusText : " unknown problem"),
       };
     }
-
-    data = response.data;
   }
 
   return mapAirlyData(data.current);
