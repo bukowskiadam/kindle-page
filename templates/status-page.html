@@ -87,14 +87,6 @@
         top: 1px;
       }
 
-      h1.date {
-        text-transform: capitalize;
-        font-size: 40px;
-        letter-spacing: 1px;
-        text-align: center;
-        margin: 0 8px;
-      }
-
       .columns {
         display: flex;
       }
@@ -103,11 +95,25 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
+        padding-left: 12px;
+        flex: 0 0 300px;
+      }
+
+      .right-column {
+        margin: 0 12px;
+        flex-grow: 1;
+      }
+
+      h1.date {
+        text-transform: capitalize;
+        font-size: 40px;
+        letter-spacing: 1px;
+        text-align: center;
+        margin: 16px 0;
       }
 
       .calendar {
         overflow: hidden;
-        margin: 0 12px;
         display: flex;
         flex-direction: column;
       }
@@ -134,6 +140,49 @@
 
       .calendar p.empty {
         color: #999999;
+      }
+
+      .temperature {
+        margin-top: 10px;
+        font-size: 66px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .air-quality-value {
+        font-size: 30px;
+        margin: 16px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+
+      .airly-logo {
+        width: 80px;
+      }
+
+      .air-quality-description {
+        text-align: center;
+        font-size: 20px;
+        margin: 16px 0;
+      }
+
+      .weather-values {
+        display: grid;
+        text-align: center;
+        grid-template: 1fr 1fr / 1fr 1fr;
+        grid-gap: 8px;
+        margin: 8px;
+      }
+
+      .weather-values .legend {
+        color: #999999;
+        font-size: 16px;
+      }
+
+      .weather-values .value {
+        font-size: 22px;
+        font-weight: bold;
       }
 
       .quote {
@@ -210,16 +259,40 @@
         </div>
       </div>
       <div class="right-column">
-        <script
-          src="https://airly.org/map/airly.js"
-          type="text/javascript"
-        ></script>
-        <iframe
-          id="airly-widget"
-          src="https://airly.org/map/widget.html#w=290&h=460&m=true&i=true&d=false&ah=false&aw=false&l=pl&it=AIRLY_CAQI&us=metric&ut=celsius&lat=50.0786224527&lng=19.9208715159"
-          style="width: 280px; height: 460px; border: none"
-          scrolling="no"
-        ></iframe>
+        {% if airly.type === "data" %}
+        <div class="temperature">{{airly.temperature}}°C</div>
+        <div class="air-quality-value">
+          <span>CAQI: <strong>{{airly.airQuality.value | int}}</strong></span>
+          <img
+            class="airly-logo"
+            src="https://cdn.airly.org/assets/brand/logo/primary/airly.svg"
+            alt="airly-logo"
+          />
+        </div>
+        <div class="air-quality-description">
+          {{airly.airQuality.description}}
+        </div>
+        <div class="weather-values">
+          <div>
+            <div class="legend">PM 2.5</div>
+            <div class="value">{{airly.pm25.percent | int}} %</div>
+          </div>
+          <div>
+            <div class="legend">PM 10</div>
+            <div class="value">{{airly.pm10.percent | int}} %</div>
+          </div>
+          <div>
+            <div class="legend">Wilgotność</div>
+            <div class="value">{{airly.humidity | int}} %</div>
+          </div>
+          <div>
+            <div class="legend">Ciśnienie</div>
+            <div class="value">{{airly.pressure | int}}</div>
+          </div>
+        </div>
+        {% else %}
+        <div class="airly-error">{{airly.error}}</div>
+        {% endif %}
       </div>
     </div>
     <div class="quote">

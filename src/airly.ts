@@ -71,8 +71,8 @@ function mapAirlyData(current: any): AirlyData {
 
   const caqi = current.indexes[0];
   const airQuality = {
-    value: caqi.value as number,
-    description: caqi.description as string,
+    value: caqi.value,
+    description: caqi.description,
   };
 
   const standards = Object.fromEntries(
@@ -88,7 +88,10 @@ function mapAirlyData(current: any): AirlyData {
 
   return {
     type: "data",
-    temperature: values.TEMPERATURE,
+    temperature:
+      Math.abs(values.TEMPERATURE) < 10
+        ? values.TEMPERATURE.toFixed(1)
+        : values.TEMPERATURE.toFixed(0),
     humidity: values.HUMIDITY,
     pressure: values.PRESSURE,
     airQuality,
