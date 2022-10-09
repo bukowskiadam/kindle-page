@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 import * as nunjucks from "nunjucks";
-import { getAirlyData } from "../src/airly";
+import { getAirlyData } from "../src/airlyCached";
 import { isAuthorized } from "../src/authorization";
 import { getCalendarData } from "../src/calendar";
 import { TIME_ZONE } from "../src/config";

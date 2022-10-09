@@ -23,7 +23,7 @@ export type AirlyData = {
   };
 };
 
-type AirlyError = {
+export type AirlyError = {
   type: "error";
   error: string;
 };
