@@ -257,7 +257,7 @@
       <div class="time"><span>Updated:</span> {{time}}</div>
       <div class="battery">
         <span class="battery-icon"></span>
-        <span class="battery-percentage">{{battery}}%</span>
+        <span class="battery-percentage">{{ battery | default("-- ") }}%</span>
       </div>
     </div>
     <div class="columns">

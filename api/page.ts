@@ -2,16 +2,15 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 import * as nunjucks from "nunjucks";
 import { getAirlyData } from "../src/airly";
+import { isAuthorized } from "../src/authorization";
 import { getCalendarData } from "../src/calendar";
 import { getRandomQuote } from "../src/quotable";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const { VERCEL_ENV, AUTH_TOKEN, CALENDAR_EVENTS = "" } = process.env;
-  const { auth, battery = "" } = req.query || {};
+  const { battery: batteryUnsafe = "" } = req.query || {};
+  const battery = Number.parseInt(batteryUnsafe.toString(), 10) || undefined;
 
-  const isDevelopment = VERCEL_ENV === "development";
-
-  if (!isDevelopment && auth !== AUTH_TOKEN) {
+  if (!isAuthorized(req)) {
     return res.status(401).json({ status: "no auth" });
   }
 
@@ -33,7 +32,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   });
 
   const [calendar, quote, airly] = await Promise.all([
-    getCalendarData(CALENDAR_EVENTS, isDevelopment),
+    getCalendarData(),
     getRandomQuote(),
     getAirlyData(),
   ]);

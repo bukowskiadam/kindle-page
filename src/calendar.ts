@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT } from "../src/config";
+
 const calendarMockData = [
   {
     day: "poniedziałek, 26.09",
@@ -25,19 +27,16 @@ const calendarMockData = [
   },
 ];
 
-export async function getCalendarData(
-  calendarUrl: string,
-  returnMock: boolean = false
-) {
-  if (returnMock) {
+export async function getCalendarData() {
+  if (IS_DEVELOPMENT) {
     return calendarMockData;
   }
 
-  if (!calendarUrl) {
+  if (!CALENDAR_EVENTS_URL) {
     return [];
   }
 
-  return (await axios.get(calendarUrl)).data.map((row) => {
+  return (await axios.get(CALENDAR_EVENTS_URL)).data.map((row) => {
     row.day = new Date(row.day).toLocaleString("pl-PL", {
       timeZone: "Europe/Warsaw",
       weekday: "long",

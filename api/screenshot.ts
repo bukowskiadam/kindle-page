@@ -1,21 +1,20 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { isAuthorized } from "../src/authorization";
+import { IS_DEVELOPMENT, SELF_URL } from "../src/config";
 import { imageForKindle } from "../src/forKindle";
 import { takeScreenshot } from "../src/screenshot";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const { VERCEL_ENV, AUTH_TOKEN, VERCEL_URL } = process.env;
-  const { auth = "", battery = "" } = req.query || {};
-
-  const isDevelopment = VERCEL_ENV === "development";
-
-  if (!isDevelopment && auth !== AUTH_TOKEN) {
+  if (!isAuthorized(req)) {
     return res.status(401).json({ status: "no auth" });
   }
 
-  const rotate = !isDevelopment;
-  const protocol = isDevelopment ? "http" : "https";
+  const params = req.url?.split("?")[1] || "";
+
+  const rotate = !IS_DEVELOPMENT;
+  const protocol = IS_DEVELOPMENT ? "http" : "https";
   const image = await takeScreenshot(
-    `${protocol}://${VERCEL_URL}/api/page?auth=${auth}&battery=${battery}`
+    `${protocol}://${SELF_URL}/api/page?${params}`
   );
   const forKindle = imageForKindle(image, { rotate });
 

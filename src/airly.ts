@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AIRLY_API_KEY, AIRLY_LAT, AIRLY_LNG, isDevelopment } from "./config";
+import { AIRLY_API_KEY, AIRLY_LAT, AIRLY_LNG, IS_DEVELOPMENT } from "./config";
 import { storedAirlyData } from "./fixtures/airly";
 
 export type AirlyData = {
@@ -38,7 +38,7 @@ export async function getAirlyData(): Promise<AirlyData | AirlyError> {
 
   let data = storedAirlyData;
 
-  if (!isDevelopment) {
+  if (!IS_DEVELOPMENT) {
     try {
       const response = await axios.get(
         `https://airapi.airly.eu/v2/measurements/point?lat=${AIRLY_LAT}&lng=${AIRLY_LNG}`,
