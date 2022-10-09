@@ -20,8 +20,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   res.setHeader("Content-Type", "image/png");
 
   const nextRefreshSeconds = getSecondsToNextUpdate();
-  const nextRefreshMinutes = Math.floor(nextRefreshSeconds / 60);
-  res.setHeader("X-Next-Refresh", nextRefreshMinutes);
+  res.setHeader("X-Next-Refresh", nextRefreshSeconds);
 
   setProxyMaxAge(res, nextRefreshSeconds - 10);
 
