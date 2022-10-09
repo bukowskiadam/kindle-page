@@ -2,7 +2,9 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { isAuthorized } from "../src/authorization";
 import { IS_DEVELOPMENT, SELF_URL } from "../src/config";
 import { imageForKindle } from "../src/forKindle";
+import { getSecondsToNextUpdate } from "../src/nextUpdate";
 import { takeScreenshot } from "../src/screenshot";
+import { setProxyMaxAge } from "../src/vercel";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (!isAuthorized(req)) {
@@ -20,8 +22,11 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   res.setHeader("Content-Type", "image/png");
 
-  // return number of minutes when kindle should refresh again - it does not work yet on kindle
-  res.setHeader("X-Next-Refresh", "60");
+  const nextRefreshSeconds = getSecondsToNextUpdate();
+  const nextRefreshMinutes = Math.floor(nextRefreshSeconds / 60);
+  res.setHeader("X-Next-Refresh", nextRefreshMinutes);
+
+  setProxyMaxAge(res, nextRefreshSeconds - 10);
 
   return res.send(forKindle);
 };

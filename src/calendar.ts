@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT } from "../src/config";
+import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT, TIME_ZONE } from "../src/config";
 
 const calendarMockData = [
   {
@@ -38,7 +38,7 @@ export async function getCalendarData() {
 
   return (await axios.get(CALENDAR_EVENTS_URL)).data.map((row) => {
     row.day = new Date(row.day).toLocaleString("pl-PL", {
-      timeZone: "Europe/Warsaw",
+      timeZone: TIME_ZONE,
       weekday: "long",
       month: "numeric",
       day: "numeric",
@@ -46,12 +46,12 @@ export async function getCalendarData() {
 
     row.time.forEach((ev) => {
       ev.start = new Date(ev.start).toLocaleString("pl-PL", {
-        timeZone: "Europe/Warsaw",
+        timeZone: TIME_ZONE,
         hour: "2-digit",
         minute: "2-digit",
       });
       ev.end = new Date(ev.end).toLocaleString("pl-PL", {
-        timeZone: "Europe/Warsaw",
+        timeZone: TIME_ZONE,
         hour: "2-digit",
         minute: "2-digit",
       });

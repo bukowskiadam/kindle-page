@@ -4,7 +4,10 @@ import * as nunjucks from "nunjucks";
 import { getAirlyData } from "../src/airly";
 import { isAuthorized } from "../src/authorization";
 import { getCalendarData } from "../src/calendar";
+import { TIME_ZONE } from "../src/config";
+import { getSecondsToNextUpdate } from "../src/nextUpdate";
 import { getRandomQuote } from "../src/quotable";
+import { setProxyMaxAge } from "../src/vercel";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const { battery: batteryUnsafe = "" } = req.query || {};
@@ -19,13 +22,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const now = new Date();
 
   const time = now.toLocaleString("pl-PL", {
-    timeZone: "Europe/Warsaw",
+    timeZone: TIME_ZONE,
     hour: "2-digit",
     minute: "2-digit",
   });
 
   const date = now.toLocaleString("pl-PL", {
-    timeZone: "Europe/Warsaw",
+    timeZone: TIME_ZONE,
     weekday: "long",
     month: "numeric",
     day: "numeric",
@@ -46,7 +49,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     airly,
   });
 
-  res.setHeader("Cache-Control", "max-age=0, s-maxage=30");
+  const maxAge = getSecondsToNextUpdate() - 1;
+  setProxyMaxAge(res, maxAge);
 
   return res.status(200).send(pageHtml);
 };
