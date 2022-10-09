@@ -21,6 +21,7 @@
     "axios": "^0.27.2",
     "nunjucks": "^3.2.3",
     "playwright-aws-lambda": "^0.9.0",
-    "playwright-core": "^1.25.2"
+    "playwright-core": "^1.25.2",
+    "scmp": "^2.1.0"
   }
 }
