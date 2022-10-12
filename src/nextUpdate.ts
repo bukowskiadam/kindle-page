@@ -1,4 +1,9 @@
-import { MIN_THRESHOLD_MS, TIME_ZONE, UPDATE_TIMES } from "./config";
+import {
+  MIN_THRESHOLD_MS,
+  TIME_ZONE,
+  UPDATE_TIMES_WEEKDAY,
+  UPDATE_TIMES_WEEKEND,
+} from "./config";
 
 function changeTimeZone(date: Date, timeZone: string) {
   return new Date(
@@ -9,7 +14,11 @@ function changeTimeZone(date: Date, timeZone: string) {
 }
 
 function mapConfigToTimes(now: Date) {
-  const times = UPDATE_TIMES.map((str) => {
+  const day = now.getDay();
+  const configTimes =
+    day === 0 || day === 6 ? UPDATE_TIMES_WEEKEND : UPDATE_TIMES_WEEKDAY;
+
+  const times = configTimes.map((str) => {
     const [hours, minutes] = str.split(":");
     const next = new Date(now);
 
