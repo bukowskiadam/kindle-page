@@ -16,7 +16,6 @@
     "vercel": "^28.2.4"
   },
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.29",
     "@napi-rs/image": "^1.4.0",
     "axios": "^0.27.2",
     "nunjucks": "^3.2.3",
