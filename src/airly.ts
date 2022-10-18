@@ -55,7 +55,7 @@ export async function getAirlyData(): Promise<AirlyData | AirlyError> {
       return {
         type: "error",
         error:
-          "Something went wrong when fething airly: " +
+          "Something went wrong when fetching airly: " +
           (error.response ? error.response.statusText : " unknown problem"),
       };
     }
