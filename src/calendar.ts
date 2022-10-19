@@ -1,35 +1,11 @@
 import axios from "axios";
 
 import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT, TIME_ZONE } from "../src/config";
-
-const calendarMockData = [
-  {
-    day: "poniedziałek, 26.09",
-    allDay: [{ title: "Test event", calendar: "Calendar 1" }],
-    time: [],
-    noEvents: false,
-  },
-  { day: "wtorek, 27.09", allDay: [], time: [], noEvents: true },
-  { day: "środa, 28.09", allDay: [], time: [], noEvents: true },
-  { day: "czwartek, 29.09", allDay: [], time: [], noEvents: true },
-  {
-    day: "piątek, 30.09",
-    allDay: [],
-    time: [
-      {
-        title: "Zrobić prezentację",
-        calendar: "Praca",
-        start: "08:00",
-        end: "09:00",
-      },
-    ],
-    noEvents: false,
-  },
-];
+import { calendarMockData } from "./fixtures/calendar";
 
 export async function getCalendarData() {
   if (IS_DEVELOPMENT) {
-    return calendarMockData;
+    return calendarMockData.short;
   }
 
   if (!CALENDAR_EVENTS_URL) {

@@ -22,7 +22,7 @@
         padding: 0;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        overflow: hidden;
       }
 
       html {
@@ -30,6 +30,7 @@
         height: 100vh;
         width: 100vw;
         justify-content: center;
+        align-items: center;
       }
 
       body {
@@ -41,10 +42,6 @@
         font-family: 'Montserrat', sans-serif;
         font-weight: 500;
         align-items: stretch;
-      }
-
-      body * {
-        flex-shrink: 0;
       }
 
       .status-bar {
@@ -91,6 +88,13 @@
         top: 1px;
       }
 
+      .main-area {
+        overflow: hidden;
+        flex: 1 1 auto;
+        display: flex;
+        flex-direction: column;
+      }
+
       .columns {
         display: flex;
       }
@@ -100,13 +104,12 @@
         flex-direction: column;
         justify-content: space-evenly;
         padding-left: 12px;
-        flex: 0 0 300px;
+        flex: 0 0 330px;
       }
 
       .right-column {
         margin: 0 12px;
         flex-grow: 1;
-        flex-shrink: 1;
       }
 
       h1.date {
@@ -208,7 +211,6 @@
         overflow: hidden;
         font-size: 18px;
         line-height: 22px;
-        flex-shrink: 1;
       }
 
       .quote-title {
@@ -228,7 +230,11 @@
         color: #5a5a5a;
       }
 
-      .weather-header {
+      .forecast {
+        flex-shrink: 0;
+      }
+
+      .forecast-header {
         text-align: center;
         font-weight: bold;
         color: black;
@@ -238,7 +244,7 @@
         align-self: center;
       }
 
-      .weather {
+      .meteogram-container {
         overflow: hidden;
         max-width: 100%;
         position: relative;
@@ -260,73 +266,77 @@
         <span class="battery-percentage">{{ battery | default("-- ") }}%</span>
       </div>
     </div>
-    <div class="columns">
-      <div class="left-column">
-        <h1 class="date">{{date}}</h1>
-        <div class="calendar">
-          {% for day in calendar %}
-          <div class="day">
-            <strong class="day-title">{{day.day}}</strong>
-            {% for ev in day.allDay %}
-            <p>{{ev.title}} ({{ev.calendar}})</p>
-            {% endfor %} {% for ev in day.time %}
-            <p>{{ev.start}} - {{ev.end}}: {{ev.title}} ({{ev.calendar}})</p>
-            {% endfor %} {% if day.noEvents %}
-            <p class="empty">brak wydarzeń</p>
-            {% endif %}
+    <div class="main-area">
+      <div class="columns">
+        <div class="left-column">
+          <h1 class="date">{{date}}</h1>
+          <div class="calendar">
+            {% for day in calendar %}
+            <div class="day">
+              <strong class="day-title">{{day.day}}</strong>
+              {% for ev in day.allDay %}
+              <p>{{ev.title}} ({{ev.calendar}})</p>
+              {% endfor %} {% for ev in day.time %}
+              <p>{{ev.start}} - {{ev.end}}: {{ev.title}} ({{ev.calendar}})</p>
+              {% endfor %} {% if day.noEvents %}
+              <p class="empty">brak wydarzeń</p>
+              {% endif %}
+            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
+        </div>
+        <div class="right-column">
+          {% if airly.type === "data" %}
+          <div class="temperature">{{airly.temperature}}°C</div>
+          <div class="air-quality-value">
+            <span>CAQI: <strong>{{airly.airQuality.value | int}}</strong></span>
+            <img
+              class="airly-logo"
+              src="https://cdn.airly.org/assets/brand/logo/primary/airly.svg"
+              alt="airly-logo"
+            />
+          </div>
+          <div class="air-quality-description">
+            {{airly.airQuality.description}}
+          </div>
+          <div class="weather-values">
+            <div>
+              <div class="legend">PM 2.5</div>
+              <div class="value">{{airly.pm25.percent | int}} %</div>
+            </div>
+            <div>
+              <div class="legend">PM 10</div>
+              <div class="value">{{airly.pm10.percent | int}} %</div>
+            </div>
+            <div>
+              <div class="legend">Wilgotność</div>
+              <div class="value">{{airly.humidity | int}} %</div>
+            </div>
+            <div>
+              <div class="legend">Ciśnienie</div>
+              <div class="value">{{airly.pressure | int}}</div>
+            </div>
+          </div>
+          {% else %}
+          <div class="airly-error">{{airly.error}}</div>
+          {% endif %}
         </div>
       </div>
-      <div class="right-column">
-        {% if airly.type === "data" %}
-        <div class="temperature">{{airly.temperature}}°C</div>
-        <div class="air-quality-value">
-          <span>CAQI: <strong>{{airly.airQuality.value | int}}</strong></span>
-          <img
-            class="airly-logo"
-            src="https://cdn.airly.org/assets/brand/logo/primary/airly.svg"
-            alt="airly-logo"
-          />
-        </div>
-        <div class="air-quality-description">
-          {{airly.airQuality.description}}
-        </div>
-        <div class="weather-values">
-          <div>
-            <div class="legend">PM 2.5</div>
-            <div class="value">{{airly.pm25.percent | int}} %</div>
-          </div>
-          <div>
-            <div class="legend">PM 10</div>
-            <div class="value">{{airly.pm10.percent | int}} %</div>
-          </div>
-          <div>
-            <div class="legend">Wilgotność</div>
-            <div class="value">{{airly.humidity | int}} %</div>
-          </div>
-          <div>
-            <div class="legend">Ciśnienie</div>
-            <div class="value">{{airly.pressure | int}}</div>
-          </div>
-        </div>
-        {% else %}
-        <div class="airly-error">{{airly.error}}</div>
-        {% endif %}
+      <div class="quote">
+        <div class="quote-title">Cytat dnia:</div>
+        <div class="quote-text">{{quote.content}}</div>
+        <div class="quote-author">{{quote.author}}</div>
       </div>
     </div>
-    <div class="quote">
-      <div class="quote-title">Cytat dnia:</div>
-      <div class="quote-text">{{quote.content}}</div>
-      <div class="quote-author">{{quote.author}}</div>
-    </div>
-    <div class="weather-header">Pogoda:</div>
-    <div class="weather">
-      <img
-        class="meteogram"
-        alt="meteogram"
-        src="https://www.yr.no/en/content/2-3094802/meteogram.svg"
-      />
+    <div class="forecast">
+      <div class="forecast-header">Pogoda:</div>
+      <div class="meteogram-container">
+        <img
+          class="meteogram"
+          alt="meteogram"
+          src="https://www.yr.no/en/content/2-3094802/meteogram.svg"
+        />
+      </div>
     </div>
   </body>
 </html>
