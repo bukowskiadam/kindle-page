@@ -275,9 +275,9 @@
             <div class="day">
               <strong class="day-title">{{day.day}}</strong>
               {% for ev in day.allDay %}
-              <p>{{ev.title}} ({{ev.calendar}})</p>
+              <p>{{ev.title}}</p>
               {% endfor %} {% for ev in day.time %}
-              <p>{{ev.start}} - {{ev.end}}: {{ev.title}} ({{ev.calendar}})</p>
+              <p>{{ev.start}} - {{ev.end}}: {{ev.title}}</p>
               {% endfor %} {% if day.noEvents %}
               <p class="empty">brak wydarzeń</p>
               {% endif %}
