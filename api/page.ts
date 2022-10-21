@@ -49,8 +49,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     airly,
   });
 
-  const maxAge = getSecondsToNextUpdate() - 1;
-  setProxyMaxAge(res, maxAge);
+  const nextRefreshSeconds = getSecondsToNextUpdate();
+  res.setHeader("X-Next-Refresh", nextRefreshSeconds);
+
+  setProxyMaxAge(res, nextRefreshSeconds);
 
   return res.status(200).send(pageHtml);
 };

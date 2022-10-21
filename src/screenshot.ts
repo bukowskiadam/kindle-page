@@ -2,7 +2,12 @@ import type { ChromiumBrowser } from "playwright-core";
 import { launchChromium } from "playwright-aws-lambda";
 import axios from "axios";
 
-export async function takeScreenshot(url: string): Promise<Buffer> {
+type ScreenshotResult = {
+  screenshot: Buffer;
+  headers: Record<string, string>;
+};
+
+export async function takeScreenshot(url: string): Promise<ScreenshotResult> {
   let browser: ChromiumBrowser | null = null;
 
   try {
@@ -20,14 +25,17 @@ export async function takeScreenshot(url: string): Promise<Buffer> {
 
     await warmupPageCache;
 
-    await page.goto(url);
+    const response = await page.goto(url);
     await page.addStyleTag({
       content: "* { -webkit-font-smoothing: antialiased; }",
     });
 
     await page.waitForTimeout(500);
 
-    return await page.screenshot();
+    const screenshot = await page.screenshot();
+    const headers = (await response?.allHeaders()) || {};
+
+    return { screenshot, headers };
   } catch (error) {
     throw error;
   } finally {
