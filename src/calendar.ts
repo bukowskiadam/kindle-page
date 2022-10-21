@@ -40,6 +40,5 @@ export async function getCalendarData(): Promise<CalendarDataWithRefreshSchedule
 
   return {
     calendar,
-    refreshScheduleOverride: RefreshSchedule.Vacation,
   };
 }
