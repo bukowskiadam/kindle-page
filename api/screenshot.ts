@@ -20,9 +20,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   res.setHeader("Content-Type", "image/png");
 
-  ["x-next-refresh", "cache-control"].forEach((header) => {
-    res.setHeader(header, headers[header]);
-  });
+  const nextRefresh = Number.parseInt(headers["x-next-refresh"], 10) || 15 * 60;
+  res.setHeader("x-next-refresh", nextRefresh);
+
+  setProxyMaxAge(res, nextRefresh - 10);
 
   return res.send(forKindle);
 };
