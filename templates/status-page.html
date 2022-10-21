@@ -260,7 +260,10 @@
   </head>
   <body>
     <div class="status-bar">
-      <div class="time"><span>Updated:</span> {{time}}</div>
+      <div class="time">
+        <span>Updated:</span> {{time}}
+        <span>Next: {{nextRefreshTime}} [{{refreshSchedule}}]</span>
+      </div>
       <div class="battery">
         <span class="battery-icon"></span>
         <span class="battery-percentage">{{ battery | default("-- ") }}%</span>

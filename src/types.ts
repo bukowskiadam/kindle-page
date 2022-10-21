@@ -7,17 +7,30 @@ export type ScreenshotResult = {
   headers: Record<string, string>;
 };
 
+export enum RefreshSchedule {
+  Work = "Work",
+  Weekend = "Weekend",
+  WFH = "WFH",
+  Vacation = "Vacation",
+}
+
 export type CalendarApiDayData<T> = {
   day: T;
   allDay: Array<{ title: string; calendar: string }>;
   time: Array<{ title: string; calendar: string; start: T; end: T }>;
 };
 
-export type CalendarApiData = Array<CalendarApiDayData<Date>>;
+export type SerializedDate = string;
+export type CalendarApiData = Array<CalendarApiDayData<SerializedDate>>;
 
 export type PreparedCalendarData = Array<
   CalendarApiDayData<string> & { noEvents: boolean }
 >;
+
+export type CalendarDataWithRefreshSchedule = {
+  calendar: PreparedCalendarData;
+  refreshScheduleOverride?: RefreshSchedule;
+};
 
 export type AirlyData = {
   type: "data";

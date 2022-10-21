@@ -2,7 +2,6 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { getAirlyData } from "../src/airly";
 
 import { isAuthorized } from "../src/authorization";
-import { getSecondsToNextUpdate } from "../src/nextUpdate";
 import { setProxyMaxAge } from "../src/vercel";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
@@ -15,7 +14,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   const data = await getAirlyData();
 
-  setProxyMaxAge(res, getSecondsToNextUpdate() - 15);
+  setProxyMaxAge(res, 15 * 60);
 
   return res.json(data);
 };

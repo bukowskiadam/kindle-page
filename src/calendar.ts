@@ -1,44 +1,45 @@
 import axios from "axios";
 
-import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT, TIME_ZONE } from "../src/config";
+import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT } from "../src/config";
+import { formatDate, formatTime } from "./date";
 import { calendarMockData } from "./mocks/calendar";
-import type { CalendarApiData, PreparedCalendarData } from "./types";
+import {
+  CalendarApiData,
+  CalendarDataWithRefreshSchedule,
+  RefreshSchedule,
+} from "./types";
 
-export async function getCalendarData(): Promise<PreparedCalendarData> {
+export async function getCalendarData(): Promise<CalendarDataWithRefreshSchedule> {
   if (IS_DEVELOPMENT) {
-    return calendarMockData.short;
+    return {
+      calendar: calendarMockData.short,
+    };
   }
 
   if (!CALENDAR_EVENTS_URL) {
-    return [];
+    return {
+      calendar: [],
+    };
   }
 
-  return (await axios.get<CalendarApiData>(CALENDAR_EVENTS_URL)).data.map(
-    (row) => ({
-      ...row,
+  const calendar = (
+    await axios.get<CalendarApiData>(CALENDAR_EVENTS_URL)
+  ).data.map((row) => ({
+    ...row,
 
-      day: new Date(row.day).toLocaleString("pl-PL", {
-        timeZone: TIME_ZONE,
-        weekday: "long",
-        month: "numeric",
-        day: "numeric",
-      }),
+    day: formatDate(row.day),
 
-      time: row.time.map((ev) => ({
-        ...ev,
-        start: new Date(ev.start).toLocaleString("pl-PL", {
-          timeZone: TIME_ZONE,
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        end: new Date(ev.end).toLocaleString("pl-PL", {
-          timeZone: TIME_ZONE,
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-      })),
+    time: row.time.map((ev) => ({
+      ...ev,
+      start: formatTime(ev.start),
+      end: formatTime(ev.end),
+    })),
 
-      noEvents: !row.allDay.length && !row.time.length,
-    })
-  );
+    noEvents: !row.allDay.length && !row.time.length,
+  }));
+
+  return {
+    calendar,
+    refreshScheduleOverride: RefreshSchedule.Vacation,
+  };
 }
