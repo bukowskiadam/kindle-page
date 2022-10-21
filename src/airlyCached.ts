@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { AirlyData, AirlyError } from "./airly";
+import type { AirlyData, AirlyError } from "./types";
 import { AUTH_TOKEN } from "./config";
 import { getSelfUrl } from "./vercel";
 

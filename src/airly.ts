@@ -1,32 +1,7 @@
 import axios from "axios";
 import { AIRLY_API_KEY, AIRLY_LAT, AIRLY_LNG, IS_DEVELOPMENT } from "./config";
 import { storedAirlyData } from "./mocks/airly";
-
-export type AirlyData = {
-  type: "data";
-  temperature: number;
-  humidity: number;
-  pressure: number;
-  airQuality: {
-    value: number;
-    description: string;
-  };
-  pm25: {
-    value: number;
-    limit: number;
-    percent: number;
-  };
-  pm10: {
-    value: number;
-    limit: number;
-    percent: number;
-  };
-};
-
-export type AirlyError = {
-  type: "error";
-  error: string;
-};
+import type { AirlyData, AirlyError } from "./types";
 
 export async function getAirlyData(): Promise<AirlyData | AirlyError> {
   if (!AIRLY_API_KEY || !AIRLY_LAT || !AIRLY_LNG) {

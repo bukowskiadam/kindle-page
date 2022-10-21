@@ -2,17 +2,7 @@ import axios from "axios";
 
 import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT, TIME_ZONE } from "../src/config";
 import { calendarMockData } from "./mocks/calendar";
-
-type CalendarApiDayData<T> = {
-  day: T;
-  allDay: Array<{ title: string; calendar: string }>;
-  time: Array<{ title: string; calendar: string; start: T; end: T }>;
-};
-type CalendarApiData = Array<CalendarApiDayData<Date>>;
-
-type PreparedCalendarData = Array<
-  CalendarApiDayData<string> & { noEvents: boolean }
->;
+import type { CalendarApiData, PreparedCalendarData } from "./types";
 
 export async function getCalendarData(): Promise<PreparedCalendarData> {
   if (IS_DEVELOPMENT) {
