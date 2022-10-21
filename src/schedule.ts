@@ -1,4 +1,5 @@
 import { MIN_THRESHOLD_MS, REFRESH_SCHEDULE } from "./config";
+import { changeTimeZone } from "./date";
 import { RefreshSchedule } from "./types";
 
 export function getCurrentRefreshSchedule(
@@ -19,11 +20,12 @@ export function getCurrentRefreshSchedule(
 }
 
 function selectSchedule(now: Date, schedule: RefreshSchedule) {
+  const localNow = changeTimeZone(now);
   const configTimes = REFRESH_SCHEDULE[schedule];
 
   const times = configTimes.map((str) => {
     const [hours, minutes] = str.split(":");
-    const next = new Date(now);
+    const next = new Date(localNow);
 
     next.setHours(Number.parseInt(hours, 10));
     next.setMinutes(Number.parseInt(minutes, 10));
@@ -54,5 +56,5 @@ export function getNextRefreshTime(now: Date, schedule: RefreshSchedule) {
 }
 
 export function getSecondsToNextRefresh(now: Date, next: Date): number {
-  return (next.getTime() - now.getTime()) / 1000;
+  return Math.floor((next.getTime() - now.getTime()) / 1000);
 }

@@ -1,16 +1,16 @@
 import { TIME_ZONE } from "./config";
 import { SerializedDate } from "./types";
 
-function changeTimeZone(date: Date, timeZone: string) {
+export function changeTimeZone(date: Date) {
   return new Date(
     date.toLocaleString("en-US", {
-      timeZone,
+      timeZone: TIME_ZONE,
     })
   );
 }
 
 export function getNow(): Date {
-  return changeTimeZone(new Date(), TIME_ZONE);
+  return new Date();
 }
 
 function dateObj(date: Date | SerializedDate): Date {
