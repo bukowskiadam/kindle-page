@@ -3,14 +3,18 @@ import axios from "axios";
 import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT, TIME_ZONE } from "../src/config";
 import { calendarMockData } from "./mocks/calendar";
 
-type CalendarApiDayData = {
-  day: Date;
+type CalendarApiDayData<T> = {
+  day: T;
   allDay: Array<{ title: string; calendar: string }>;
-  time: Array<{ title: string; calendar: string; start: Date; end: Date }>;
+  time: Array<{ title: string; calendar: string; start: T; end: T }>;
 };
-type CalendarApiData = Array<CalendarApiDayData>;
+type CalendarApiData = Array<CalendarApiDayData<Date>>;
 
-export async function getCalendarData() {
+type PreparedCalendarData = Array<
+  CalendarApiDayData<string> & { noEvents: boolean }
+>;
+
+export async function getCalendarData(): Promise<PreparedCalendarData> {
   if (IS_DEVELOPMENT) {
     return calendarMockData.short;
   }
@@ -30,7 +34,7 @@ export async function getCalendarData() {
         day: "numeric",
       }),
 
-      time: row.time.forEach((ev) => ({
+      time: row.time.map((ev) => ({
         ...ev,
         start: new Date(ev.start).toLocaleString("pl-PL", {
           timeZone: TIME_ZONE,
