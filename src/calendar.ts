@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT, TIME_ZONE } from "../src/config";
-import { calendarMockData } from "./fixtures/calendar";
+import { calendarMockData } from "./mocks/calendar";
 
 export async function getCalendarData() {
   if (IS_DEVELOPMENT) {

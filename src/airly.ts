@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AIRLY_API_KEY, AIRLY_LAT, AIRLY_LNG, IS_DEVELOPMENT } from "./config";
-import { storedAirlyData } from "./fixtures/airly";
+import { storedAirlyData } from "./mocks/airly";
 
 export type AirlyData = {
   type: "data";
