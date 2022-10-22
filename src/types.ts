@@ -57,3 +57,8 @@ export type AirlyError = {
   type: "error";
   error: string;
 };
+
+export type Quote = {
+  content: string;
+  author: string;
+};
