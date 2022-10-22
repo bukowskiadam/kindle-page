@@ -19,13 +19,10 @@ export function getCurrentRefreshSchedule(
   return RefreshSchedule.Work;
 }
 
-function selectSchedule(now: Date, schedule: RefreshSchedule) {
-  const localNow = changeTimeZone(now);
-  const configTimes = REFRESH_SCHEDULE[schedule];
-
-  const times = configTimes.map((str) => {
+function mapScheduleConfigToDates(scheduleConfig: string[], now: Date) {
+  const times = scheduleConfig.map((str) => {
     const [hours, minutes] = str.split(":");
-    const next = new Date(localNow);
+    const next = new Date(now);
 
     next.setHours(Number.parseInt(hours, 10));
     next.setMinutes(Number.parseInt(minutes, 10));
@@ -34,6 +31,7 @@ function selectSchedule(now: Date, schedule: RefreshSchedule) {
 
     return next;
   });
+
   const nextDay = new Date(times[0]);
   nextDay.setDate(nextDay.getDate() + 1);
   times.push(nextDay);
@@ -42,15 +40,23 @@ function selectSchedule(now: Date, schedule: RefreshSchedule) {
 }
 
 export function getNextRefreshTime(now: Date, schedule: RefreshSchedule) {
-  const times = selectSchedule(now, schedule);
+  const scheduleConfig = REFRESH_SCHEDULE[schedule];
 
-  const nextRefresh = times.find(
-    (next) => next.getTime() > now.getTime() + MIN_THRESHOLD_MS
+  const localNow = changeTimeZone(now);
+  const localTimes = mapScheduleConfigToDates(scheduleConfig, localNow);
+
+  const nextRefreshLocal = localTimes.find(
+    (next) => next.getTime() > localNow.getTime() + MIN_THRESHOLD_MS
   );
 
-  if (!nextRefresh) {
-    throw new Error("Couldn't find next refresh time");
+  if (!nextRefreshLocal) {
+    throw new Error("Cannot find next refresh time");
   }
+
+  const offset = nextRefreshLocal.getTime() - localNow.getTime();
+
+  const nextRefresh = new Date(now);
+  nextRefresh.setTime(nextRefresh.getTime() + offset);
 
   return nextRefresh;
 }
