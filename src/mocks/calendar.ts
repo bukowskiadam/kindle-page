@@ -1,86 +1,96 @@
+function getDay(offset: number): string {
+  const now = new Date();
+  now.setDate(now.getDate() + offset);
+
+  return now.toJSON();
+}
+
 const long = [
   {
-    day: "poniedziałek, 26.09",
+    day: getDay(-1),
     allDay: [
       { title: "Test event with long title", calendar: "Calendar 1" },
       { title: "Test event with long title pt 2", calendar: "Calendar 2" },
     ],
     time: [],
-    noEvents: false,
   },
   {
-    day: "wtorek, 27.09",
+    day: getDay(0),
     allDay: [],
     time: [
       {
         title: "Fix the dashboard",
         calendar: "Praca",
-        start: "8:00",
-        end: "11:00",
+        start: "2022-10-22T06:00:00.000Z",
+        end: "2022-10-22T09:00:00.000Z",
       },
       {
         title: "Fix the dashboard",
         calendar: "Praca",
-        start: "12:00",
-        end: "14:00",
+        start: "2022-10-22T10:00:00.000Z",
+        end: "2022-10-22T12:00:00.000Z",
       },
       {
         title: "Prepare slides",
         calendar: "Praca",
-        start: "14:00",
-        end: "16:00",
+        start: "2022-10-22T12:00:00.000Z",
+        end: "2022-10-22T14:00:00.000Z",
       },
     ],
-    noEvents: false,
   },
-  { day: "środa, 28.09", allDay: [], time: [], noEvents: true },
+  { day: getDay(1), allDay: [], time: [] },
   {
-    day: "czwartek, 29.09",
+    day: getDay(2),
     allDay: [
       { title: "Test event with long title", calendar: "Calendar 1" },
       { title: "Test event with long title pt 2", calendar: "Calendar 2" },
       { title: "Test event with long title pt 3", calendar: "Calendar 2" },
     ],
     time: [],
-    noEvents: false,
   },
   {
-    day: "piątek, 30.09",
+    day: getDay(3),
     allDay: [],
     time: [
       {
         title: "Zrobić prezentację",
         calendar: "Praca",
-        start: "08:00",
-        end: "09:00",
+        start: "2022-10-25T05:00:00.000Z",
+        end: "2022-10-25T07:00:00.000Z",
       },
     ],
-    noEvents: false,
   },
 ];
 
 const short = [
   {
-    day: "poniedziałek, 26.09",
+    day: getDay(-1),
     allDay: [{ title: "Test event", calendar: "Calendar 1" }],
     time: [],
-    noEvents: false,
   },
-  { day: "wtorek, 27.09", allDay: [], time: [], noEvents: true },
-  { day: "środa, 28.09", allDay: [], time: [], noEvents: true },
-  { day: "czwartek, 29.09", allDay: [], time: [], noEvents: true },
   {
-    day: "piątek, 30.09",
+    day: getDay(0),
+    allDay: [
+      // {
+      //   title: "kindlectl wfh",
+      //   calendar: "get",
+      // },
+    ],
+    time: [],
+  },
+  { day: getDay(1), allDay: [], time: [] },
+  { day: getDay(2), allDay: [], time: [] },
+  {
+    day: getDay(3),
     allDay: [],
     time: [
       {
         title: "Zrobić prezentację",
         calendar: "Praca",
-        start: "08:00",
-        end: "09:00",
+        start: "2022-10-25T05:00:00.000Z",
+        end: "2022-10-25T07:00:00.000Z",
       },
     ],
-    noEvents: false,
   },
 ];
 

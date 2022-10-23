@@ -13,6 +13,10 @@ export function getNow(): Date {
   return new Date();
 }
 
+export function isToday(day: SerializedDate): boolean {
+  return formatDate(day) === formatDate(getNow());
+}
+
 function dateObj(date: Date | SerializedDate): Date {
   return date instanceof Date ? date : new Date(date);
 }

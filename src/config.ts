@@ -14,6 +14,8 @@ export const SELF_URL: string = process.env.VERCEL_URL || "";
 
 export const TIME_ZONE = "Europe/Warsaw";
 
+export const KINDLECTL_KEYWORD = "kindlectl";
+
 export const MIN_THRESHOLD_MS = 3 * 60 * 1000; // 3 minutes
 export const REFRESH_SCHEDULE: { [key in RefreshSchedule]: string[] } = {
   [RefreshSchedule.Work]: [

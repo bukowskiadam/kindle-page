@@ -14,10 +14,18 @@ export enum RefreshSchedule {
   Vacation = "Vacation",
 }
 
+export type AllDayEvent = { title: string; calendar: string };
+export type TimeEvent<T> = {
+  title: string;
+  calendar: string;
+  start: T;
+  end: T;
+};
+
 export type CalendarApiDayData<T> = {
   day: T;
-  allDay: Array<{ title: string; calendar: string }>;
-  time: Array<{ title: string; calendar: string; start: T; end: T }>;
+  allDay: AllDayEvent[];
+  time: TimeEvent<T>[];
 };
 
 export type SerializedDate = string;

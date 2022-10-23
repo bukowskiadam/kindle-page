@@ -1,44 +1,87 @@
 import axios from "axios";
 
-import { CALENDAR_EVENTS_URL, IS_DEVELOPMENT } from "../src/config";
-import { formatDate, formatTime } from "./date";
+import {
+  CALENDAR_EVENTS_URL,
+  IS_DEVELOPMENT,
+  KINDLECTL_KEYWORD,
+} from "../src/config";
+import { formatDate, formatTime, isToday } from "./date";
 import { calendarMockData } from "./mocks/calendar";
 import {
   CalendarApiData,
   CalendarDataWithRefreshSchedule,
+  AllDayEvent,
   RefreshSchedule,
 } from "./types";
 
-export async function getCalendarData(): Promise<CalendarDataWithRefreshSchedule> {
+function isKindleCtlCommand(event: AllDayEvent): boolean {
+  return event.title.trim().toLowerCase().startsWith(KINDLECTL_KEYWORD);
+}
+
+function getKindleCtlCommand(events: AllDayEvent[] = []): string | undefined {
+  const event = events.find((event) => isKindleCtlCommand(event));
+
+  if (!event) {
+    return undefined;
+  }
+
+  const command = event.title
+    .toLowerCase()
+    .replace(KINDLECTL_KEYWORD, "")
+    .trim();
+
+  return command;
+}
+
+function filterOutKindleCtlCommands(events: AllDayEvent[]): AllDayEvent[] {
+  return events.filter((event) => !isKindleCtlCommand(event));
+}
+
+function getRefreshScheduleOverride(
+  command: string | undefined
+): RefreshSchedule | undefined {
+  switch (command) {
+    case "wfh":
+      return RefreshSchedule.WFH;
+    case "vacation":
+      return RefreshSchedule.Vacation;
+  }
+
+  return undefined;
+}
+
+async function getApiData(): Promise<CalendarApiData> {
   if (IS_DEVELOPMENT) {
-    return {
-      calendar: calendarMockData.short,
-    };
+    return calendarMockData.short;
   }
 
-  if (!CALENDAR_EVENTS_URL) {
-    return {
-      calendar: [],
-    };
-  }
+  return (await axios.get<CalendarApiData>(CALENDAR_EVENTS_URL)).data;
+}
 
-  const calendar = (
-    await axios.get<CalendarApiData>(CALENDAR_EVENTS_URL)
-  ).data.map((row) => ({
-    ...row,
+export async function getCalendarData(): Promise<CalendarDataWithRefreshSchedule> {
+  const calendarApiData = await getApiData();
 
-    day: formatDate(row.day),
+  const today = calendarApiData.find(({ day }) => isToday(day));
+  const kindleCtlCommand = getKindleCtlCommand(today?.allDay);
 
-    time: row.time.map((ev) => ({
+  const calendar = calendarApiData.map((row) => {
+    const allDay = filterOutKindleCtlCommands(row.allDay);
+    const time = row.time.map((ev) => ({
       ...ev,
       start: formatTime(ev.start),
       end: formatTime(ev.end),
-    })),
+    }));
 
-    noEvents: !row.allDay.length && !row.time.length,
-  }));
+    return {
+      day: formatDate(row.day),
+      allDay,
+      time,
+      noEvents: !allDay.length && !time.length,
+    };
+  });
 
   return {
     calendar,
+    refreshScheduleOverride: getRefreshScheduleOverride(kindleCtlCommand),
   };
 }
