@@ -1,559 +1,394 @@
 export const storedAirlyData = {
   current: {
-    fromDateTime: "2022-10-06T20:02:51.895Z",
-    tillDateTime: "2022-10-06T21:02:51.895Z",
+    fromDateTime: "2022-10-30T05:55:33.479Z",
+    tillDateTime: "2022-10-30T06:55:33.479Z",
     values: [
-      { name: "PM1", value: 9.27 },
-      { name: "PM25", value: 14.01 },
-      { name: "PM10", value: 18.29 },
-      { name: "PRESSURE", value: 1031.29 },
-      { name: "HUMIDITY", value: 78.93 },
-      { name: "TEMPERATURE", value: 12.44 },
+      {
+        name: "PM1",
+        value: 15.83,
+      },
+      {
+        name: "PM25",
+        value: 25.56,
+      },
+      {
+        name: "PM10",
+        value: 37.71,
+      },
+      {
+        name: "PRESSURE",
+        value: 1021.62,
+      },
+      {
+        name: "HUMIDITY",
+        value: 91.77,
+      },
+      {
+        name: "TEMPERATURE",
+        value: 8.92,
+      },
     ],
     indexes: [
       {
-        name: "AIRLY_CAQI",
-        value: 23.35,
-        level: "VERY_LOW",
-        description: "Wspaniałe powietrze!",
-        advice: "Jest fantastycznie!",
-        color: "#6BC926",
+        name: "AIRLY_AQI",
+        value: 170.39,
+        level: "MEDIUM",
+        description:
+          "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+        advice:
+          "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+        color: "#F0BA0F",
       },
     ],
     standards: [
       {
         name: "WHO",
-        pollutant: "PM10",
-        limit: 45,
-        percent: 40.65,
+        pollutant: "PM25",
+        limit: 15,
+        percent: 170.39,
         averaging: "24h",
       },
       {
         name: "WHO",
-        pollutant: "PM25",
-        limit: 15,
-        percent: 93.38,
+        pollutant: "PM10",
+        limit: 45,
+        percent: 83.8,
         averaging: "24h",
       },
     ],
   },
   history: [
     {
-      fromDateTime: "2022-10-05T21:00:00.000Z",
-      tillDateTime: "2022-10-05T22:00:00.000Z",
+      fromDateTime: "2022-10-29T06:00:00.000Z",
+      tillDateTime: "2022-10-29T07:00:00.000Z",
       values: [
-        { name: "PM1", value: 13.26 },
-        { name: "PM25", value: 21.21 },
-        { name: "PM10", value: 30.87 },
-        { name: "PRESSURE", value: 1022.73 },
-        { name: "HUMIDITY", value: 81.99 },
-        { name: "TEMPERATURE", value: 8.82 },
+        {
+          name: "PM1",
+          value: 12.2,
+        },
+        {
+          name: "PM25",
+          value: 19.49,
+        },
+        {
+          name: "PM10",
+          value: 27.11,
+        },
+        {
+          name: "PRESSURE",
+          value: 1023.09,
+        },
+        {
+          name: "HUMIDITY",
+          value: 92.34,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 7.97,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 35.35,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 68.61,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 141.38,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-05T22:00:00.000Z",
-      tillDateTime: "2022-10-05T23:00:00.000Z",
-      values: [
-        { name: "PM1", value: 15.63 },
-        { name: "PM25", value: 24.54 },
-        { name: "PM10", value: 36.64 },
-        { name: "PRESSURE", value: 1022.74 },
-        { name: "HUMIDITY", value: 82.54 },
-        { name: "TEMPERATURE", value: 8.46 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 40.9,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Jakość powietrza jest dobra!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 81.43,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 163.58,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-05T23:00:00.000Z",
-      tillDateTime: "2022-10-06T00:00:00.000Z",
-      values: [
-        { name: "PM1", value: 16.95 },
-        { name: "PM25", value: 26.68 },
-        { name: "PM10", value: 40.19 },
-        { name: "PRESSURE", value: 1023.13 },
-        { name: "HUMIDITY", value: 83.31 },
-        { name: "TEMPERATURE", value: 7.69 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 44.47,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Lepiej być nie może ;)",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 89.31,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 177.85,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T00:00:00.000Z",
-      tillDateTime: "2022-10-06T01:00:00.000Z",
-      values: [
-        { name: "PM1", value: 17.45 },
-        { name: "PM25", value: 27.26 },
-        { name: "PM10", value: 41.17 },
-        { name: "PRESSURE", value: 1023.56 },
-        { name: "HUMIDITY", value: 84.45 },
-        { name: "TEMPERATURE", value: 7.33 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 45.45,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Jakość powietrza jest dobra!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 91.5,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 181.76,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T01:00:00.000Z",
-      tillDateTime: "2022-10-06T02:00:00.000Z",
-      values: [
-        { name: "PM1", value: 18.09 },
-        { name: "PM25", value: 29.09 },
-        { name: "PM10", value: 43.56 },
-        { name: "PRESSURE", value: 1024.03 },
-        { name: "HUMIDITY", value: 86.75 },
-        { name: "TEMPERATURE", value: 6.8 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 48.49,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Jakość powietrza jest dobra!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 96.8,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 193.96,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T02:00:00.000Z",
-      tillDateTime: "2022-10-06T03:00:00.000Z",
-      values: [
-        { name: "PM1", value: 17.9 },
-        { name: "PM25", value: 28.71 },
-        { name: "PM10", value: 43.62 },
-        { name: "PRESSURE", value: 1024.32 },
-        { name: "HUMIDITY", value: 88.8 },
-        { name: "TEMPERATURE", value: 6.38 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 47.86,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Zaczerpnij tchu!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 96.93,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 191.4,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T03:00:00.000Z",
-      tillDateTime: "2022-10-06T04:00:00.000Z",
-      values: [
-        { name: "PM1", value: 18.04 },
-        { name: "PM25", value: 28.68 },
-        { name: "PM10", value: 43.57 },
-        { name: "PRESSURE", value: 1024.51 },
-        { name: "HUMIDITY", value: 89.94 },
-        { name: "TEMPERATURE", value: 6.08 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 47.8,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Tak, tak – to prawda. Jakość powietrza jest dzisiaj dobra!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 96.82,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 191.19,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T04:00:00.000Z",
-      tillDateTime: "2022-10-06T05:00:00.000Z",
-      values: [
-        { name: "PM1", value: 19.23 },
-        { name: "PM25", value: 30.39 },
-        { name: "PM10", value: 45.4 },
-        { name: "PRESSURE", value: 1024.73 },
-        { name: "HUMIDITY", value: 91.2 },
-        { name: "TEMPERATURE", value: 5.7 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 50.4,
+          name: "AIRLY_AQI",
+          value: 129.92,
           level: "MEDIUM",
-          description: "Jakość powietrza jest średnia.",
-          advice: "Powietrze nie zachęca do spacerów",
-          color: "#EFBB0F",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 100.9,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 129.92,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 202.61,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 60.25,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T05:00:00.000Z",
-      tillDateTime: "2022-10-06T06:00:00.000Z",
+      fromDateTime: "2022-10-29T07:00:00.000Z",
+      tillDateTime: "2022-10-29T08:00:00.000Z",
       values: [
-        { name: "PM1", value: 18.25 },
-        { name: "PM25", value: 28.38 },
-        { name: "PM10", value: 43.07 },
-        { name: "PRESSURE", value: 1025.07 },
-        { name: "HUMIDITY", value: 90.33 },
-        { name: "TEMPERATURE", value: 6 },
+        {
+          name: "PM1",
+          value: 10.91,
+        },
+        {
+          name: "PM25",
+          value: 17.42,
+        },
+        {
+          name: "PM10",
+          value: 23.3,
+        },
+        {
+          name: "PRESSURE",
+          value: 1023.47,
+        },
+        {
+          name: "HUMIDITY",
+          value: 83.82,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 9.76,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 47.3,
+          name: "AIRLY_AQI",
+          value: 116.13,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 116.13,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 51.78,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T08:00:00.000Z",
+      tillDateTime: "2022-10-29T09:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 7.62,
+        },
+        {
+          name: "PM25",
+          value: 11.86,
+        },
+        {
+          name: "PM10",
+          value: 15.43,
+        },
+        {
+          name: "PRESSURE",
+          value: 1023.64,
+        },
+        {
+          name: "HUMIDITY",
+          value: 75.69,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 12.28,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 79.05,
           level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#E4E11C",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 95.7,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 79.05,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 189.19,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 34.29,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T06:00:00.000Z",
-      tillDateTime: "2022-10-06T07:00:00.000Z",
+      fromDateTime: "2022-10-29T09:00:00.000Z",
+      tillDateTime: "2022-10-29T10:00:00.000Z",
       values: [
-        { name: "PM1", value: 14.59 },
-        { name: "PM25", value: 22.27 },
-        { name: "PM10", value: 33.53 },
-        { name: "PRESSURE", value: 1025.38 },
-        { name: "HUMIDITY", value: 89.34 },
-        { name: "TEMPERATURE", value: 9.13 },
+        {
+          name: "PM1",
+          value: 5.14,
+        },
+        {
+          name: "PM25",
+          value: 8.09,
+        },
+        {
+          name: "PM10",
+          value: 10.37,
+        },
+        {
+          name: "PRESSURE",
+          value: 1023.24,
+        },
+        {
+          name: "HUMIDITY",
+          value: 67.54,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 14.58,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 37.12,
+          name: "AIRLY_AQI",
+          value: 53.95,
           level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Jakość powietrza jest dobra!",
-          color: "#D1CF1E",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 74.51,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 53.96,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 148.48,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 23.05,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T07:00:00.000Z",
-      tillDateTime: "2022-10-06T08:00:00.000Z",
+      fromDateTime: "2022-10-29T10:00:00.000Z",
+      tillDateTime: "2022-10-29T11:00:00.000Z",
       values: [
-        { name: "PM1", value: 9.92 },
-        { name: "PM25", value: 15.38 },
-        { name: "PM10", value: 21.05 },
-        { name: "PRESSURE", value: 1025.9 },
-        { name: "HUMIDITY", value: 77.39 },
-        { name: "TEMPERATURE", value: 10.46 },
+        {
+          name: "PM1",
+          value: 4.59,
+        },
+        {
+          name: "PM25",
+          value: 7.35,
+        },
+        {
+          name: "PM10",
+          value: 9.63,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.94,
+        },
+        {
+          name: "HUMIDITY",
+          value: 61.23,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 15.3,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 25.63,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Zaczerpnij tchu!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 46.77,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 102.5,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T08:00:00.000Z",
-      tillDateTime: "2022-10-06T09:00:00.000Z",
-      values: [
-        { name: "PM1", value: 7.31 },
-        { name: "PM25", value: 11.52 },
-        { name: "PM10", value: 15.26 },
-        { name: "PRESSURE", value: 1026.36 },
-        { name: "HUMIDITY", value: 79.14 },
-        { name: "TEMPERATURE", value: 12.77 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 19.2,
+          name: "AIRLY_AQI",
+          value: 49,
           level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Korzystaj z życia!",
-          color: "#6BC926",
+          description: "Fantastyczne powietrze. Żyj aktywnie!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#4EAD25",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 33.91,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 49.01,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 76.79,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 21.41,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T09:00:00.000Z",
-      tillDateTime: "2022-10-06T10:00:00.000Z",
+      fromDateTime: "2022-10-29T11:00:00.000Z",
+      tillDateTime: "2022-10-29T12:00:00.000Z",
       values: [
-        { name: "PM1", value: 6.58 },
-        { name: "PM25", value: 9.58 },
-        { name: "PM10", value: 12.85 },
-        { name: "PRESSURE", value: 1026.75 },
-        { name: "HUMIDITY", value: 58.92 },
-        { name: "TEMPERATURE", value: 14.84 },
+        {
+          name: "PM1",
+          value: 4.61,
+        },
+        {
+          name: "PM25",
+          value: 7,
+        },
+        {
+          name: "PM10",
+          value: 8.85,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.4,
+        },
+        {
+          name: "HUMIDITY",
+          value: 58.7,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 16.03,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 15.98,
+          name: "AIRLY_AQI",
+          value: 46.69,
           level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Oddychaj, ile możesz!",
-          color: "#6BC926",
+          description: "Fantastyczne powietrze. Żyj aktywnie!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#4EAD25",
         },
       ],
       standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 28.56,
-          averaging: "24h",
-        },
         {
           name: "WHO",
           pollutant: "PM25",
           limit: 15,
-          percent: 63.89,
+          percent: 46.7,
           averaging: "24h",
         },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T10:00:00.000Z",
-      tillDateTime: "2022-10-06T11:00:00.000Z",
-      values: [
-        { name: "PM1", value: 4.71 },
-        { name: "PM25", value: 6.97 },
-        { name: "PM10", value: 8.85 },
-        { name: "PRESSURE", value: 1026.82 },
-        { name: "HUMIDITY", value: 56.39 },
-        { name: "TEMPERATURE", value: 16.52 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 11.62,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Jest fantastycznie!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
         {
           name: "WHO",
           pollutant: "PM10",
@@ -561,391 +396,1040 @@ export const storedAirlyData = {
           percent: 19.66,
           averaging: "24h",
         },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 46.44,
-          averaging: "24h",
-        },
       ],
     },
     {
-      fromDateTime: "2022-10-06T11:00:00.000Z",
-      tillDateTime: "2022-10-06T12:00:00.000Z",
+      fromDateTime: "2022-10-29T12:00:00.000Z",
+      tillDateTime: "2022-10-29T13:00:00.000Z",
       values: [
-        { name: "PM1", value: 4.92 },
-        { name: "PM25", value: 7.09 },
-        { name: "PM10", value: 9.47 },
-        { name: "PRESSURE", value: 1026.93 },
-        { name: "HUMIDITY", value: 54.68 },
-        { name: "TEMPERATURE", value: 17.61 },
+        {
+          name: "PM1",
+          value: 4.71,
+        },
+        {
+          name: "PM25",
+          value: 7.99,
+        },
+        {
+          name: "PM10",
+          value: 10.07,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.06,
+        },
+        {
+          name: "HUMIDITY",
+          value: 64.86,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 16.63,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 11.83,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Korzystaj z życia!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 21.04,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 47.3,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T12:00:00.000Z",
-      tillDateTime: "2022-10-06T13:00:00.000Z",
-      values: [
-        { name: "PM1", value: 5.14 },
-        { name: "PM25", value: 7.39 },
-        { name: "PM10", value: 9.59 },
-        { name: "PRESSURE", value: 1027.11 },
-        { name: "HUMIDITY", value: 54.41 },
-        { name: "TEMPERATURE", value: 17.92 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 12.33,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Oddychaj pełną piersią!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 21.31,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 49.29,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T13:00:00.000Z",
-      tillDateTime: "2022-10-06T14:00:00.000Z",
-      values: [
-        { name: "PM1", value: 5.36 },
-        { name: "PM25", value: 7.6 },
-        { name: "PM10", value: 9.84 },
-        { name: "PRESSURE", value: 1027.22 },
-        { name: "HUMIDITY", value: 54.85 },
-        { name: "TEMPERATURE", value: 17.74 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 12.67,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Oddychaj pełną piersią!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 21.87,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 50.67,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T14:00:00.000Z",
-      tillDateTime: "2022-10-06T15:00:00.000Z",
-      values: [
-        { name: "PM1", value: 6.67 },
-        { name: "PM25", value: 11.54 },
-        { name: "PM10", value: 16.41 },
-        { name: "PRESSURE", value: 1027.59 },
-        { name: "HUMIDITY", value: 55.94 },
-        { name: "TEMPERATURE", value: 17.27 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 19.23,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Weź głęboki wdech. Dziś można. ;)",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 36.47,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 76.91,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T15:00:00.000Z",
-      tillDateTime: "2022-10-06T16:00:00.000Z",
-      values: [
-        { name: "PM1", value: 6.5 },
-        { name: "PM25", value: 9.44 },
-        { name: "PM10", value: 12.7 },
-        { name: "PRESSURE", value: 1028.01 },
-        { name: "HUMIDITY", value: 57.45 },
-        { name: "TEMPERATURE", value: 16.64 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 15.74,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Oddychaj, ile możesz!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 28.22,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 62.92,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T16:00:00.000Z",
-      tillDateTime: "2022-10-06T17:00:00.000Z",
-      values: [
-        { name: "PM1", value: 8.68 },
-        { name: "PM25", value: 12.92 },
-        { name: "PM10", value: 16.97 },
-        { name: "PRESSURE", value: 1028.62 },
-        { name: "HUMIDITY", value: 65.99 },
-        { name: "TEMPERATURE", value: 15.76 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 21.54,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Jest fantastycznie!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 37.71,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 86.15,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T17:00:00.000Z",
-      tillDateTime: "2022-10-06T18:00:00.000Z",
-      values: [
-        { name: "PM1", value: 9.23 },
-        { name: "PM25", value: 13.66 },
-        { name: "PM10", value: 17.89 },
-        { name: "PRESSURE", value: 1029.47 },
-        { name: "HUMIDITY", value: 67.95 },
-        { name: "TEMPERATURE", value: 14.47 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 22.78,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Weź głęboki wdech czystego powietrza!",
-          color: "#6BC926",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 39.75,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 91.08,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-06T18:00:00.000Z",
-      tillDateTime: "2022-10-06T19:00:00.000Z",
-      values: [
-        { name: "PM1", value: 11.19 },
-        { name: "PM25", value: 16.88 },
-        { name: "PM10", value: 23.12 },
-        { name: "PRESSURE", value: 1029.9 },
-        { name: "HUMIDITY", value: 67.85 },
-        { name: "TEMPERATURE", value: 13.32 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 28.15,
+          name: "AIRLY_AQI",
+          value: 53.28,
           level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Zaczerpnij tchu!",
-          color: "#D1CF1E",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 51.38,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 53.29,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 112.56,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 22.38,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T19:00:00.000Z",
-      tillDateTime: "2022-10-06T20:00:00.000Z",
+      fromDateTime: "2022-10-29T13:00:00.000Z",
+      tillDateTime: "2022-10-29T14:00:00.000Z",
       values: [
-        { name: "PM1", value: 11.2 },
-        { name: "PM25", value: 16.8 },
-        { name: "PM10", value: 22.8 },
-        { name: "PRESSURE", value: 1030.65 },
-        { name: "HUMIDITY", value: 74.69 },
-        { name: "TEMPERATURE", value: 13.05 },
+        {
+          name: "PM1",
+          value: 4.98,
+        },
+        {
+          name: "PM25",
+          value: 7.7,
+        },
+        {
+          name: "PM10",
+          value: 10.24,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.77,
+        },
+        {
+          name: "HUMIDITY",
+          value: 68.29,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 16.55,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 28.01,
+          name: "AIRLY_AQI",
+          value: 51.36,
           level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Ciesz się czystym powietrzem",
-          color: "#D1CF1E",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 50.68,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 51.36,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 112.03,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 22.75,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T20:00:00.000Z",
-      tillDateTime: "2022-10-06T21:00:00.000Z",
+      fromDateTime: "2022-10-29T14:00:00.000Z",
+      tillDateTime: "2022-10-29T15:00:00.000Z",
       values: [
-        { name: "PM1", value: 9.31 },
-        { name: "PM25", value: 14.08 },
-        { name: "PM10", value: 18.39 },
-        { name: "PRESSURE", value: 1031.29 },
-        { name: "HUMIDITY", value: 78.95 },
-        { name: "TEMPERATURE", value: 12.45 },
+        {
+          name: "PM1",
+          value: 5.82,
+        },
+        {
+          name: "PM25",
+          value: 8.84,
+        },
+        {
+          name: "PM10",
+          value: 11.68,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.64,
+        },
+        {
+          name: "HUMIDITY",
+          value: 56.82,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 16.06,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 23.47,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Oddychaj, ile możesz!",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 58.9,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 40.86,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 58.9,
           averaging: "24h",
         },
         {
           name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 25.95,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T15:00:00.000Z",
+      tillDateTime: "2022-10-29T16:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 6.55,
+        },
+        {
+          name: "PM25",
+          value: 10.49,
+        },
+        {
+          name: "PM10",
+          value: 13.13,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.93,
+        },
+        {
+          name: "HUMIDITY",
+          value: 68.56,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 14.89,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 69.95,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
           pollutant: "PM25",
           limit: 15,
-          percent: 93.85,
+          percent: 69.96,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 29.18,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T16:00:00.000Z",
+      tillDateTime: "2022-10-29T17:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 9.48,
+        },
+        {
+          name: "PM25",
+          value: 15.1,
+        },
+        {
+          name: "PM10",
+          value: 19.91,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.03,
+        },
+        {
+          name: "HUMIDITY",
+          value: 79.48,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 13.98,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 100.65,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 100.66,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 44.24,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T17:00:00.000Z",
+      tillDateTime: "2022-10-29T18:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 11.97,
+        },
+        {
+          name: "PM25",
+          value: 18.87,
+        },
+        {
+          name: "PM10",
+          value: 26.19,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.14,
+        },
+        {
+          name: "HUMIDITY",
+          value: 74.71,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 13.02,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 125.8,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 125.81,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 58.2,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T18:00:00.000Z",
+      tillDateTime: "2022-10-29T19:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 13.53,
+        },
+        {
+          name: "PM25",
+          value: 21.7,
+        },
+        {
+          name: "PM10",
+          value: 31.24,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.26,
+        },
+        {
+          name: "HUMIDITY",
+          value: 77.2,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 12.3,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 144.68,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 144.69,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 69.41,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T19:00:00.000Z",
+      tillDateTime: "2022-10-29T20:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 15.26,
+        },
+        {
+          name: "PM25",
+          value: 24.49,
+        },
+        {
+          name: "PM10",
+          value: 36.12,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.43,
+        },
+        {
+          name: "HUMIDITY",
+          value: 76.97,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 11.52,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 163.26,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 163.26,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 80.27,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T20:00:00.000Z",
+      tillDateTime: "2022-10-29T21:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 15.81,
+        },
+        {
+          name: "PM25",
+          value: 25.41,
+        },
+        {
+          name: "PM10",
+          value: 37.54,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.54,
+        },
+        {
+          name: "HUMIDITY",
+          value: 77.88,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 10.98,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 169.38,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 169.38,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 83.42,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T21:00:00.000Z",
+      tillDateTime: "2022-10-29T22:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 15.64,
+        },
+        {
+          name: "PM25",
+          value: 24.97,
+        },
+        {
+          name: "PM10",
+          value: 36.91,
+        },
+        {
+          name: "PRESSURE",
+          value: 1022.46,
+        },
+        {
+          name: "HUMIDITY",
+          value: 74.84,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 10.88,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 166.47,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 166.48,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 82.02,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T22:00:00.000Z",
+      tillDateTime: "2022-10-29T23:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 15.79,
+        },
+        {
+          name: "PM25",
+          value: 25.02,
+        },
+        {
+          name: "PM10",
+          value: 36.95,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.95,
+        },
+        {
+          name: "HUMIDITY",
+          value: 72.43,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 10.74,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 166.79,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 166.8,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 82.12,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-29T23:00:00.000Z",
+      tillDateTime: "2022-10-30T00:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 15.77,
+        },
+        {
+          name: "PM25",
+          value: 25.16,
+        },
+        {
+          name: "PM10",
+          value: 37.26,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.82,
+        },
+        {
+          name: "HUMIDITY",
+          value: 80.36,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 10.5,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 167.72,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 167.72,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 82.81,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T00:00:00.000Z",
+      tillDateTime: "2022-10-30T01:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 16.38,
+        },
+        {
+          name: "PM25",
+          value: 26.3,
+        },
+        {
+          name: "PM10",
+          value: 38.84,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.83,
+        },
+        {
+          name: "HUMIDITY",
+          value: 85.82,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 10.25,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 175.31,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 175.32,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 86.3,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T01:00:00.000Z",
+      tillDateTime: "2022-10-30T02:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 16.73,
+        },
+        {
+          name: "PM25",
+          value: 26.94,
+        },
+        {
+          name: "PM10",
+          value: 40.16,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.63,
+        },
+        {
+          name: "HUMIDITY",
+          value: 86.99,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 10.11,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 179.61,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 179.62,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 89.24,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T02:00:00.000Z",
+      tillDateTime: "2022-10-30T03:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 17.26,
+        },
+        {
+          name: "PM25",
+          value: 27.87,
+        },
+        {
+          name: "PM10",
+          value: 41.02,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.56,
+        },
+        {
+          name: "HUMIDITY",
+          value: 88.31,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 9.13,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 185.77,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 185.77,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 91.16,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T03:00:00.000Z",
+      tillDateTime: "2022-10-30T04:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 18.06,
+        },
+        {
+          name: "PM25",
+          value: 30.58,
+        },
+        {
+          name: "PM10",
+          value: 43.63,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.44,
+        },
+        {
+          name: "HUMIDITY",
+          value: 89.46,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 8.73,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 203.84,
+          level: "HIGH",
+          description:
+            "Powietrze jest zanieczyszczone, ma negatywny wpływ na Twoje zdrowie!",
+          advice:
+            "Wszyscy mogą odczuwać negatywne skutki zdrowotne, takie jak pogorszenie zdolności poznawczych czy problemy z oddychaniem.",
+          color: "#FF761A",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 203.84,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 96.94,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T04:00:00.000Z",
+      tillDateTime: "2022-10-30T05:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 17.84,
+        },
+        {
+          name: "PM25",
+          value: 29.81,
+        },
+        {
+          name: "PM10",
+          value: 42.79,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.38,
+        },
+        {
+          name: "HUMIDITY",
+          value: 91.06,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 8.28,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 198.71,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 198.71,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 95.09,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T05:00:00.000Z",
+      tillDateTime: "2022-10-30T06:00:00.000Z",
+      values: [
+        {
+          name: "PM1",
+          value: 16.72,
+        },
+        {
+          name: "PM25",
+          value: 27.14,
+        },
+        {
+          name: "PM10",
+          value: 40.16,
+        },
+        {
+          name: "PRESSURE",
+          value: 1021.47,
+        },
+        {
+          name: "HUMIDITY",
+          value: 90.92,
+        },
+        {
+          name: "TEMPERATURE",
+          value: 8.54,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 180.96,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 180.96,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 89.24,
           averaging: "24h",
         },
       ],
@@ -953,817 +1437,995 @@ export const storedAirlyData = {
   ],
   forecast: [
     {
-      fromDateTime: "2022-10-06T21:00:00.000Z",
-      tillDateTime: "2022-10-06T22:00:00.000Z",
+      fromDateTime: "2022-10-30T06:00:00.000Z",
+      tillDateTime: "2022-10-30T07:00:00.000Z",
       values: [
-        { name: "PM25", value: 18.66 },
-        { name: "PM10", value: 25.79 },
+        {
+          name: "PM25",
+          value: 25.4,
+        },
+        {
+          name: "PM10",
+          value: 37.43,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 31.1,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Lepiej być nie może ;)",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 169.35,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 57.31,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 169.35,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 124.38,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 83.18,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T22:00:00.000Z",
-      tillDateTime: "2022-10-06T23:00:00.000Z",
+      fromDateTime: "2022-10-30T07:00:00.000Z",
+      tillDateTime: "2022-10-30T08:00:00.000Z",
       values: [
-        { name: "PM25", value: 19.76 },
-        { name: "PM10", value: 27.17 },
+        {
+          name: "PM25",
+          value: 22.15,
+        },
+        {
+          name: "PM10",
+          value: 32.46,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 32.95,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Tak, tak – to prawda. Jakość powietrza jest dzisiaj dobra!",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 147.64,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 60.37,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 147.65,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 131.76,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 72.14,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-06T23:00:00.000Z",
-      tillDateTime: "2022-10-07T00:00:00.000Z",
+      fromDateTime: "2022-10-30T08:00:00.000Z",
+      tillDateTime: "2022-10-30T09:00:00.000Z",
       values: [
-        { name: "PM25", value: 21.14 },
-        { name: "PM10", value: 28.39 },
+        {
+          name: "PM25",
+          value: 18.22,
+        },
+        {
+          name: "PM10",
+          value: 26.88,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 35.25,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Ciesz się czystym powietrzem",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 121.45,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 63.08,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 121.46,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 140.97,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 59.74,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T00:00:00.000Z",
-      tillDateTime: "2022-10-07T01:00:00.000Z",
+      fromDateTime: "2022-10-30T09:00:00.000Z",
+      tillDateTime: "2022-10-30T10:00:00.000Z",
       values: [
-        { name: "PM25", value: 22.4 },
-        { name: "PM10", value: 29.15 },
+        {
+          name: "PM25",
+          value: 14.58,
+        },
+        {
+          name: "PM10",
+          value: 22.73,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 37.33,
+          name: "AIRLY_AQI",
+          value: 97.18,
           level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Lepiej być nie może ;)",
-          color: "#D1CF1E",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#E4E11C",
         },
       ],
       standards: [
         {
           name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 97.18,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
           pollutant: "PM10",
           limit: 45,
+          percent: 50.5,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T10:00:00.000Z",
+      tillDateTime: "2022-10-30T11:00:00.000Z",
+      values: [
+        {
+          name: "PM25",
+          value: 12.39,
+        },
+        {
+          name: "PM10",
+          value: 21.76,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 82.61,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#E4E11C",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 82.61,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 48.36,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T11:00:00.000Z",
+      tillDateTime: "2022-10-30T12:00:00.000Z",
+      values: [
+        {
+          name: "PM25",
+          value: 10.52,
+        },
+        {
+          name: "PM10",
+          value: 22.59,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 70.16,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 70.16,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 50.19,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T12:00:00.000Z",
+      tillDateTime: "2022-10-30T13:00:00.000Z",
+      values: [
+        {
+          name: "PM25",
+          value: 9.41,
+        },
+        {
+          name: "PM10",
+          value: 23.11,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 62.76,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 62.76,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 51.35,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T13:00:00.000Z",
+      tillDateTime: "2022-10-30T14:00:00.000Z",
+      values: [
+        {
+          name: "PM25",
+          value: 8.33,
+        },
+        {
+          name: "PM10",
+          value: 22.09,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 55.52,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
+          percent: 55.53,
+          averaging: "24h",
+        },
+        {
+          name: "WHO",
+          pollutant: "PM10",
+          limit: 45,
+          percent: 49.1,
+          averaging: "24h",
+        },
+      ],
+    },
+    {
+      fromDateTime: "2022-10-30T14:00:00.000Z",
+      tillDateTime: "2022-10-30T15:00:00.000Z",
+      values: [
+        {
+          name: "PM25",
+          value: 9.72,
+        },
+        {
+          name: "PM10",
+          value: 21.74,
+        },
+      ],
+      indexes: [
+        {
+          name: "AIRLY_AQI",
+          value: 64.77,
+          level: "LOW",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#C9E41E",
+        },
+      ],
+      standards: [
+        {
+          name: "WHO",
+          pollutant: "PM25",
+          limit: 15,
           percent: 64.77,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 149.32,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 48.31,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T01:00:00.000Z",
-      tillDateTime: "2022-10-07T02:00:00.000Z",
+      fromDateTime: "2022-10-30T15:00:00.000Z",
+      tillDateTime: "2022-10-30T16:00:00.000Z",
       values: [
-        { name: "PM25", value: 23.11 },
-        { name: "PM10", value: 29.49 },
+        {
+          name: "PM25",
+          value: 14.4,
+        },
+        {
+          name: "PM10",
+          value: 26.38,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 38.53,
+          name: "AIRLY_AQI",
+          value: 95.96,
           level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Tak, tak – to prawda. Jakość powietrza jest dzisiaj dobra!",
-          color: "#D1CF1E",
+          description: "Wystarczająco dobre powietrze. Wyjdź na zewnątrz!",
+          advice: "Nie ma żadnego zagrożenia dla twojego zdrowia.",
+          color: "#E4E11C",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 65.53,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 95.97,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 154.1,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 58.63,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T02:00:00.000Z",
-      tillDateTime: "2022-10-07T03:00:00.000Z",
+      fromDateTime: "2022-10-30T16:00:00.000Z",
+      tillDateTime: "2022-10-30T17:00:00.000Z",
       values: [
-        { name: "PM25", value: 24.24 },
-        { name: "PM10", value: 31.69 },
+        {
+          name: "PM25",
+          value: 21.32,
+        },
+        {
+          name: "PM10",
+          value: 34.91,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 40.41,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 142.1,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 70.42,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 142.1,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 161.61,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 77.57,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T03:00:00.000Z",
-      tillDateTime: "2022-10-07T04:00:00.000Z",
+      fromDateTime: "2022-10-30T17:00:00.000Z",
+      tillDateTime: "2022-10-30T18:00:00.000Z",
       values: [
-        { name: "PM25", value: 25.24 },
-        { name: "PM10", value: 33.55 },
+        {
+          name: "PM25",
+          value: 28.58,
+        },
+        {
+          name: "PM10",
+          value: 43.92,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 42.06,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Czyste powietrze wzywa!",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 190.51,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 74.55,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 190.52,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 168.24,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 97.6,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T04:00:00.000Z",
-      tillDateTime: "2022-10-07T05:00:00.000Z",
+      fromDateTime: "2022-10-30T18:00:00.000Z",
+      tillDateTime: "2022-10-30T19:00:00.000Z",
       values: [
-        { name: "PM25", value: 25.93 },
-        { name: "PM10", value: 34.58 },
+        {
+          name: "PM25",
+          value: 32.99,
+        },
+        {
+          name: "PM10",
+          value: 49.7,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 43.23,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 219.9,
+          level: "HIGH",
+          description:
+            "Powietrze jest zanieczyszczone, ma negatywny wpływ na Twoje zdrowie!",
+          advice:
+            "Wszyscy mogą odczuwać negatywne skutki zdrowotne, takie jak pogorszenie zdolności poznawczych czy problemy z oddychaniem.",
+          color: "#FF761A",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 76.84,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 219.9,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 172.89,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 110.45,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T05:00:00.000Z",
-      tillDateTime: "2022-10-07T06:00:00.000Z",
+      fromDateTime: "2022-10-30T19:00:00.000Z",
+      tillDateTime: "2022-10-30T20:00:00.000Z",
       values: [
-        { name: "PM25", value: 25.85 },
-        { name: "PM10", value: 33.61 },
+        {
+          name: "PM25",
+          value: 33.57,
+        },
+        {
+          name: "PM10",
+          value: 51.24,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 43.08,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Ciesz się czystym powietrzem",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 223.79,
+          level: "HIGH",
+          description:
+            "Powietrze jest zanieczyszczone, ma negatywny wpływ na Twoje zdrowie!",
+          advice:
+            "Wszyscy mogą odczuwać negatywne skutki zdrowotne, takie jak pogorszenie zdolności poznawczych czy problemy z oddychaniem.",
+          color: "#FF761A",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 74.68,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 223.8,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 172.31,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 113.88,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T06:00:00.000Z",
-      tillDateTime: "2022-10-07T07:00:00.000Z",
+      fromDateTime: "2022-10-30T20:00:00.000Z",
+      tillDateTime: "2022-10-30T21:00:00.000Z",
       values: [
-        { name: "PM25", value: 24.28 },
-        { name: "PM10", value: 31.32 },
+        {
+          name: "PM25",
+          value: 31.75,
+        },
+        {
+          name: "PM10",
+          value: 49.83,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 40.47,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Czyste powietrze wzywa!",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 211.64,
+          level: "HIGH",
+          description:
+            "Powietrze jest zanieczyszczone, ma negatywny wpływ na Twoje zdrowie!",
+          advice:
+            "Wszyscy mogą odczuwać negatywne skutki zdrowotne, takie jak pogorszenie zdolności poznawczych czy problemy z oddychaniem.",
+          color: "#FF761A",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 69.6,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 211.64,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 161.85,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 110.73,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T07:00:00.000Z",
-      tillDateTime: "2022-10-07T08:00:00.000Z",
+      fromDateTime: "2022-10-30T21:00:00.000Z",
+      tillDateTime: "2022-10-30T22:00:00.000Z",
       values: [
-        { name: "PM25", value: 21.1 },
-        { name: "PM10", value: 27.25 },
+        {
+          name: "PM25",
+          value: 29.81,
+        },
+        {
+          name: "PM10",
+          value: 49.17,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 35.18,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Ciesz się czystym powietrzem",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 198.73,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 60.56,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 198.73,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 140.69,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 109.26,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T08:00:00.000Z",
-      tillDateTime: "2022-10-07T09:00:00.000Z",
+      fromDateTime: "2022-10-30T22:00:00.000Z",
+      tillDateTime: "2022-10-30T23:00:00.000Z",
       values: [
-        { name: "PM25", value: 16.91 },
-        { name: "PM10", value: 21.98 },
+        {
+          name: "PM25",
+          value: 27.28,
+        },
+        {
+          name: "PM10",
+          value: 47.75,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 28.19,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Ciesz się czystym powietrzem",
-          color: "#D1CF1E",
+          name: "AIRLY_AQI",
+          value: 181.84,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 48.84,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 181.84,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 112.74,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 106.12,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T09:00:00.000Z",
-      tillDateTime: "2022-10-07T10:00:00.000Z",
+      fromDateTime: "2022-10-30T23:00:00.000Z",
+      tillDateTime: "2022-10-31T00:00:00.000Z",
       values: [
-        { name: "PM25", value: 13.42 },
-        { name: "PM10", value: 17.6 },
+        {
+          name: "PM25",
+          value: 25.39,
+        },
+        {
+          name: "PM10",
+          value: 45.97,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 22.36,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Złap oddech!",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 169.24,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 39.1,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 169.25,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 89.44,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 102.16,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T10:00:00.000Z",
-      tillDateTime: "2022-10-07T11:00:00.000Z",
+      fromDateTime: "2022-10-31T00:00:00.000Z",
+      tillDateTime: "2022-10-31T01:00:00.000Z",
       values: [
-        { name: "PM25", value: 11.02 },
-        { name: "PM10", value: 14.32 },
+        {
+          name: "PM25",
+          value: 23.84,
+        },
+        {
+          name: "PM10",
+          value: 44.21,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 18.37,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Oddychaj, ile możesz!",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 158.91,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 31.81,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 158.91,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 73.46,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 98.24,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T11:00:00.000Z",
-      tillDateTime: "2022-10-07T12:00:00.000Z",
+      fromDateTime: "2022-10-31T01:00:00.000Z",
+      tillDateTime: "2022-10-31T02:00:00.000Z",
       values: [
-        { name: "PM25", value: 9.39 },
-        { name: "PM10", value: 12.16 },
+        {
+          name: "PM25",
+          value: 22.42,
+        },
+        {
+          name: "PM10",
+          value: 43.15,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 15.66,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Śmiało wietrz mieszkanie!",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 149.49,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 27.02,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 149.49,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 62.62,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 95.89,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T12:00:00.000Z",
-      tillDateTime: "2022-10-07T13:00:00.000Z",
+      fromDateTime: "2022-10-31T02:00:00.000Z",
+      tillDateTime: "2022-10-31T03:00:00.000Z",
       values: [
-        { name: "PM25", value: 8.51 },
-        { name: "PM10", value: 10.44 },
+        {
+          name: "PM25",
+          value: 22.12,
+        },
+        {
+          name: "PM10",
+          value: 41.67,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 14.19,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Złap oddech!",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 147.44,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 23.21,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 147.44,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 56.74,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 92.6,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T13:00:00.000Z",
-      tillDateTime: "2022-10-07T14:00:00.000Z",
+      fromDateTime: "2022-10-31T03:00:00.000Z",
+      tillDateTime: "2022-10-31T04:00:00.000Z",
       values: [
-        { name: "PM25", value: 7.57 },
-        { name: "PM10", value: 9.02 },
+        {
+          name: "PM25",
+          value: 22.39,
+        },
+        {
+          name: "PM10",
+          value: 42.42,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 12.63,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Czujesz coś w powietrzu? My też nie!",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 149.28,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#FFC801",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 20.05,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 149.29,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 50.49,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 94.28,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T14:00:00.000Z",
-      tillDateTime: "2022-10-07T15:00:00.000Z",
+      fromDateTime: "2022-10-31T04:00:00.000Z",
+      tillDateTime: "2022-10-31T05:00:00.000Z",
       values: [
-        { name: "PM25", value: 8.73 },
-        { name: "PM10", value: 9.62 },
+        {
+          name: "PM25",
+          value: 23.13,
+        },
+        {
+          name: "PM10",
+          value: 43.01,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 14.55,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Weź głęboki wdech. Dziś można. ;)",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 154.16,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 21.38,
+          pollutant: "PM25",
+          limit: 15,
+          percent: 154.17,
           averaging: "24h",
         },
         {
           name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 58.19,
+          pollutant: "PM10",
+          limit: 45,
+          percent: 95.57,
           averaging: "24h",
         },
       ],
     },
     {
-      fromDateTime: "2022-10-07T15:00:00.000Z",
-      tillDateTime: "2022-10-07T16:00:00.000Z",
+      fromDateTime: "2022-10-31T05:00:00.000Z",
+      tillDateTime: "2022-10-31T06:00:00.000Z",
       values: [
-        { name: "PM25", value: 12.05 },
-        { name: "PM10", value: 12.94 },
+        {
+          name: "PM25",
+          value: 24.22,
+        },
+        {
+          name: "PM10",
+          value: 43.53,
+        },
       ],
       indexes: [
         {
-          name: "AIRLY_CAQI",
-          value: 20.08,
-          level: "VERY_LOW",
-          description: "Wspaniałe powietrze!",
-          advice: "Weź głęboki wdech. Dziś można. ;)",
-          color: "#6BC926",
+          name: "AIRLY_AQI",
+          value: 161.47,
+          level: "MEDIUM",
+          description:
+            "Powietrze jest zanieczyszczone, może mieć wpływ na zdrowie osób wrażliwych.",
+          advice:
+            "Osoby wrażliwe mogą odczuwać negatywne skutki zdrowotne, na pozostałe osoby to zanieczyszczenie nie ma wpływu.",
+          color: "#F0BA0F",
         },
       ],
       standards: [
         {
           name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 28.76,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
           pollutant: "PM25",
           limit: 15,
-          percent: 80.3,
+          percent: 161.48,
           averaging: "24h",
         },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-07T16:00:00.000Z",
-      tillDateTime: "2022-10-07T17:00:00.000Z",
-      values: [
-        { name: "PM25", value: 16.81 },
-        { name: "PM10", value: 19.08 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 28.03,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
         {
           name: "WHO",
           pollutant: "PM10",
           limit: 45,
-          percent: 42.39,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 112.09,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-07T17:00:00.000Z",
-      tillDateTime: "2022-10-07T18:00:00.000Z",
-      values: [
-        { name: "PM25", value: 21.39 },
-        { name: "PM10", value: 25.88 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 35.66,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 57.5,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 142.61,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-07T18:00:00.000Z",
-      tillDateTime: "2022-10-07T19:00:00.000Z",
-      values: [
-        { name: "PM25", value: 24.81 },
-        { name: "PM10", value: 31.42 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 41.36,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Lepiej być nie może ;)",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 69.83,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 165.42,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-07T19:00:00.000Z",
-      tillDateTime: "2022-10-07T20:00:00.000Z",
-      values: [
-        { name: "PM25", value: 26.48 },
-        { name: "PM10", value: 35.11 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 44.14,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Czyste powietrze wzywa!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 78.02,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 176.55,
-          averaging: "24h",
-        },
-      ],
-    },
-    {
-      fromDateTime: "2022-10-07T20:00:00.000Z",
-      tillDateTime: "2022-10-07T21:00:00.000Z",
-      values: [
-        { name: "PM25", value: 27.14 },
-        { name: "PM10", value: 36.26 },
-      ],
-      indexes: [
-        {
-          name: "AIRLY_CAQI",
-          value: 45.23,
-          level: "LOW",
-          description: "Cóż... Bywało lepiej.",
-          advice: "Dzisiaj jest dobre i czyste powietrze!",
-          color: "#D1CF1E",
-        },
-      ],
-      standards: [
-        {
-          name: "WHO",
-          pollutant: "PM10",
-          limit: 45,
-          percent: 80.58,
-          averaging: "24h",
-        },
-        {
-          name: "WHO",
-          pollutant: "PM25",
-          limit: 15,
-          percent: 180.92,
+          percent: 96.73,
           averaging: "24h",
         },
       ],
