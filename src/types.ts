@@ -46,6 +46,7 @@ export type AirlyData = {
   humidity: number;
   pressure: number;
   airQuality: {
+    label: string;
     value: number;
     description: string;
   };

@@ -7,10 +7,13 @@ export const AUTH_TOKEN: string = process.env.AUTH_TOKEN || "";
 export const AIRLY_API_KEY: string = process.env.AIRLY_API_KEY || "";
 export const AIRLY_LAT: string = process.env.AIRLY_LAT || "";
 export const AIRLY_LNG: string = process.env.AIRLY_LNG || "";
+export const AIRLY_INDEX: string = "AIRLY_AQI";
+export const AIRLY_INDEX_LABEL: string = "AQI";
 
 export const CALENDAR_EVENTS_URL: string = process.env.CALENDAR_EVENTS || "";
 
 export const SELF_URL: string = process.env.VERCEL_URL || "";
+export const SELF_PROTOCOL: string = IS_DEVELOPMENT ? "http" : "https";
 
 export const TIME_ZONE = "Europe/Warsaw";
 

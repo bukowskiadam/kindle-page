@@ -1,5 +1,5 @@
 import type { VercelResponse } from "@vercel/node";
-import { IS_DEVELOPMENT, SELF_URL } from "./config";
+import { SELF_URL, SELF_PROTOCOL } from "./config";
 
 export function setProxyMaxAge(
   res: VercelResponse,
@@ -9,7 +9,5 @@ export function setProxyMaxAge(
 }
 
 export function getSelfUrl() {
-  const protocol = IS_DEVELOPMENT ? "http" : "https";
-
-  return `${protocol}://${SELF_URL}`;
+  return `${SELF_PROTOCOL}://${SELF_URL}`;
 }

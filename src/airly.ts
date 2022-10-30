@@ -1,5 +1,12 @@
 import axios from "axios";
-import { AIRLY_API_KEY, AIRLY_LAT, AIRLY_LNG, IS_DEVELOPMENT } from "./config";
+import {
+  AIRLY_API_KEY,
+  AIRLY_INDEX,
+  AIRLY_INDEX_LABEL,
+  AIRLY_LAT,
+  AIRLY_LNG,
+  IS_DEVELOPMENT,
+} from "./config";
 import { storedAirlyData } from "./mocks/airly";
 import type { AirlyData, AirlyError } from "./types";
 
@@ -16,7 +23,7 @@ export async function getAirlyData(): Promise<AirlyData | AirlyError> {
   if (!IS_DEVELOPMENT) {
     try {
       const response = await axios.get(
-        `https://airapi.airly.eu/v2/measurements/point?lat=${AIRLY_LAT}&lng=${AIRLY_LNG}`,
+        `https://airapi.airly.eu/v2/measurements/point?lat=${AIRLY_LAT}&lng=${AIRLY_LNG}&indexType=${AIRLY_INDEX}`,
         {
           headers: {
             "accept-language": "pl-PL",
@@ -46,6 +53,7 @@ function mapAirlyData(current: any): AirlyData {
 
   const caqi = current.indexes[0];
   const airQuality = {
+    label: AIRLY_INDEX_LABEL,
     value: caqi.value,
     description: caqi.description,
   };

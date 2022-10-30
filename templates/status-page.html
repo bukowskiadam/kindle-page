@@ -292,7 +292,10 @@
           {% if airly.type === "data" %}
           <div class="temperature">{{airly.temperature}}°C</div>
           <div class="air-quality-value">
-            <span>CAQI: <strong>{{airly.airQuality.value | int}}</strong></span>
+            <span
+              >{{airly.airQuality.label}}:
+              <strong>{{airly.airQuality.value | int}}</strong></span
+            >
             <img
               class="airly-logo"
               src="https://cdn.airly.org/assets/brand/logo/primary/airly.svg"
