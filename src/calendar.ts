@@ -45,6 +45,10 @@ function getRefreshScheduleOverride(
       return RefreshSchedule.WFH;
     case "vacation":
       return RefreshSchedule.Vacation;
+    case "weekend":
+      return RefreshSchedule.Weekend;
+    case "work":
+      return RefreshSchedule.Work;
   }
 
   return undefined;
