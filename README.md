@@ -1,4 +1,4 @@
-# Kindle-page
+# Kindle Page
 
 This is my home page to be shown on the Kindle as a Frame.
 
@@ -9,6 +9,10 @@ See related projects:
 
 - Kindle code: https://github.com/bukowskiadam/kindle-onlinescreensaver
 - Kindle fetch-file binary: https://github.com/bukowskiadam/fetch-file
+
+## Example
+
+![sample image](screenshot.png)
 
 ## Running
 
