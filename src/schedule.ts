@@ -1,6 +1,6 @@
 import { MIN_THRESHOLD_MS, REFRESH_SCHEDULE } from "./config.js";
 import { changeTimeZone } from "./date.js";
-import { RefreshSchedule } from "./types.js";
+import { type DayMode, RefreshSchedule } from "./types.js";
 
 export function getCurrentRefreshSchedule(
   now: Date,
@@ -63,4 +63,20 @@ export function getNextRefreshTime(now: Date, schedule: RefreshSchedule) {
 
 export function getSecondsToNextRefresh(now: Date, next: Date): number {
   return Math.floor((next.getTime() - now.getTime()) / 1000);
+}
+
+export function getDayMode(now: Date): DayMode {
+  const hours = now.getHours();
+
+  if (hours < 6) {
+    return "night";
+  } else if (hours < 10) {
+    return "morning";
+  } else if (hours < 19) {
+    return "day";
+  } else if (hours < 23) {
+    return "evening";
+  } else {
+    return "night";
+  }
 }

@@ -14,6 +14,8 @@ export enum RefreshSchedule {
   Vacation = "Vacation",
 }
 
+export type DayMode = "morning" | "day" | "evening" | "night";
+
 export type AllDayEvent = { title: string; calendar: string };
 export type TimeEvent<T> = {
   title: string;

@@ -9,6 +9,7 @@ import { formatDate, formatTime, getNow } from "../src/date.js";
 import { getRandomQuote } from "../src/quotable.js";
 import {
   getCurrentRefreshSchedule,
+  getDayMode,
   getNextRefreshTime,
   getSecondsToNextRefresh,
 } from "../src/schedule.js";
@@ -37,6 +38,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   );
   const nextRefreshTime = getNextRefreshTime(now, refreshSchedule);
   const nextRefreshSeconds = getSecondsToNextRefresh(now, nextRefreshTime);
+  const dayMode = getDayMode(now);
 
   const pageHtml = nunjucks.render("status-page.html", {
     time: formatTime(now),
@@ -47,6 +49,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     calendar,
     quote,
     airly,
+    dayMode,
   });
 
   res.setHeader("X-Next-Refresh", nextRefreshSeconds);
