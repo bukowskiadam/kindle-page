@@ -1,4 +1,4 @@
-import { RefreshSchedule } from "./types";
+import { RefreshSchedule } from "./types.js";
 
 export const IS_DEVELOPMENT: boolean = process.env.VERCEL_ENV === "development";
 

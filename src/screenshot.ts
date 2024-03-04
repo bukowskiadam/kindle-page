@@ -2,7 +2,7 @@ import type { ChromiumBrowser } from "playwright-core";
 import { launchChromium } from "playwright-aws-lambda";
 import axios from "axios";
 
-import type { ScreenshotResult } from "./types";
+import type { ScreenshotResult } from "./types.js";
 
 export async function takeScreenshot(url: string): Promise<ScreenshotResult> {
   let browser: ChromiumBrowser | null = null;

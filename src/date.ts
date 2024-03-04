@@ -1,5 +1,5 @@
-import { TIME_ZONE } from "./config";
-import { SerializedDate } from "./types";
+import { TIME_ZONE } from "./config.js";
+import type { SerializedDate } from "./types.js";
 
 export function changeTimeZone(date: Date) {
   return new Date(

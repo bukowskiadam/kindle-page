@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { getAirlyData } from "../src/airly";
+import { getAirlyData } from "../src/airly.js";
 
-import { isAuthorized } from "../src/authorization";
-import { setProxyMaxAge } from "../src/vercel";
+import { isAuthorized } from "../src/authorization.js";
+import { setProxyMaxAge } from "../src/vercel.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   if (!isAuthorized(req)) {

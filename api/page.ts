@@ -1,17 +1,18 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { fileURLToPath } from "node:url";
 
-import * as nunjucks from "nunjucks";
-import { getAirlyData } from "../src/airlyCached";
-import { isAuthorized } from "../src/authorization";
-import { getCalendarData } from "../src/calendar";
-import { formatDate, formatTime, getNow } from "../src/date";
-import { getRandomQuote } from "../src/quotable";
+import nunjucks from "nunjucks";
+import { getAirlyData } from "../src/airlyCached.js";
+import { isAuthorized } from "../src/authorization.js";
+import { getCalendarData } from "../src/calendar.js";
+import { formatDate, formatTime, getNow } from "../src/date.js";
+import { getRandomQuote } from "../src/quotable.js";
 import {
   getCurrentRefreshSchedule,
   getNextRefreshTime,
   getSecondsToNextRefresh,
-} from "../src/schedule";
-import { setProxyMaxAge } from "../src/vercel";
+} from "../src/schedule.js";
+import { setProxyMaxAge } from "../src/vercel.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const { battery: batteryUnsafe = "" } = req.query || {};
@@ -21,7 +22,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return res.status(401).json({ status: "no auth" });
   }
 
-  nunjucks.configure(__dirname + "/../templates", { autoescape: true });
+  nunjucks.configure(fileURLToPath(new URL("../templates", import.meta.url)), {
+    autoescape: true,
+  });
 
   const now = getNow();
 

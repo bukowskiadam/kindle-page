@@ -4,6 +4,7 @@
   "description": "Render my home dashboard for the Kindle-frame",
   "main": "index.js",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "vercel dev",
     "deploy": "vercel deploy --prod",
@@ -13,15 +14,15 @@
   "author": "Adam Bukowski",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/nunjucks": "^3.2.1",
-    "vercel": "^28.2.4"
+    "@types/nunjucks": "^3.2.6",
+    "vercel": "^33.5.3"
   },
   "dependencies": {
-    "@napi-rs/image": "^1.4.0",
-    "axios": "^0.27.2",
-    "nunjucks": "^3.2.3",
-    "playwright-aws-lambda": "^0.9.0",
-    "playwright-core": "^1.25.2",
+    "@napi-rs/image": "^1.9.1",
+    "axios": "^1.6.7",
+    "nunjucks": "^3.2.4",
+    "playwright-aws-lambda": "^0.10.0",
+    "playwright-core": "^1.42.1",
     "scmp": "^2.1.0"
   }
 }

@@ -6,9 +6,9 @@ import {
   AIRLY_LAT,
   AIRLY_LNG,
   IS_DEVELOPMENT,
-} from "./config";
-import { storedAirlyData } from "./mocks/airly";
-import type { AirlyData, AirlyError } from "./types";
+} from "./config.js";
+import { storedAirlyData } from "./mocks/airly.js";
+import type { AirlyData, AirlyError } from "./types.js";
 
 export async function getAirlyData(): Promise<AirlyData | AirlyError> {
   if (!AIRLY_API_KEY || !AIRLY_LAT || !AIRLY_LNG) {
@@ -33,12 +33,12 @@ export async function getAirlyData(): Promise<AirlyData | AirlyError> {
       );
 
       data = response.data;
-    } catch (error) {
+    } catch (error: any) {
       return {
         type: "error",
         error:
           "Something went wrong when fetching airly: " +
-          (error.response ? error.response.statusText : " unknown problem"),
+          (error?.response ? error.response.statusText : " unknown problem"),
       };
     }
   }
@@ -48,7 +48,7 @@ export async function getAirlyData(): Promise<AirlyData | AirlyError> {
 
 function mapAirlyData(current: any): AirlyData {
   const values = Object.fromEntries(
-    current.values.map(({ name, value }) => [name, value])
+    current.values.map(({ name, value }: any) => [name, value])
   );
 
   const caqi = current.indexes[0];
@@ -59,7 +59,7 @@ function mapAirlyData(current: any): AirlyData {
   };
 
   const standards = Object.fromEntries(
-    current.standards.map(({ pollutant, limit, percent }) => [
+    current.standards.map(({ pollutant, limit, percent }: any) => [
       pollutant,
       {
         value: values[pollutant],

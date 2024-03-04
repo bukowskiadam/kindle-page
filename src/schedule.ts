@@ -1,6 +1,6 @@
-import { MIN_THRESHOLD_MS, REFRESH_SCHEDULE } from "./config";
-import { changeTimeZone } from "./date";
-import { RefreshSchedule } from "./types";
+import { MIN_THRESHOLD_MS, REFRESH_SCHEDULE } from "./config.js";
+import { changeTimeZone } from "./date.js";
+import { RefreshSchedule } from "./types.js";
 
 export function getCurrentRefreshSchedule(
   now: Date,

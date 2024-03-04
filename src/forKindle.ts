@@ -3,7 +3,7 @@ import {
   Orientation,
   Transformer,
 } from "@napi-rs/image";
-import { ImageForKindleOpts } from "./types";
+import { ImageForKindleOpts } from "./types.js";
 
 export function imageForKindle(
   buffer: Buffer,
