@@ -67,14 +67,15 @@ export function getSecondsToNextRefresh(now: Date, next: Date): number {
 
 export function getDayMode(now: Date): DayMode {
   const hours = now.getHours();
+  const minutes = now.getMinutes();
 
-  if (hours < 6) {
+  if (hours < 5 || (hours === 5 && minutes < 30)) {
     return "night";
-  } else if (hours < 10) {
+  } else if (hours <= 10) {
     return "morning";
-  } else if (hours < 19) {
+  } else if (hours < 18 || (hours === 18 && minutes < 30)) {
     return "day";
-  } else if (hours < 23) {
+  } else if (hours < 22 || (hours === 22 && minutes < 30)) {
     return "evening";
   } else {
     return "night";
