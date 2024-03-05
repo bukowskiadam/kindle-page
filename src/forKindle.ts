@@ -15,5 +15,8 @@ export function imageForKindle(
     .rotate(rotate ? Orientation.Rotate180 : null)
     .pngSync();
 
-  return losslessCompressPngSync(grayscale);
+  return losslessCompressPngSync(grayscale, {
+    grayscaleReduction: false,
+    strip: true,
+  });
 }
