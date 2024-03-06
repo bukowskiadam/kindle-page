@@ -40,7 +40,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const nextRefreshSeconds = getSecondsToNextRefresh(now, nextRefreshTime);
   const dayMode = getDayMode(now);
 
-  const pageHtml = nunjucks.render("status-page.html", {
+  const pageHtml = nunjucks.render("index.njk", {
     time: formatTime(now),
     date: formatDate(now),
     battery,

@@ -1,0 +1,84 @@
+<style>
+  .temperature {
+    margin-top: 10px;
+    font-size: 66px;
+    line-height: 80px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .air-quality-value {
+    font-size: 30px;
+    line-height: 36px;
+    margin: 16px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .airly-logo {
+    width: 80px;
+  }
+
+  .air-quality-description {
+    text-align: center;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 16px 0;
+  }
+
+  .weather-values {
+    display: grid;
+    text-align: center;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-gap: 8px;
+    margin: 8px;
+  }
+
+  .weather-values .legend {
+    color: #5a5a5a;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 8px;
+  }
+
+  .weather-values .value {
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: bold;
+  }
+
+  .airly-error {
+    margin-top: 20px;
+  }
+</style>
+{% if airly.type === "data" %}
+  <div class="temperature">{{ airly.temperature }}°C</div>
+  <div class="air-quality-value">
+    <span>{{ airly.airQuality.label }}:
+      <strong>{{ airly.airQuality.value | int }}</strong>
+    </span>
+    <img class="airly-logo" src="https://cdn.airly.org/assets/brand/logo/primary/airly.svg" alt="airly-logo"/>
+  </div>
+  <div class="air-quality-description">{{ airly.airQuality.description }}</div>
+  <div class="weather-values">
+    <div>
+      <div class="legend">PM 2.5</div>
+      <div class="value">{{ airly.pm25.percent | int }} %</div>
+    </div>
+    <div>
+      <div class="legend">PM 10</div>
+      <div class="value">{{ airly.pm10.percent | int }} %</div>
+    </div>
+    <div>
+      <div class="legend">Wilgotność</div>
+      <div class="value">{{ airly.humidity | int }} %</div>
+    </div>
+    <div>
+      <div class="legend">Ciśnienie</div>
+      <div class="value">{{ airly.pressure | int }}</div>
+    </div>
+  </div>
+{% else %}
+  <div class="airly-error">{{ airly.error }}</div>
+{% endif %}

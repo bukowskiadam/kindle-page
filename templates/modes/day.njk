@@ -1,0 +1,12 @@
+{% include "../modules/status-bar.njk" %}
+<div class="main-area">
+  <div class="columns">
+    <div class="left-column">
+      <h1 class="date">{{ date }}</h1>
+      {% include "../modules/calendar.njk" %}
+    </div>
+    <div class="right-column">{% include "../modules/airly.njk" %}</div>
+  </div>
+  {% include "../modules/quote.njk" %}
+</div>
+{% include "../modules/forecast.njk" %}
