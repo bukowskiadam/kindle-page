@@ -1,5 +1,5 @@
 import { MIN_THRESHOLD_MS, REFRESH_SCHEDULE } from "./config.js";
-import { changeTimeZone } from "./date.js";
+import { changeTimeZone, formatTime } from "./date.js";
 import { type DayMode, RefreshSchedule } from "./types.js";
 
 export function getCurrentRefreshSchedule(
@@ -66,16 +66,16 @@ export function getSecondsToNextRefresh(now: Date, next: Date): number {
 }
 
 export function getDayMode(now: Date): DayMode {
-  const hours = now.getHours();
-  const minutes = now.getMinutes();
+  const formatted = formatTime(now);
 
-  if (hours < 5 || (hours === 5 && minutes < 30)) {
+  // use formatted fixed length time and lexical comparison because it's more readable
+  if (formatted < "05:30") {
     return "night";
-  } else if (hours <= 10) {
+  } else if (formatted < "10:30") {
     return "morning";
-  } else if (hours < 18 || (hours === 18 && minutes < 30)) {
+  } else if (formatted < "18:30") {
     return "day";
-  } else if (hours < 22 || (hours === 22 && minutes < 30)) {
+  } else if (formatted < "22:30") {
     return "evening";
   } else {
     return "night";
