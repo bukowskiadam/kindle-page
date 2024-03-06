@@ -28,6 +28,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   });
 
   const now = getNow();
+  const dayMode = getDayMode(now);
 
   const [{ calendar, refreshScheduleOverride }, quote, airly] =
     await Promise.all([getCalendarData(), getRandomQuote(), getAirlyData()]);
@@ -38,7 +39,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   );
   const nextRefreshTime = getNextRefreshTime(now, refreshSchedule);
   const nextRefreshSeconds = getSecondsToNextRefresh(now, nextRefreshTime);
-  const dayMode = getDayMode(now);
 
   const pageHtml = nunjucks.render("index.njk", {
     time: formatTime(now),

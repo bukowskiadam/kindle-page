@@ -1,0 +1,23 @@
+<style>
+  .night-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .night-image {
+    width: 400px;
+  }
+
+  .night-text {
+    margin-top: 20px;
+    font-size: 48px;
+    font-style: italic;
+  }
+</style>
+<div class="night-container">
+  <div class="night-image">{% include "modules/sleeping-kitty.njk" %}</div>
+  <div class="night-text">Dobranoc!</div>
+</div>
