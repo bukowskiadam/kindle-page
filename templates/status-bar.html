@@ -1,0 +1,60 @@
+<style>
+  :root {
+    --battery: {{battery}}%;
+  }
+
+  .status-bar {
+    display: flex;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 2px 8px 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #666;
+    line-height: 24px;
+    padding-bottom: 2px;
+  }
+
+  .time span {
+    color: #5a5a5a;
+  }
+
+  .battery {
+    margin-left: auto;
+  }
+
+  .battery-icon {
+    border: 3px solid black;
+    background: linear-gradient(
+      90deg,
+      black var(--battery),
+      white var(--battery)
+    );
+    box-sizing: border-box;
+    width: 32px;
+    height: 16px;
+    display: inline-block;
+    clip-path: polygon(
+      0 0,
+      90% 0,
+      90% 20%,
+      100% 20%,
+      100% 80%,
+      90% 80%,
+      90% 100%,
+      0 100%
+    );
+    position: relative;
+    top: 1px;
+  }
+</style>
+<div class="status-bar">
+  <div class="time">
+    <span>Updated:</span> {{time}}
+    <span>Next: {{nextRefreshTime}} [{{refreshSchedule}}]</span>
+    <span>[{{dayMode}}]</span>
+  </div>
+  <div class="battery">
+    <span class="battery-icon"></span>
+    <span class="battery-percentage">{{ battery | default("-- ") }}%</span>
+  </div>
+</div>

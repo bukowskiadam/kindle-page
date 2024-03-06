@@ -1,0 +1,47 @@
+<style>
+  .calendar {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  .calendar .day {
+    padding: 4px 0;
+  }
+
+  .calendar .day:first-child {
+    color: #5a5a5a;
+  }
+
+  .calendar .day:not(:last-child) {
+    border-bottom: 1px solid #5a5a5a;
+  }
+
+  .calendar .day-title {
+    text-transform: capitalize;
+  }
+
+  .calendar p {
+    margin: 3px 0 0 16px;
+  }
+
+  .calendar p.empty {
+    color: #5a5a5a;
+  }
+</style>
+<div class="calendar">
+  {% for day in calendar %}
+  <div class="day">
+    <strong class="day-title">{{day.day}}</strong>
+    {% for ev in day.allDay %}
+    <p>{{ev.title}}</p>
+    {% endfor %} {% for ev in day.time %}
+    <p>{{ev.start}} - {{ev.end}}: {{ev.title}}</p>
+    {% endfor %} {% if day.noEvents %}
+    <p class="empty">brak wydarzeń</p>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
