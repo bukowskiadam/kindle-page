@@ -12,12 +12,15 @@ import {
   getDayMode,
   getNextRefreshTime,
   getSecondsToNextRefresh,
+  validateDayMode,
 } from "../src/schedule.js";
 import { setProxyMaxAge } from "../src/vercel.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const { battery: batteryUnsafe = "" } = req.query || {};
+  const { battery: batteryUnsafe = "", forceMode: forceModeUnsafe = "" } =
+    req.query || {};
   const battery = Number.parseInt(batteryUnsafe.toString(), 10) || undefined;
+  const forceMode = validateDayMode(forceModeUnsafe.toString());
 
   if (!isAuthorized(req)) {
     return res.status(401).json({ status: "no auth" });
@@ -28,7 +31,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   });
 
   const now = getNow();
-  const dayMode = getDayMode(now);
+  const dayMode = forceMode || getDayMode(now);
 
   const [{ calendar, refreshScheduleOverride }, quote, airly] =
     await Promise.all([getCalendarData(), getRandomQuote(), getAirlyData()]);

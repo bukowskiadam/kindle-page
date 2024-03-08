@@ -81,3 +81,13 @@ export function getDayMode(now: Date): DayMode {
     return "night";
   }
 }
+
+export function validateDayMode(mode: string): DayMode | undefined {
+  const modes: DayMode[] = ["morning", "day", "evening", "night"];
+
+  if (modes.includes(mode as DayMode)) {
+    return mode as DayMode;
+  }
+
+  return undefined;
+}
