@@ -1,12 +1,7 @@
 {% include "modules/status-bar.njk" %}
 <div class="main-area">
-  <div class="columns">
-    <div class="left-column">
-      <h1 class="date">{{ date }}</h1>
-      {% include "modules/calendar-mini.njk" %}
-    </div>
-    <div class="right-column">nothing</div>
-  </div>
+  {% include "modules/date.njk" %}
+  {% include "modules/calendar.njk" %}
 </div>
 {% include "modules/forecast.njk" %}
 {% include "modules/airly-bottom.njk" %}

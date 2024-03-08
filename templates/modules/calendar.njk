@@ -5,6 +5,7 @@
     flex-direction: column;
     font-size: 18px;
     line-height: 20px;
+    padding: 0 12px;
   }
 
   .calendar .day {
@@ -33,15 +34,17 @@
 </style>
 <div class="calendar">
   {% for day in calendar %}
-  <div class="day">
-    <strong class="day-title">{{day.day}}</strong>
-    {% for ev in day.allDay %}
-    <p>{{ev.title}}</p>
-    {% endfor %} {% for ev in day.time %}
-    <p>{{ev.start}} - {{ev.end}}: {{ev.title}}</p>
-    {% endfor %} {% if day.noEvents %}
-    <p class="empty">brak wydarzeń</p>
-    {% endif %}
-  </div>
+    <div class="day">
+      <strong class="day-title">{{ day.day }}</strong>
+      {% for ev in day.allDay %}
+        <p>{{ ev.title }}</p>
+      {% endfor %}
+      {% for ev in day.time %}
+        <p>{{ ev.start }} - {{ ev.end }}: {{ ev.title }}</p>
+      {% endfor %}
+      {% if day.noEvents %}
+        <p class="empty">brak wydarzeń</p>
+      {% endif %}
+    </div>
   {% endfor %}
 </div>
