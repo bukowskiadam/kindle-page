@@ -1,21 +1,26 @@
 <style>
-  :root {
-    --battery: {{battery}}%;
-  }
-
   .status-bar {
+    --bg: black;
+    --text-color: white;
+    --text-color-dim: #bbb;
+
     display: flex;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
-    margin: 2px 8px 0;
+    padding: 2px 8px;
     box-sizing: border-box;
-    border-bottom: 1px solid #666;
-    line-height: 24px;
-    padding-bottom: 2px;
+    line-height: 22px;
+    background: var(--bg);
+    color: var(--text-color);
   }
 
   .time span {
-    color: #5a5a5a;
+    color: var(--text-color-dim);
+  }
+
+  .schedule {
+    margin-left: auto;
+    color: var(--text-color-dim);
   }
 
   .battery {
@@ -23,35 +28,24 @@
   }
 
   .battery-icon {
-    border: 3px solid black;
-    background: linear-gradient(
-      90deg,
-      black var(--battery),
-      white var(--battery)
-    );
+    border: 3px solid var(--text-color);
+    background: linear-gradient(90deg, var(--text-color) var(--battery), var(--bg) var(--battery));
     box-sizing: border-box;
     width: 32px;
     height: 16px;
     display: inline-block;
-    clip-path: polygon(
-      0 0,
-      90% 0,
-      90% 20%,
-      100% 20%,
-      100% 80%,
-      90% 80%,
-      90% 100%,
-      0 100%
-    );
+    clip-path: polygon(0 0, 90% 0, 90% 20%, 100% 20%, 100% 80%, 90% 80%, 90% 100%, 0 100%);
     position: relative;
     top: 1px;
   }
 </style>
 <div class="status-bar">
   <div class="time">
-    <span>Updated:</span> {{time}}
-    <span>Next: {{nextRefreshTime}} [{{refreshSchedule}}]</span>
+    <span>Updated:</span>
+    {{time}}
+    <span>Next: {{nextRefreshTime}}</span>
   </div>
+  <div class="schedule">Schedule: {{refreshSchedule}}</div>
   <div class="battery">
     <span class="battery-icon"></span>
     <span class="battery-percentage">{{ battery | default("-- ") }}%</span>
