@@ -2,11 +2,11 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { fileURLToPath } from "node:url";
 
 import nunjucks from "nunjucks";
-import { getAirlyData } from "../src/airlyCached.js";
+import { getAirlyData } from "../src/data/airlyCached.js";
+import { getCalendarData } from "../src/data/calendar.js";
+import { getRandomQuote } from "../src/data/quotable.js";
 import { isAuthorized } from "../src/authorization.js";
-import { getCalendarData } from "../src/calendar.js";
 import { formatDate, formatTime, getNow } from "../src/date.js";
-import { getRandomQuote } from "../src/quotable.js";
 import {
   getCurrentRefreshSchedule,
   getDayMode,

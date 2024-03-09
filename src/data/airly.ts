@@ -6,9 +6,9 @@ import {
   AIRLY_LAT,
   AIRLY_LNG,
   IS_DEVELOPMENT,
-} from "./config.js";
+} from "../config.js";
 import { storedAirlyData } from "./mocks/airly.js";
-import type { AirlyData, AirlyError } from "./types.js";
+import type { AirlyData, AirlyError } from "../types.js";
 
 export async function getAirlyData(): Promise<AirlyData | AirlyError> {
   if (!AIRLY_API_KEY || !AIRLY_LAT || !AIRLY_LNG) {

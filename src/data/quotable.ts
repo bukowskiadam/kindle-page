@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import type { Quote } from "./types.js";
+import type { Quote } from "../types.js";
 
 export async function getRandomQuote(): Promise<Quote> {
   try {

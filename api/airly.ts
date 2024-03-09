@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { getAirlyData } from "../src/airly.js";
+import { getAirlyData } from "../src/data/airly.js";
 
 import { isAuthorized } from "../src/authorization.js";
 import { setProxyMaxAge } from "../src/vercel.js";
