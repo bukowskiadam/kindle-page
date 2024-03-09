@@ -1,0 +1,32 @@
+<style>
+    .header {
+        display: flex;
+        flex-direction: row;
+    }
+
+    h1.date {
+        text-transform: capitalize;
+        font-size: 40px;
+        line-height: 48px;
+        letter-spacing: 1px;
+        text-align: center;
+        margin: 16px 0;
+        flex-grow: 1;
+        max-height: 48px;
+    }
+
+    .temperature {
+        font-size: 40px;
+        text-align: center;
+        font-weight: bold;
+        padding: 16px;
+        background-color: var(--alternative-bg);
+        max-height: 48px;
+    }
+</style>
+<div class="header">
+    <h1 class="date">{{ date }}</h1>
+    {% if airly.type === "data" %}
+        <div class="temperature">{{ airly.temperature }}°C</div>
+    {% endif %}
+</div>

@@ -1,18 +1,19 @@
 <style>
-  .bottom-bar {
+  .airly-bar {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    font-size: 20px;
+    font-size: 18px;
     text-align: center;
     background-color: var(--bg);
     color: var(--text-color);
-    height: 48px;
-    border-top: 1px solid var(--alternative-bg);
+    height: 46px;
+    border-top: 2px solid var(--alternative-bg);
+    border-bottom: 2px solid var(--alternative-bg);
   }
 
-  .bottom-bar > * {
+  .airly-bar > * {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -22,14 +23,8 @@
     padding: 0 5px;
   }
 
-  .bottom-bar > *:nth-child(even) {
+  .airly-bar > *:nth-child(even) {
     background-color: var(--alternative-bg);
-  }
-
-  .temperature {
-    font-size: 40px;
-    text-align: center;
-    font-weight: bold;
   }
 
   .airly-logo {
@@ -43,6 +38,10 @@
     color: var(--text-color-dim);
   }
 
+  .air-quality {
+    font-size: 20px;
+  }
+
   .error-label {
     flex-grow: 0;
     font-size: 16px;
@@ -54,10 +53,10 @@
     font-size: 16px;
   }
 </style>
-<div class="bottom-bar">
+<div class="airly-bar">
   <img class="airly-logo" src="https://cdn.airly.org/assets/brand/logo/primary/airly.svg" alt="airly-logo"/>
   {% if airly.type === "data" %}
-    <div>
+    <div class="air-quality">
       <span>{{ airly.airQuality.label }}:
         <strong>{{ airly.airQuality.value | int }}</strong>
       </span>
@@ -78,7 +77,6 @@
       <div>{{ airly.pressure | int }}</div>
       <div class="legend">hPa</div>
     </div>
-    <div class="temperature">{{ airly.temperature }}°C</div>
   {% else %}
     <div class="error-label">Error:</div>
     <div class="airly-error">{{ airly.error }}</div>
