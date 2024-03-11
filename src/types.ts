@@ -73,3 +73,14 @@ export type Quote = {
   content: string;
   author: string;
 };
+
+export type SynonymOfTheDay = {
+  type: "data";
+  title: string;
+  description: string;
+};
+
+export type SynonymOfTheDayError = {
+  type: "error";
+  error: string;
+};

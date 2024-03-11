@@ -20,6 +20,7 @@
   "dependencies": {
     "@napi-rs/image": "^1.9.1",
     "axios": "^1.6.7",
+    "node-html-parser": "^6.1.12",
     "nunjucks": "^3.2.4",
     "playwright-aws-lambda": "^0.10.0",
     "playwright-core": "^1.42.1",

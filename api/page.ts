@@ -15,6 +15,7 @@ import {
   validateDayMode,
 } from "../src/schedule.js";
 import { setProxyMaxAge } from "../src/vercel.js";
+import { getSynonymOfTheDay } from "../src/data/thesaurus-com.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
   const { battery: batteryUnsafe = "", forceMode: forceModeUnsafe = "" } =
@@ -33,8 +34,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const now = getNow();
   const dayMode = forceMode || getDayMode(now);
 
-  const [{ calendar, refreshScheduleOverride }, quote, airly] =
-    await Promise.all([getCalendarData(), getRandomQuote(), getAirlyData()]);
+  const [{ calendar, refreshScheduleOverride }, quote, airly, synonym] =
+    await Promise.all([
+      getCalendarData(),
+      dayMode === "day" && getRandomQuote(),
+      getAirlyData(),
+      dayMode === "evening" && getSynonymOfTheDay(),
+    ]);
 
   const refreshSchedule = getCurrentRefreshSchedule(
     now,
@@ -53,6 +59,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     quote,
     airly,
     dayMode,
+    synonym,
   });
 
   res.setHeader("X-Next-Refresh", nextRefreshSeconds);

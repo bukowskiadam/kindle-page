@@ -1,0 +1,36 @@
+{% if synonym %}
+    <style>
+        .synonym,
+        .synonym-error {
+            margin: auto 8px;
+            padding-top: 8px;
+            border-top: 1px solid var(--text-color-dim);
+            background: var(--bg);
+        }
+
+        .synonym {
+            font-size: 15px;
+        }
+
+        .synonym h2 {
+            font-size: 18px;
+            margin-block-start: 2px;
+            text-align: center;
+        }
+
+        .synonym p {
+            margin-block-start: 8px;
+            margin-block-end: 8px;
+        }
+    </style>
+    {% if synonym.type === "data" %}
+        <div class="synonym">
+            {{ synonym.title | safe }}
+            {{ synonym.description | safe }}
+        </div>
+    {% else %}
+        <div class="synonym-error">
+            {{ synonym.error }}
+        </div>
+    {% endif %}
+{% endif %}
