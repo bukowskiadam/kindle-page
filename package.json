@@ -15,15 +15,15 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@types/nunjucks": "^3.2.6",
-    "vercel": "^33.5.3"
+    "vercel": "^34.1.8"
   },
   "dependencies": {
-    "@napi-rs/image": "^1.9.1",
-    "axios": "^1.6.7",
-    "node-html-parser": "^6.1.12",
+    "@napi-rs/image": "^1.9.2",
+    "axios": "^1.6.8",
+    "node-html-parser": "^6.1.13",
     "nunjucks": "^3.2.4",
     "playwright-aws-lambda": "^0.10.0",
-    "playwright-core": "^1.42.1",
+    "playwright-core": "^1.43.1",
     "scmp": "^2.1.0"
   }
 }
