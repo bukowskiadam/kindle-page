@@ -15,11 +15,11 @@ export async function takeScreenshot(url: string): Promise<ScreenshotResult> {
     context = await browser.newContext({
       locale: "pl-PL",
       userAgent:
-        "Mozilla/5.0 (Linux; Android 10; Pixel 4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Mobile Safari/537.36",
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1",
+      viewport: { width: 600, height: 800 },
     });
 
     const page = await context.newPage();
-    await page.setViewportSize({ width: 600, height: 800 });
 
     const [response] = await Promise.all([page.goto(url), warmupPageCache]);
 
