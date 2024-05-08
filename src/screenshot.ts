@@ -1,8 +1,31 @@
 import type { BrowserContext, ChromiumBrowser } from "playwright-core";
-import { launchChromium } from "playwright-aws-lambda";
+import { chromium as playwright } from "playwright-core";
+import chromium from "@sparticuz/chromium";
 import axios from "axios";
 
 import type { ScreenshotResult } from "./types.js";
+
+/**
+ * this is an optimization to avoid launching a new browser for every screenshot
+ * on the first run screenshot might fail due to the startup time of the browser
+ * but on the next runs, it should be faster. Kindle requests 3 times to get the
+ * image. I hope this will work ok.
+ */
+let _browser: ChromiumBrowser | null;
+
+async function launchBrowser(): Promise<ChromiumBrowser> {
+  if (_browser) {
+    return _browser;
+  }
+
+  _browser = await playwright.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    headless: true,
+  });
+
+  return _browser;
+}
 
 export async function takeScreenshot(url: string): Promise<ScreenshotResult> {
   let browser: ChromiumBrowser | null = null;
@@ -11,7 +34,7 @@ export async function takeScreenshot(url: string): Promise<ScreenshotResult> {
   try {
     const warmupPageCache = axios.get(url);
 
-    browser = await launchChromium({ headless: true });
+    browser = await launchBrowser();
     context = await browser.newContext({
       locale: "pl-PL",
       userAgent:
