@@ -39,7 +39,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
       getCalendarData(),
       dayMode === "day" && getRandomQuote(),
       getAirlyData(),
-      dayMode === "evening" && getSynonymOfTheDay(),
+      ["morning", "evening"].includes(dayMode) && getSynonymOfTheDay(),
     ]);
 
   const refreshSchedule = getCurrentRefreshSchedule(

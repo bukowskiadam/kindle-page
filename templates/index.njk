@@ -38,10 +38,20 @@
         position: relative;
         background-color: var(--bg);
         color: var(--text-color);
-        justify-content: space-between;
+        justify-content: flex-start;
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         align-items: stretch;
+      }
+
+      .columns {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+      }
+
+      .columns > div {
+        width: 50%;
       }
     </style>
   </head>
