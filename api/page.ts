@@ -37,9 +37,9 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const [{ calendar, refreshScheduleOverride }, quote, airly, synonym] =
     await Promise.all([
       getCalendarData(),
-      dayMode === "day" && getRandomQuote(),
+      null, // dayMode === "day" && getRandomQuote(), // disabled for now
       getAirlyData(),
-      ["morning", "evening"].includes(dayMode) && getSynonymOfTheDay(),
+      ["day", "morning", "evening"].includes(dayMode) && getSynonymOfTheDay(),
     ]);
 
   const refreshSchedule = getCurrentRefreshSchedule(
