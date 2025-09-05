@@ -1,25 +1,30 @@
 import axios from "axios";
-import { SynonymOfTheDay, SynonymOfTheDayError } from "../types.js";
 import { parse } from "node-html-parser";
+import type { SynonymOfTheDay, SynonymOfTheDayError } from "../types.js";
 
 export async function getSynonymOfTheDay(): Promise<
   SynonymOfTheDay | SynonymOfTheDayError
 > {
   const response = await axios.get(
-    "https://www.thesaurus.com/e/synonym-of-the-day/"
+    "https://www.dictionary.com/e/word-of-the-day/"
   );
-  let title, description;
+  let title: string | undefined, description: string | undefined;
 
   if (response.status === 200) {
     const document = parse(response.data);
-    const synonym = document.querySelector(".sotd-item-wrapper-content");
+    const synonym = document.querySelector(".otd-item-wrapper-content");
 
-    title = synonym?.querySelectorAll(" h2.sotd-item__desc-title")?.toString();
+    title = synonym
+      ?.querySelectorAll("h1.js-fit-text")?.[0]
+      ?.textContent.trim();
+
+    if (title) {
+      title = `<h2 style="text-align: left;">${title}</h2>`;
+    }
 
     description = synonym
-      ?.querySelector("div.sotd-item__description")
-      ?.toString()
-      .replaceAll("✅", "");
+      ?.querySelector("div.otd-item-headword__pos")
+      ?.toString();
 
     if (title && description) {
       return {
