@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { isAuthorized } from "../src/authorization.js";
-import { IS_DEVELOPMENT } from "../src/config.js";
+// import { IS_DEVELOPMENT } from "../src/config.js";
 import { imageForKindle } from "../src/for-kindle.js";
 import { takeScreenshot } from "../src/screenshot.js";
 import { getSelfUrl, setProxyMaxAge } from "../src/vercel.js";
@@ -12,7 +12,8 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   const params = req.url?.split("?")[1] || "";
 
-  const rotate = !IS_DEVELOPMENT;
+  // const rotate = !IS_DEVELOPMENT;
+  const rotate = false; // I have turned off the rotation because my kindle is out of the picture frame for now
   const { screenshot, headers } = await takeScreenshot(
     `${getSelfUrl()}/api/page?${params}`
   );
