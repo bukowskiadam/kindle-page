@@ -6,31 +6,40 @@ export async function getSynonymOfTheDay(): Promise<
   SynonymOfTheDay | SynonymOfTheDayError
 > {
   const response = await axios.get(
-    "https://www.dictionary.com/e/word-of-the-day/"
+    "https://www.dictionary.com/word-of-the-day"
   );
-  let title: string | undefined, description: string | undefined;
+  let title: string | undefined,
+    definition: string | undefined,
+    pos: string | undefined,
+    explanation: string | undefined;
 
   if (response.status === 200) {
     const document = parse(response.data);
-    const synonym = document.querySelector(".otd-item-wrapper-content");
+    const container = document.querySelector(".wotd-entry-wrapper");
 
-    title = synonym
-      ?.querySelectorAll("h1.js-fit-text")?.[0]
+    title = container
+      ?.querySelector(".wotd-entry-headword")
       ?.textContent.trim();
+
+    pos = container?.querySelector(".wotd-entry-pos")?.textContent.trim();
 
     if (title) {
       title = `<h2 style="text-align: left;">${title}</h2>`;
     }
 
-    description = synonym
-      ?.querySelector("div.otd-item-headword__pos")
+    definition = container
+      ?.querySelector(".wotd-entry-definition")
+      ?.textContent.trim();
+
+    explanation = container
+      ?.querySelector(".wotd-entry-explanation-section p")
       ?.toString();
 
-    if (title && description) {
+    if (title && definition) {
       return {
         type: "data",
         title,
-        description,
+        description: `<p>[${pos}] ${definition}</p>${explanation ?? ""}`,
       };
     }
   }
@@ -40,7 +49,7 @@ export async function getSynonymOfTheDay(): Promise<
       ? `Failed to fetch data: Status code ${response.status}.`
       : !title
       ? "Failed to parse title."
-      : !description
+      : !definition
       ? "Failed to parse description."
       : "Unknown error.";
 
