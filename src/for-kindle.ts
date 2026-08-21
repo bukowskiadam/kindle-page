@@ -9,7 +9,7 @@ export function imageForKindle(
   buffer: Buffer,
   { rotate = false }: ImageForKindleOpts = {}
 ): Buffer {
-  const grayscale = new Transformer(buffer)
+  const grayscale = new Transformer(new Uint8Array(buffer))
     .grayscale()
     // rotating because my kindle is upside-down
     .rotate(rotate ? Orientation.Rotate180 : null)
