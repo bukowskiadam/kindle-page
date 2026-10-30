@@ -11,21 +11,25 @@ export const FONT_FILES = {
   bold: fileURLToPath(
     new URL("../../assets/fonts/Montserrat-Bold.ttf", import.meta.url)
   ),
+  italic: fileURLToPath(
+    new URL("../../assets/fonts/Montserrat-MediumItalic.ttf", import.meta.url)
+  ),
 } as const;
 
 export type SatoriFont = {
   name: string;
   data: Buffer;
   weight: (typeof FONT_WEIGHT)[keyof typeof FONT_WEIGHT];
-  style: "normal";
+  style: "normal" | "italic";
 };
 
 let fontsCache: Promise<SatoriFont[]> | null = null;
 
 export function loadFonts(): Promise<SatoriFont[]> {
   fontsCache ??= Promise.all([
-    readFont(FONT_FILES.regular, FONT_WEIGHT.regular),
-    readFont(FONT_FILES.bold, FONT_WEIGHT.bold),
+    readFont(FONT_FILES.regular, FONT_WEIGHT.regular, "normal"),
+    readFont(FONT_FILES.bold, FONT_WEIGHT.bold, "normal"),
+    readFont(FONT_FILES.italic, FONT_WEIGHT.regular, "italic"),
   ]);
 
   return fontsCache;
@@ -33,9 +37,10 @@ export function loadFonts(): Promise<SatoriFont[]> {
 
 async function readFont(
   path: string,
-  weight: SatoriFont["weight"]
+  weight: SatoriFont["weight"],
+  style: SatoriFont["style"]
 ): Promise<SatoriFont> {
-  return { name: FONT_FAMILY, data: await readFile(path), weight, style: "normal" };
+  return { name: FONT_FAMILY, data: await readFile(path), weight, style };
 }
 
 /**

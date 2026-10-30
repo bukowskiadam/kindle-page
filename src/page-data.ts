@@ -52,12 +52,18 @@ export type PageData = {
   synonym: SynonymOfTheDay | SynonymOfTheDayError | false;
 };
 
-export async function getPageData({
-  battery,
-  forceMode,
-}: PageDataOptions): Promise<PageData> {
-  const now = getNow();
-  const dayMode = forceMode || getDayMode(now);
+export function resolveDayMode(
+  { forceMode }: PageDataOptions,
+  now: Date = getNow()
+): DayMode {
+  return forceMode || getDayMode(now);
+}
+
+export async function getPageData(
+  options: PageDataOptions,
+  now: Date = getNow()
+): Promise<PageData> {
+  const dayMode = resolveDayMode(options, now);
 
   const [{ calendar, refreshScheduleOverride }, quote, airly, synonym] =
     await Promise.all([
@@ -76,7 +82,7 @@ export async function getPageData({
   return {
     time: formatTime(now),
     date: formatDate(now),
-    battery,
+    battery: options.battery,
     refreshSchedule,
     nextRefreshTime: formatTime(nextRefreshTime),
     nextRefreshSeconds: getSecondsToNextRefresh(now, nextRefreshTime),

@@ -1,9 +1,15 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
 import { isAuthorized } from "../src/authorization.js";
+import { getNow } from "../src/date.js";
 import { imageForKindle } from "../src/for-kindle.js";
-import { getPageData, parsePageDataOptions } from "../src/page-data.js";
+import {
+  getPageData,
+  parsePageDataOptions,
+  resolveDayMode,
+} from "../src/page-data.js";
 import { loadRenderAssets } from "../src/render/assets.js";
+import { layoutFor } from "../src/render/components/layouts.js";
 import {
   renderDashboardPng,
   renderDashboardSvg,
@@ -11,7 +17,7 @@ import {
 import { setProxyMaxAge } from "../src/vercel.js";
 
 /**
- * PoC replacement for /api/screenshot: renders the PNG directly
+ * Replacement for /api/screenshot: renders the PNG directly
  * (satori + resvg) instead of screenshotting /api/page with Chromium.
  */
 export default async (req: VercelRequest, res: VercelResponse) => {
@@ -21,9 +27,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
 
   const timer = createTimer();
 
+  const now = getNow();
+  const options = parsePageDataOptions(req.query);
+  const { withMeteogram } = layoutFor(resolveDayMode(options, now));
+
   const [data, assets] = await Promise.all([
-    getPageData(parsePageDataOptions(req.query)),
-    loadRenderAssets(),
+    getPageData(options, now),
+    loadRenderAssets({ withMeteogram }),
   ]);
   timer.mark("data");
 
@@ -33,6 +43,7 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   const png = renderDashboardPng(svg);
   timer.mark("raster");
 
+  // rotation is off because my kindle is out of the picture frame for now
   const forKindle = imageForKindle(png, { rotate: false });
   timer.mark("kindle");
 
