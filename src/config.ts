@@ -12,8 +12,6 @@ export const AIRLY_INDEX_LABEL: string = "AQI";
 
 export const CALENDAR_EVENTS_URL: string = process.env.CALENDAR_EVENTS || "";
 
-export const SELF_URL: string = process.env.VERCEL_URL || "";
-export const SELF_PROTOCOL: string = IS_DEVELOPMENT ? "http" : "https";
 
 export const TIME_ZONE = "Europe/Warsaw";
 

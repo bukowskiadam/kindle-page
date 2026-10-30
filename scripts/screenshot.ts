@@ -10,9 +10,6 @@ import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 import { IS_DEVELOPMENT } from "../src/config.ts";
-import { getAirlyData } from "../src/data/airly.ts";
-import { getCalendarData } from "../src/data/calendar.ts";
-import { getWordOfTheDay } from "../src/data/dictionary-com.ts";
 import { imageForKindle } from "../src/for-kindle.ts";
 import { getPageData } from "../src/page-data.ts";
 import { loadRenderAssets } from "../src/render/assets.ts";
@@ -40,11 +37,9 @@ async function main() {
   }
 
   const now = new Date();
-  // Direct Airly loader instead of the HTTP one: in development it returns mocks.
-  const sources = { getCalendarData, getAirlyData, getWordOfTheDay };
 
   const [data, assets] = await Promise.all([
-    getPageData({ battery: SAMPLE_BATTERY_PERCENT, forceMode }, now, sources),
+    getPageData({ battery: SAMPLE_BATTERY_PERCENT, forceMode }, now),
     loadRenderAssets({ withMeteogram: layoutFor(forceMode).withMeteogram }),
   ]);
 

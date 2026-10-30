@@ -31,15 +31,20 @@ sequenceDiagram
     autonumber
     actor kindle as Kindle
     participant screenshot as /api/screenshot
-    participant airly as /api/airly
+    participant cache as Runtime Cache
+    participant airly as Airly API
     participant calendar as script.google.com
     participant dictionary as dictionary.com
     participant yr as yr.no
     participant cdn as cdn.airly.org
     kindle ->>+ screenshot: fetch
     par
-        screenshot ->> airly: fetch airly
-        airly -->> screenshot: current weather
+        screenshot ->> cache: get Airly measurements
+        alt not cached
+            screenshot ->> airly: fetch measurements
+            airly -->> screenshot: current weather
+            screenshot ->> cache: store for 15 min
+        end
     and
         screenshot ->> calendar: fetch upcoming events
         calendar -->> screenshot: schedule for upcoming days
