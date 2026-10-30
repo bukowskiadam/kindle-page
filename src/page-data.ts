@@ -21,6 +21,18 @@ import type {
 
 const MODES_WITH_SYNONYM: DayMode[] = ["day", "morning", "evening"];
 
+export type PageDataSources = {
+  getCalendarData: typeof getCalendarData;
+  getAirlyData: () => Promise<AirlyData | AirlyError>;
+  getSynonymOfTheDay: typeof getSynonymOfTheDay;
+};
+
+const DEFAULT_SOURCES: PageDataSources = {
+  getCalendarData,
+  getAirlyData,
+  getSynonymOfTheDay,
+};
+
 export type PageDataOptions = {
   battery?: number;
   forceMode?: DayMode;
@@ -59,15 +71,16 @@ export function resolveDayMode(
 
 export async function getPageData(
   options: PageDataOptions,
-  now: Date = getNow()
+  now: Date = getNow(),
+  sources: PageDataSources = DEFAULT_SOURCES
 ): Promise<PageData> {
   const dayMode = resolveDayMode(options, now);
 
   const [{ calendar, refreshScheduleOverride }, airly, synonym] =
     await Promise.all([
-      getCalendarData(),
-      getAirlyData(),
-      MODES_WITH_SYNONYM.includes(dayMode) && getSynonymOfTheDay(),
+      sources.getCalendarData(),
+      sources.getAirlyData(),
+      MODES_WITH_SYNONYM.includes(dayMode) && sources.getSynonymOfTheDay(),
     ]);
 
   const refreshSchedule = getCurrentRefreshSchedule(

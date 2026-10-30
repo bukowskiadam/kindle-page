@@ -19,6 +19,8 @@ See related projects:
 1. Install `npm install`
 2. Run dev mode `npm start`
 3. Deploy to your app `npm run deploy`
+4. Regenerate the sample image from mock data `npm run screenshot`
+   (optionally pass a day mode: `npm run screenshot -- night`)
 
 The image is **upside-down** because my Kindle is upside-down in the picture frame.
 
