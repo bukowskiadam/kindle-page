@@ -1,6 +1,6 @@
-import type { AirlyData, AirlyError } from "../../types.js";
-import { html } from "../html.js";
-import { COLORS, FONT_WEIGHT } from "../theme.js";
+import type { AirlyData, AirlyError } from "../../types.ts";
+import { html } from "../html.ts";
+import { COLORS, FONT_WEIGHT } from "../theme.ts";
 
 type HeaderProps = {
   date: string;

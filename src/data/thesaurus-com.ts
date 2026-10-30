@@ -1,6 +1,6 @@
 import axios from "axios";
 import { parse } from "node-html-parser";
-import type { SynonymOfTheDay, SynonymOfTheDayError } from "../types.js";
+import type { SynonymOfTheDay, SynonymOfTheDayError } from "../types.ts";
 
 export async function getSynonymOfTheDay(): Promise<
   SynonymOfTheDay | SynonymOfTheDayError

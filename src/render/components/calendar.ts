@@ -1,6 +1,6 @@
-import type { CalendarApiDayData, PreparedCalendarData } from "../../types.js";
-import { html } from "../html.js";
-import { COLORS, FONT_WEIGHT } from "../theme.js";
+import type { CalendarApiDayData, PreparedCalendarData } from "../../types.ts";
+import { html } from "../html.ts";
+import { COLORS, FONT_WEIGHT } from "../theme.ts";
 
 const EVENT_STYLE = { display: "flex", margin: "3px 0 0 16px" } as const;
 

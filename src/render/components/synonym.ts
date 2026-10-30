@@ -1,8 +1,8 @@
 import { parse } from "node-html-parser";
 
-import type { SynonymOfTheDay, SynonymOfTheDayError } from "../../types.js";
-import { html } from "../html.js";
-import { FONT_WEIGHT } from "../theme.js";
+import type { SynonymOfTheDay, SynonymOfTheDayError } from "../../types.ts";
+import { html } from "../html.ts";
+import { FONT_WEIGHT } from "../theme.ts";
 
 type SynonymProps = {
   synonym: SynonymOfTheDay | SynonymOfTheDayError;

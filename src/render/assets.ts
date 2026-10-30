@@ -2,8 +2,8 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import axios from "axios";
 
-import { svgToPng } from "./rasterize.js";
-import { PAGE_WIDTH } from "./theme.js";
+import { svgToPng } from "./rasterize.ts";
+import { PAGE_WIDTH } from "./theme.ts";
 
 const METEOGRAM_URL = "https://www.yr.no/en/content/2-3094802/meteogram.svg";
 const AIRLY_LOGO_URL =

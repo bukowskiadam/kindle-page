@@ -1,1 +1,1 @@
-export { default } from "./screenshot.js";
+export { default } from "./screenshot.ts";

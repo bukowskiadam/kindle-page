@@ -10,23 +10,27 @@
     "deploy": "vercel deploy --prod",
     "vercel": "vercel",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "screenshot": "VERCEL_ENV=development AIRLY_API_KEY=mock AIRLY_LAT=0 AIRLY_LNG=0 tsx scripts/screenshot.ts"
+    "screenshot": "VERCEL_ENV=development AIRLY_API_KEY=mock AIRLY_LAT=0 AIRLY_LNG=0 node scripts/screenshot.ts"
   },
   "author": "Adam Bukowski",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
-    "tsx": "^4.23.15",
-    "vercel": "^59.3.0"
+    "@vercel/node": "^29.0.0",
+    "vercel": "^65.8.0"
   },
   "dependencies": {
-    "@napi-rs/image": "^1.14.0",
+    "@napi-rs/image": "^1.16.0",
     "@resvg/resvg-js": "^2.6.2",
-    "axios": "^1.19.0",
+    "axios": "^1.21.0",
     "htm": "^3.1.1",
-    "node-html-parser": "^9.0.1",
+    "node-html-parser": "^9.0.6",
     "react": "^19.3.1",
     "satori": "^0.63.2",
     "scmp": "^2.1.0"
+  },
+  "overrides": {
+    "fflate": "~0.7.5"
   }
 }

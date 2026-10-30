@@ -1,10 +1,10 @@
 import satori from "satori";
 
-import type { PageData } from "../page-data.js";
-import type { RenderAssets } from "./assets.js";
-import { Dashboard } from "./components/dashboard.js";
-import { loadFonts, svgToPng } from "./rasterize.js";
-import { PAGE_HEIGHT, PAGE_WIDTH } from "./theme.js";
+import type { PageData } from "../page-data.ts";
+import type { RenderAssets } from "./assets.ts";
+import { Dashboard } from "./components/dashboard.ts";
+import { loadFonts, svgToPng } from "./rasterize.ts";
+import { PAGE_HEIGHT, PAGE_WIDTH } from "./theme.ts";
 
 export async function renderDashboardSvg(
   data: PageData,

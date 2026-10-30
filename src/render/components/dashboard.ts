@@ -1,6 +1,6 @@
-import { html } from "../html.js";
-import { COLORS, FONT_FAMILY, FONT_WEIGHT, PAGE_HEIGHT, PAGE_WIDTH } from "../theme.js";
-import { layoutFor, type LayoutProps } from "./layouts.js";
+import { html } from "../html.ts";
+import { COLORS, FONT_FAMILY, FONT_WEIGHT, PAGE_HEIGHT, PAGE_WIDTH } from "../theme.ts";
+import { layoutFor, type LayoutProps } from "./layouts.ts";
 
 const ROOT_STYLE = {
   display: "flex",

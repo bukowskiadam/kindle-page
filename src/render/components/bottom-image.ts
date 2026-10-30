@@ -1,5 +1,5 @@
-import type { SvgImage } from "../assets.js";
-import { html } from "../html.js";
+import type { SvgImage } from "../assets.ts";
+import { html } from "../html.ts";
 
 const IMAGE_WIDTH_PX = 100;
 const IMAGE_OPACITY = 0.2;

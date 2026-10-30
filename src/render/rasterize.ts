@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { Resvg } from "@resvg/resvg-js";
 
-import { FONT_FAMILY, FONT_WEIGHT } from "./theme.js";
+import { FONT_FAMILY, FONT_WEIGHT } from "./theme.ts";
 
 export const FONT_FILES = {
   regular: fileURLToPath(

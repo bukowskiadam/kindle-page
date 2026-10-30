@@ -1,5 +1,5 @@
 import type { VercelResponse } from "@vercel/node";
-import { SELF_URL, SELF_PROTOCOL } from "./config.js";
+import { SELF_URL, SELF_PROTOCOL } from "./config.ts";
 
 export function setProxyMaxAge(
   res: VercelResponse,

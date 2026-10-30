@@ -2,12 +2,15 @@ export type ImageForKindleOpts = {
   rotate?: boolean;
 };
 
-export enum RefreshSchedule {
-  Work = "Work",
-  Weekend = "Weekend",
-  WFH = "WFH",
-  Vacation = "Vacation",
-}
+export const RefreshSchedule = {
+  Work: "Work",
+  Weekend: "Weekend",
+  WFH: "WFH",
+  Vacation: "Vacation",
+} as const;
+
+export type RefreshSchedule =
+  (typeof RefreshSchedule)[keyof typeof RefreshSchedule];
 
 export type DayMode = "morning" | "day" | "evening" | "night";
 

@@ -1,5 +1,5 @@
-import { html } from "../html.js";
-import { COLORS, FONT_WEIGHT } from "../theme.js";
+import { html } from "../html.ts";
+import { COLORS, FONT_WEIGHT } from "../theme.ts";
 
 const BATTERY_BORDER_PX = 3;
 const BATTERY_BODY_WIDTH_PX = 29;

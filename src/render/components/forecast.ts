@@ -1,6 +1,6 @@
-import { METEOGRAM_CROP } from "../assets.js";
-import { html } from "../html.js";
-import { COLORS } from "../theme.js";
+import { METEOGRAM_CROP } from "../assets.ts";
+import { html } from "../html.ts";
+import { COLORS } from "../theme.ts";
 
 export function Forecast({ meteogramDataUri }: { meteogramDataUri: string }) {
   return html`

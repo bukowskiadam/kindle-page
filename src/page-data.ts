@@ -1,14 +1,14 @@
-import { getAirlyData } from "./data/airly-cached.js";
-import { getCalendarData } from "./data/calendar.js";
-import { getSynonymOfTheDay } from "./data/thesaurus-com.js";
-import { formatDate, formatTime, getNow } from "./date.js";
+import { getAirlyData } from "./data/airly-cached.ts";
+import { getCalendarData } from "./data/calendar.ts";
+import { getSynonymOfTheDay } from "./data/thesaurus-com.ts";
+import { formatDate, formatTime, getNow } from "./date.ts";
 import {
   getCurrentRefreshSchedule,
   getDayMode,
   getNextRefreshTime,
   getSecondsToNextRefresh,
   validateDayMode,
-} from "./schedule.js";
+} from "./schedule.ts";
 import type {
   AirlyData,
   AirlyError,
@@ -17,7 +17,7 @@ import type {
   RefreshSchedule,
   SynonymOfTheDay,
   SynonymOfTheDayError,
-} from "./types.js";
+} from "./types.ts";
 
 const MODES_WITH_SYNONYM: DayMode[] = ["day", "morning", "evening"];
 

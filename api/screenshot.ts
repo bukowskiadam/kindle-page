@@ -1,20 +1,20 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 
-import { isAuthorized } from "../src/authorization.js";
-import { getNow } from "../src/date.js";
-import { imageForKindle } from "../src/for-kindle.js";
+import { isAuthorized } from "../src/authorization.ts";
+import { getNow } from "../src/date.ts";
+import { imageForKindle } from "../src/for-kindle.ts";
 import {
   getPageData,
   parsePageDataOptions,
   resolveDayMode,
-} from "../src/page-data.js";
-import { loadRenderAssets } from "../src/render/assets.js";
-import { layoutFor } from "../src/render/components/layouts.js";
+} from "../src/page-data.ts";
+import { loadRenderAssets } from "../src/render/assets.ts";
+import { layoutFor } from "../src/render/components/layouts.ts";
 import {
   renderDashboardPng,
   renderDashboardSvg,
-} from "../src/render/render-png.js";
-import { setProxyMaxAge } from "../src/vercel.js";
+} from "../src/render/render-png.ts";
+import { setProxyMaxAge } from "../src/vercel.ts";
 
 /**
  * Renders the dashboard PNG for the Kindle: satori lays out the page,

@@ -2,7 +2,7 @@ import type { VercelRequest } from "@vercel/node";
 // @ts-ignore
 import scmp from "scmp";
 
-import { AUTH_TOKEN, IS_DEVELOPMENT } from "./config.js";
+import { AUTH_TOKEN, IS_DEVELOPMENT } from "./config.ts";
 
 export function isAuthorized(req: VercelRequest): boolean {
   const { auth = "" } = req.query || {};

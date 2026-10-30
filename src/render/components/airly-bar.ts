@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 
-import type { AirlyData, AirlyError } from "../../types.js";
-import { html } from "../html.js";
-import { COLORS, FONT_WEIGHT } from "../theme.js";
+import type { AirlyData, AirlyError } from "../../types.ts";
+import { html } from "../html.ts";
+import { COLORS, FONT_WEIGHT } from "../theme.ts";
 
 const AIRLY_LOGO = { width: 80, height: 25 } as const;
 

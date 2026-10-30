@@ -4,15 +4,15 @@ import {
   CALENDAR_EVENTS_URL,
   IS_DEVELOPMENT,
   KINDLECTL_KEYWORD,
-} from "../config.js";
-import { formatDate, formatTime, isToday } from "../date.js";
-import { calendarMockData } from "./mocks/calendar.js";
-import {
+} from "../config.ts";
+import { formatDate, formatTime, isToday } from "../date.ts";
+import { calendarMockData } from "./mocks/calendar.ts";
+import type {
   CalendarApiData,
   CalendarDataWithRefreshSchedule,
   AllDayEvent,
-  RefreshSchedule,
-} from "../types.js";
+} from "../types.ts";
+import { RefreshSchedule } from "../types.ts";
 
 function isKindleCtlCommand(event: AllDayEvent): boolean {
   return event.title.trim().toLowerCase().startsWith(KINDLECTL_KEYWORD);

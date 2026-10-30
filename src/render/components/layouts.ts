@@ -1,17 +1,17 @@
 import type { ReactNode } from "react";
 
-import type { PageData } from "../../page-data.js";
-import type { DayMode } from "../../types.js";
-import type { RenderAssets } from "../assets.js";
-import { html } from "../html.js";
-import { AirlyBar } from "./airly-bar.js";
-import { BottomImage } from "./bottom-image.js";
-import { Calendar } from "./calendar.js";
-import { Forecast } from "./forecast.js";
-import { Header } from "./header.js";
-import { NightMessage } from "./night-message.js";
-import { StatusBar } from "./status-bar.js";
-import { Synonym } from "./synonym.js";
+import type { PageData } from "../../page-data.ts";
+import type { DayMode } from "../../types.ts";
+import type { RenderAssets } from "../assets.ts";
+import { html } from "../html.ts";
+import { AirlyBar } from "./airly-bar.ts";
+import { BottomImage } from "./bottom-image.ts";
+import { Calendar } from "./calendar.ts";
+import { Forecast } from "./forecast.ts";
+import { Header } from "./header.ts";
+import { NightMessage } from "./night-message.ts";
+import { StatusBar } from "./status-bar.ts";
+import { Synonym } from "./synonym.ts";
 
 export type LayoutProps = {
   data: PageData;

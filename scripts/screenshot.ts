@@ -9,19 +9,19 @@
 import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
-import { IS_DEVELOPMENT } from "../src/config.js";
-import { getAirlyData } from "../src/data/airly.js";
-import { getCalendarData } from "../src/data/calendar.js";
-import { getSynonymOfTheDay } from "../src/data/thesaurus-com.js";
-import { imageForKindle } from "../src/for-kindle.js";
-import { getPageData } from "../src/page-data.js";
-import { loadRenderAssets } from "../src/render/assets.js";
-import { layoutFor } from "../src/render/components/layouts.js";
+import { IS_DEVELOPMENT } from "../src/config.ts";
+import { getAirlyData } from "../src/data/airly.ts";
+import { getCalendarData } from "../src/data/calendar.ts";
+import { getSynonymOfTheDay } from "../src/data/thesaurus-com.ts";
+import { imageForKindle } from "../src/for-kindle.ts";
+import { getPageData } from "../src/page-data.ts";
+import { loadRenderAssets } from "../src/render/assets.ts";
+import { layoutFor } from "../src/render/components/layouts.ts";
 import {
   renderDashboardPng,
   renderDashboardSvg,
-} from "../src/render/render-png.js";
-import { validateDayMode } from "../src/schedule.js";
+} from "../src/render/render-png.ts";
+import { validateDayMode } from "../src/schedule.ts";
 
 const SAMPLE_BATTERY_PERCENT = 77;
 const DEFAULT_DAY_MODE = "day";
