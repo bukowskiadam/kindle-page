@@ -1,6 +1,6 @@
 import { getCachedAirlyData } from "./data/airly-cached.ts";
 import { getCalendarData } from "./data/calendar.ts";
-import { getWordOfTheDay } from "./data/dictionary-com.ts";
+import { getDailyEnglish } from "./data/daily-english.ts";
 import { formatDate, formatTime, getNow } from "./date.ts";
 import {
   getCurrentRefreshSchedule,
@@ -15,11 +15,10 @@ import type {
   DayMode,
   PreparedCalendarData,
   RefreshSchedule,
-  WordOfTheDayData,
-  WordOfTheDayError,
+  DailyEnglish,
 } from "./types.ts";
 
-const MODES_WITH_WORD_OF_THE_DAY: DayMode[] = ["day", "morning", "evening"];
+const MODES_WITH_DAILY_ENGLISH: DayMode[] = ["day", "morning", "evening"];
 
 export type PageDataOptions = {
   battery?: number;
@@ -47,7 +46,7 @@ export type PageData = {
   calendar: PreparedCalendarData;
   airly: AirlyData | AirlyError;
   dayMode: DayMode;
-  wordOfTheDay: WordOfTheDayData | WordOfTheDayError | false;
+  dailyEnglish: DailyEnglish | false;
 };
 
 export function resolveDayMode(
@@ -63,12 +62,10 @@ export async function getPageData(
 ): Promise<PageData> {
   const dayMode = resolveDayMode(options, now);
 
-  const [{ calendar, refreshScheduleOverride }, airly, wordOfTheDay] =
-    await Promise.all([
-      getCalendarData(),
-      getCachedAirlyData(),
-      MODES_WITH_WORD_OF_THE_DAY.includes(dayMode) && getWordOfTheDay(),
-    ]);
+  const [{ calendar, refreshScheduleOverride }, airly] = await Promise.all([
+    getCalendarData(),
+    getCachedAirlyData(),
+  ]);
 
   const refreshSchedule = getCurrentRefreshSchedule(
     now,
@@ -86,6 +83,7 @@ export async function getPageData(
     calendar,
     airly,
     dayMode,
-    wordOfTheDay,
+    dailyEnglish:
+      MODES_WITH_DAILY_ENGLISH.includes(dayMode) && getDailyEnglish(now),
   };
 }

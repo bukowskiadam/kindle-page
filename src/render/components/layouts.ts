@@ -11,7 +11,7 @@ import { Forecast } from "./forecast.ts";
 import { Header } from "./header.ts";
 import { NightMessage } from "./night-message.ts";
 import { StatusBar } from "./status-bar.ts";
-import { WordOfTheDay } from "./word-of-the-day.ts";
+import { DailyEnglish } from "./daily-english.ts";
 
 export type LayoutProps = {
   data: PageData;
@@ -61,7 +61,7 @@ function DayContent(props: LayoutProps) {
       <div style=${{ display: "flex", flexDirection: "row", flexGrow: 1 }}>
         <div style=${HALF_COLUMN_STYLE}>${Calendar({ calendar: data.calendar })}</div>
         <div style=${HALF_COLUMN_STYLE}>
-          ${data.wordOfTheDay && WordOfTheDay({ wordOfTheDay: data.wordOfTheDay })}
+          ${data.dailyEnglish && DailyEnglish({ dailyEnglish: data.dailyEnglish })}
         </div>
       </div>
     `,

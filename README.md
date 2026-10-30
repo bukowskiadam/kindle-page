@@ -21,7 +21,7 @@ See related projects:
    uses mock calendar and Airly data, no `auth` param needed)
 3. Deploy to your app `npm run deploy`
 4. Regenerate the sample image `npm run screenshot` (mock calendar and Airly
-   data; the meteogram and the word of the day are fetched live)
+   data; the meteogram is fetched live)
    (optionally pass a day mode: `npm run screenshot -- night`)
 
 ## Application flow
@@ -34,7 +34,6 @@ sequenceDiagram
     participant cache as Runtime Cache
     participant airly as Airly API
     participant calendar as script.google.com
-    participant dictionary as dictionary.com
     participant yr as yr.no
     participant cdn as cdn.airly.org
     kindle ->>+ screenshot: fetch
@@ -48,9 +47,6 @@ sequenceDiagram
     and
         screenshot ->> calendar: fetch upcoming events
         calendar -->> screenshot: schedule for upcoming days
-    and
-        screenshot ->> dictionary: fetch word of the day<br>(skipped at night)
-        dictionary -->> screenshot: word of the day
     and
         screenshot ->> yr: fetch meteogram SVG<br>(skipped at night)
         yr -->> screenshot: meteogram

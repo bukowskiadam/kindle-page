@@ -1,6 +1,6 @@
 /**
  * Renders the README sample image from mock data (calendar, Airly) and live
- * public data (yr.no meteogram, wordOfTheDay of the day).
+ * public data (yr.no meteogram).
  *
  * Usage: npm run screenshot [-- <dayMode>]
  * Run through the npm script: it sets VERCEL_ENV=development, which makes

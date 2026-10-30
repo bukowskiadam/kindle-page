@@ -38,7 +38,7 @@ function filterOutKindleCtlCommands(events: AllDayEvent[]): AllDayEvent[] {
 }
 
 function getRefreshScheduleOverride(
-  command: string | undefined
+  command: string | undefined,
 ): RefreshSchedule | undefined {
   switch (command) {
     case "wfh":
@@ -56,7 +56,7 @@ function getRefreshScheduleOverride(
 
 async function getApiData(): Promise<CalendarApiData> {
   if (IS_DEVELOPMENT) {
-    return calendarMockData.short;
+    return calendarMockData.long;
   }
 
   return (await axios.get<CalendarApiData>(CALENDAR_EVENTS_URL)).data;
