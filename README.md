@@ -1,6 +1,6 @@
 # Kindle Page
 
-This is my home page to be shown on the Kindle as a Frame.
+This is my home dashboard to be shown on the Kindle as a Frame.
 
 There is a Vercel API function that generates the PNG ready to be shown
 on the Kindle device.
@@ -17,12 +17,12 @@ See related projects:
 ## Running
 
 1. Install `npm install`
-2. Run dev mode `npm start`
+2. Run dev mode `npm start` (needs the project linked with `vercel link`;
+   uses mock calendar and Airly data, no `auth` param needed)
 3. Deploy to your app `npm run deploy`
-4. Regenerate the sample image from mock data `npm run screenshot`
+4. Regenerate the sample image `npm run screenshot` (mock calendar and Airly
+   data; the meteogram and the word of the day are fetched live)
    (optionally pass a day mode: `npm run screenshot -- night`)
-
-The image is **upside-down** because my Kindle is upside-down in the picture frame.
 
 ## Application flow
 
@@ -33,8 +33,9 @@ sequenceDiagram
     participant screenshot as /api/screenshot
     participant airly as /api/airly
     participant calendar as script.google.com
-    participant thesaurus as thesaurus.com
+    participant dictionary as dictionary.com
     participant yr as yr.no
+    participant cdn as cdn.airly.org
     kindle ->>+ screenshot: fetch
     par
         screenshot ->> airly: fetch airly
@@ -43,11 +44,14 @@ sequenceDiagram
         screenshot ->> calendar: fetch upcoming events
         calendar -->> screenshot: schedule for upcoming days
     and
-        screenshot ->> thesaurus: fetch synonym of the day
-        thesaurus -->> screenshot: synonym
+        screenshot ->> dictionary: fetch word of the day<br>(skipped at night)
+        dictionary -->> screenshot: word of the day
     and
         screenshot ->> yr: fetch meteogram SVG<br>(skipped at night)
         yr -->> screenshot: meteogram
+    and
+        screenshot ->> cdn: fetch Airly logo
+        cdn -->> screenshot: logo SVG
     end
     screenshot ->> screenshot: Lay out the page for the day mode<br>(satori: HTML-like templates -> SVG)
     screenshot ->> screenshot: Rasterize (resvg: SVG -> PNG)
