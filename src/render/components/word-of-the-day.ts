@@ -1,4 +1,8 @@
-import type { WordOfTheDayData, WordOfTheDayError } from "../../types.ts";
+import type {
+  TextSpan,
+  WordOfTheDayData,
+  WordOfTheDayError,
+} from "../../types.ts";
 import { html } from "../html.ts";
 import { FONT_WEIGHT } from "../theme.ts";
 
@@ -31,7 +35,27 @@ export function WordOfTheDay({ wordOfTheDay }: WordOfTheDayProps) {
         ${word}
       </div>
       <div style=${PARAGRAPH_STYLE}>${definitionLine}</div>
-      ${explanation && html`<div style=${PARAGRAPH_STYLE}>${explanation}</div>`}
+      ${explanation && FormattedParagraph(explanation)}
+    </div>
+  `;
+}
+
+/** `display: block` makes satori flow the spans inline, like a browser. */
+function FormattedParagraph(spans: TextSpan[]) {
+  return html`
+    <div style=${{ display: "block", margin: "8px 0" }}>
+      ${spans.map(
+        (span, index) =>
+          html`<span
+            key=${index}
+            style=${{
+              fontWeight: span.bold ? FONT_WEIGHT.bold : FONT_WEIGHT.regular,
+              fontStyle: span.italic ? "italic" : "normal",
+            }}
+          >
+            ${span.text}
+          </span>`
+      )}
     </div>
   `;
 }

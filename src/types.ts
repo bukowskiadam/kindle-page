@@ -67,12 +67,19 @@ export type AirlyError = {
   error: string;
 };
 
+/** A run of text with the same inline formatting. */
+export type TextSpan = {
+  text: string;
+  bold?: boolean;
+  italic?: boolean;
+};
+
 export type WordOfTheDayData = {
   type: "data";
   word: string;
   partOfSpeech?: string;
   definition: string;
-  explanation?: string;
+  explanation?: TextSpan[];
 };
 
 export type WordOfTheDayError = {

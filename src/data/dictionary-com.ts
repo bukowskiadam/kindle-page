@@ -1,6 +1,7 @@
 import axios from "axios";
 import { parse } from "node-html-parser";
 import type { WordOfTheDayData, WordOfTheDayError } from "../types.ts";
+import { htmlToTextSpans } from "./html-text-spans.ts";
 
 const WORD_OF_THE_DAY_URL = "https://www.dictionary.com/word-of-the-day";
 const HTTP_STATUS_OK = 200;
@@ -31,12 +32,18 @@ export async function getWordOfTheDay(): Promise<
     return wordOfTheDayError("Failed to parse the definition.");
   }
 
+  const explanationParagraph = container?.querySelector(
+    ".wotd-entry-explanation-section p"
+  );
+
   return {
     type: "data",
     word,
     partOfSpeech: textOf(".wotd-entry-pos"),
     definition,
-    explanation: textOf(".wotd-entry-explanation-section p"),
+    explanation: explanationParagraph
+      ? htmlToTextSpans(explanationParagraph)
+      : undefined,
   };
 }
 
