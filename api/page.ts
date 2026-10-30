@@ -2,27 +2,11 @@ import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { fileURLToPath } from "node:url";
 
 import nunjucks from "nunjucks";
-import { getAirlyData } from "../src/data/airly-cached.js";
-import { getCalendarData } from "../src/data/calendar.js";
-import { getRandomQuote } from "../src/data/quotable.js";
 import { isAuthorized } from "../src/authorization.js";
-import { formatDate, formatTime, getNow } from "../src/date.js";
-import {
-  getCurrentRefreshSchedule,
-  getDayMode,
-  getNextRefreshTime,
-  getSecondsToNextRefresh,
-  validateDayMode,
-} from "../src/schedule.js";
+import { getPageData, parsePageDataOptions } from "../src/page-data.js";
 import { setProxyMaxAge } from "../src/vercel.js";
-import { getSynonymOfTheDay } from "../src/data/thesaurus-com.js";
 
 export default async (req: VercelRequest, res: VercelResponse) => {
-  const { battery: batteryUnsafe = "", forceMode: forceModeUnsafe = "" } =
-    req.query || {};
-  const battery = Number.parseInt(batteryUnsafe.toString(), 10) || undefined;
-  const forceMode = validateDayMode(forceModeUnsafe.toString());
-
   if (!isAuthorized(req)) {
     return res.status(401).json({ status: "no auth" });
   }
@@ -31,36 +15,11 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     autoescape: true,
   });
 
-  const now = getNow();
-  const dayMode = forceMode || getDayMode(now);
-
-  const [{ calendar, refreshScheduleOverride }, quote, airly, synonym] =
-    await Promise.all([
-      getCalendarData(),
-      null, // dayMode === "day" && getRandomQuote(), // disabled for now
-      getAirlyData(),
-      ["day", "morning", "evening"].includes(dayMode) && getSynonymOfTheDay(),
-    ]);
-
-  const refreshSchedule = getCurrentRefreshSchedule(
-    now,
-    refreshScheduleOverride
+  const { nextRefreshSeconds, ...pageData } = await getPageData(
+    parsePageDataOptions(req.query)
   );
-  const nextRefreshTime = getNextRefreshTime(now, refreshSchedule);
-  const nextRefreshSeconds = getSecondsToNextRefresh(now, nextRefreshTime);
 
-  const pageHtml = nunjucks.render("index.njk", {
-    time: formatTime(now),
-    date: formatDate(now),
-    battery,
-    refreshSchedule,
-    nextRefreshTime: formatTime(nextRefreshTime),
-    calendar,
-    quote,
-    airly,
-    dayMode,
-    synonym,
-  });
+  const pageHtml = nunjucks.render("index.njk", pageData);
 
   res.setHeader("X-Next-Refresh", nextRefreshSeconds);
 
