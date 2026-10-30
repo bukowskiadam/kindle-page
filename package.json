@@ -14,19 +14,15 @@
   "author": "Adam Bukowski",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/nunjucks": "^3.2.6",
     "@types/react": "^19.3.0",
     "vercel": "^59.3.0"
   },
   "dependencies": {
     "@napi-rs/image": "^1.14.0",
     "@resvg/resvg-js": "^2.6.2",
-    "@sparticuz/chromium": "149.0.0",
     "axios": "^1.19.0",
     "htm": "^3.1.1",
     "node-html-parser": "^9.0.1",
-    "nunjucks": "^3.2.4",
-    "playwright-core": "^1.62.1",
     "react": "^19.3.1",
     "satori": "^0.63.2",
     "scmp": "^2.1.0"

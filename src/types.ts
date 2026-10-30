@@ -2,11 +2,6 @@ export type ImageForKindleOpts = {
   rotate?: boolean;
 };
 
-export type ScreenshotResult = {
-  screenshot: Buffer;
-  headers: Record<string, string>;
-};
-
 export enum RefreshSchedule {
   Work = "Work",
   Weekend = "Weekend",
@@ -67,11 +62,6 @@ export type AirlyData = {
 export type AirlyError = {
   type: "error";
   error: string;
-};
-
-export type Quote = {
-  content: string;
-  author: string;
 };
 
 export type SynonymOfTheDay = {

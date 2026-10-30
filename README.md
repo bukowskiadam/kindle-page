@@ -29,30 +29,29 @@ sequenceDiagram
     autonumber
     actor kindle as Kindle
     participant screenshot as /api/screenshot
-    participant playwright
-    participant page as /api/page
     participant airly as /api/airly
     participant calendar as script.google.com
-    participant quote as Random quote
+    participant thesaurus as thesaurus.com
+    participant yr as yr.no
     kindle ->>+ screenshot: fetch
-    screenshot ->>+ page: request to warm-up cache
-    screenshot ->>+ playwright: run the browser
     par
-        page ->> airly: fetch airly
-        airly -->> page: current weather
+        screenshot ->> airly: fetch airly
+        airly -->> screenshot: current weather
     and
-        page ->> calendar: fetch upcoming events
-        calendar -->> page: schedule for upcoming days
+        screenshot ->> calendar: fetch upcoming events
+        calendar -->> screenshot: schedule for upcoming days
     and
-        page ->> quote: fetch random quote
-        quote -->> page: random quote
+        screenshot ->> thesaurus: fetch synonym of the day
+        thesaurus -->> screenshot: synonym
+    and
+        screenshot ->> yr: fetch meteogram SVG<br>(skipped at night)
+        yr -->> screenshot: meteogram
     end
-    page -->>- screenshot: Response is discarded but stored<br>in the edge cache
-    screenshot ->> playwright: instruct to<br>open the page
-    playwright ->>+ page: request again
-    page -->>- playwright: cached HTML
-    playwright -->> playwright: Wait 500ms for<br>fonts, weather image
-    playwright -->>- screenshot: PNG image
+    screenshot ->> screenshot: Lay out the page for the day mode<br>(satori: HTML-like templates -> SVG)
+    screenshot ->> screenshot: Rasterize (resvg: SVG -> PNG)
     screenshot ->> screenshot: Prepare image for Kindle<br>(grayscale, no alpha)
     screenshot -->>- kindle: dashboard image<br>(+ next-refresh time)
 ```
+
+Layouts live in `src/render/components` (one file per page module, `layouts.ts`
+maps day modes to layouts). Fonts and images are bundled from `assets/`.

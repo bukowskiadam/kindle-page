@@ -14,7 +14,6 @@ import type {
   AirlyError,
   DayMode,
   PreparedCalendarData,
-  Quote,
   RefreshSchedule,
   SynonymOfTheDay,
   SynonymOfTheDayError,
@@ -46,7 +45,6 @@ export type PageData = {
   nextRefreshTime: string;
   nextRefreshSeconds: number;
   calendar: PreparedCalendarData;
-  quote: Quote | null;
   airly: AirlyData | AirlyError;
   dayMode: DayMode;
   synonym: SynonymOfTheDay | SynonymOfTheDayError | false;
@@ -65,10 +63,9 @@ export async function getPageData(
 ): Promise<PageData> {
   const dayMode = resolveDayMode(options, now);
 
-  const [{ calendar, refreshScheduleOverride }, quote, airly, synonym] =
+  const [{ calendar, refreshScheduleOverride }, airly, synonym] =
     await Promise.all([
       getCalendarData(),
-      null, // dayMode === "day" && getRandomQuote(), // disabled for now
       getAirlyData(),
       MODES_WITH_SYNONYM.includes(dayMode) && getSynonymOfTheDay(),
     ]);
@@ -87,7 +84,6 @@ export async function getPageData(
     nextRefreshTime: formatTime(nextRefreshTime),
     nextRefreshSeconds: getSecondsToNextRefresh(now, nextRefreshTime),
     calendar,
-    quote,
     airly,
     dayMode,
     synonym,
