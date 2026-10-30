@@ -1,6 +1,6 @@
 import { getAirlyData } from "./data/airly-cached.ts";
 import { getCalendarData } from "./data/calendar.ts";
-import { getSynonymOfTheDay } from "./data/thesaurus-com.ts";
+import { getWordOfTheDay } from "./data/dictionary-com.ts";
 import { formatDate, formatTime, getNow } from "./date.ts";
 import {
   getCurrentRefreshSchedule,
@@ -15,22 +15,22 @@ import type {
   DayMode,
   PreparedCalendarData,
   RefreshSchedule,
-  SynonymOfTheDay,
-  SynonymOfTheDayError,
+  WordOfTheDayData,
+  WordOfTheDayError,
 } from "./types.ts";
 
-const MODES_WITH_SYNONYM: DayMode[] = ["day", "morning", "evening"];
+const MODES_WITH_WORD_OF_THE_DAY: DayMode[] = ["day", "morning", "evening"];
 
 export type PageDataSources = {
   getCalendarData: typeof getCalendarData;
   getAirlyData: () => Promise<AirlyData | AirlyError>;
-  getSynonymOfTheDay: typeof getSynonymOfTheDay;
+  getWordOfTheDay: typeof getWordOfTheDay;
 };
 
 const DEFAULT_SOURCES: PageDataSources = {
   getCalendarData,
   getAirlyData,
-  getSynonymOfTheDay,
+  getWordOfTheDay,
 };
 
 export type PageDataOptions = {
@@ -59,7 +59,7 @@ export type PageData = {
   calendar: PreparedCalendarData;
   airly: AirlyData | AirlyError;
   dayMode: DayMode;
-  synonym: SynonymOfTheDay | SynonymOfTheDayError | false;
+  wordOfTheDay: WordOfTheDayData | WordOfTheDayError | false;
 };
 
 export function resolveDayMode(
@@ -76,11 +76,11 @@ export async function getPageData(
 ): Promise<PageData> {
   const dayMode = resolveDayMode(options, now);
 
-  const [{ calendar, refreshScheduleOverride }, airly, synonym] =
+  const [{ calendar, refreshScheduleOverride }, airly, wordOfTheDay] =
     await Promise.all([
       sources.getCalendarData(),
       sources.getAirlyData(),
-      MODES_WITH_SYNONYM.includes(dayMode) && sources.getSynonymOfTheDay(),
+      MODES_WITH_WORD_OF_THE_DAY.includes(dayMode) && sources.getWordOfTheDay(),
     ]);
 
   const refreshSchedule = getCurrentRefreshSchedule(
@@ -99,6 +99,6 @@ export async function getPageData(
     calendar,
     airly,
     dayMode,
-    synonym,
+    wordOfTheDay,
   };
 }

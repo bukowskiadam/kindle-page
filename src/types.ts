@@ -67,13 +67,13 @@ export type AirlyError = {
   error: string;
 };
 
-export type SynonymOfTheDay = {
+export type WordOfTheDayData = {
   type: "data";
   title: string;
   description: string;
 };
 
-export type SynonymOfTheDayError = {
+export type WordOfTheDayError = {
   type: "error";
   error: string;
 };

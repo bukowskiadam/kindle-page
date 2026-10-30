@@ -1,11 +1,11 @@
 import { parse } from "node-html-parser";
 
-import type { SynonymOfTheDay, SynonymOfTheDayError } from "../../types.ts";
+import type { WordOfTheDayData, WordOfTheDayError } from "../../types.ts";
 import { html } from "../html.ts";
 import { FONT_WEIGHT } from "../theme.ts";
 
-type SynonymProps = {
-  synonym: SynonymOfTheDay | SynonymOfTheDayError;
+type WordOfTheDayProps = {
+  wordOfTheDay: WordOfTheDayData | WordOfTheDayError;
 };
 
 const CONTAINER_STYLE = {
@@ -15,17 +15,17 @@ const CONTAINER_STYLE = {
   fontSize: 16,
 } as const;
 
-export function Synonym({ synonym }: SynonymProps) {
-  if (synonym.type === "error") {
-    return html`<div style=${CONTAINER_STYLE}>${synonym.error}</div>`;
+export function WordOfTheDay({ wordOfTheDay }: WordOfTheDayProps) {
+  if (wordOfTheDay.type === "error") {
+    return html`<div style=${CONTAINER_STYLE}>${wordOfTheDay.error}</div>`;
   }
 
   return html`
     <div style=${CONTAINER_STYLE}>
       <div style=${{ display: "flex", fontSize: 18, fontWeight: FONT_WEIGHT.bold }}>
-        ${htmlToText(synonym.title)}
+        ${htmlToText(wordOfTheDay.title)}
       </div>
-      ${htmlToParagraphs(synonym.description).map(
+      ${htmlToParagraphs(wordOfTheDay.description).map(
         (paragraph, index) =>
           html`<div key=${index} style=${{ display: "flex", margin: "8px 0" }}>
             ${paragraph}
@@ -39,7 +39,7 @@ function htmlToText(markup: string): string {
   return parse(markup).text.trim();
 }
 
-/** The thesaurus scraper returns HTML; each top-level block becomes a paragraph. */
+/** The dictionary.com scraper returns HTML; each top-level block becomes a paragraph. */
 function htmlToParagraphs(markup: string): string[] {
   return parse(markup)
     .childNodes.map((node) => node.text.trim())

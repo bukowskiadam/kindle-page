@@ -1,6 +1,6 @@
 /**
  * Renders the README sample image from mock data (calendar, Airly) and live
- * public data (yr.no meteogram, synonym of the day).
+ * public data (yr.no meteogram, wordOfTheDay of the day).
  *
  * Usage: npm run screenshot [-- <dayMode>]
  * Run through the npm script: it sets VERCEL_ENV=development, which makes
@@ -12,7 +12,7 @@ import { fileURLToPath } from "node:url";
 import { IS_DEVELOPMENT } from "../src/config.ts";
 import { getAirlyData } from "../src/data/airly.ts";
 import { getCalendarData } from "../src/data/calendar.ts";
-import { getSynonymOfTheDay } from "../src/data/thesaurus-com.ts";
+import { getWordOfTheDay } from "../src/data/dictionary-com.ts";
 import { imageForKindle } from "../src/for-kindle.ts";
 import { getPageData } from "../src/page-data.ts";
 import { loadRenderAssets } from "../src/render/assets.ts";
@@ -41,7 +41,7 @@ async function main() {
 
   const now = new Date();
   // Direct Airly loader instead of the HTTP one: in development it returns mocks.
-  const sources = { getCalendarData, getAirlyData, getSynonymOfTheDay };
+  const sources = { getCalendarData, getAirlyData, getWordOfTheDay };
 
   const [data, assets] = await Promise.all([
     getPageData({ battery: SAMPLE_BATTERY_PERCENT, forceMode }, now, sources),

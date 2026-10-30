@@ -1,9 +1,9 @@
 import axios from "axios";
 import { parse } from "node-html-parser";
-import type { SynonymOfTheDay, SynonymOfTheDayError } from "../types.ts";
+import type { WordOfTheDayData, WordOfTheDayError } from "../types.ts";
 
-export async function getSynonymOfTheDay(): Promise<
-  SynonymOfTheDay | SynonymOfTheDayError
+export async function getWordOfTheDay(): Promise<
+  WordOfTheDayData | WordOfTheDayError
 > {
   const response = await axios.get(
     "https://www.dictionary.com/word-of-the-day"
