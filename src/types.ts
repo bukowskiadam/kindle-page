@@ -83,3 +83,20 @@ export type DailyEnglish = {
   title: string;
   phrases: DailyPhrase[];
 };
+
+export type GospelData = {
+  type: "data";
+  /** e.g. "Ewangelia wg św. Łukasza 14,1-6" */
+  reference: string;
+  text: string;
+};
+
+export type GospelError = {
+  type: "error";
+  error: string;
+};
+
+/** The daily text shown next to the calendar; which one depends on the day mode. */
+export type DailyText =
+  | { kind: "dailyEnglish"; dailyEnglish: DailyEnglish }
+  | { kind: "gospel"; gospel: GospelData | GospelError };

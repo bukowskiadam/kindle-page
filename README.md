@@ -21,7 +21,7 @@ See related projects:
    uses mock calendar and Airly data, no `auth` param needed)
 3. Deploy to your app `npm run deploy`
 4. Regenerate the sample image `npm run screenshot` (mock calendar and Airly
-   data; the meteogram is fetched live)
+   data; the meteogram and the gospel are fetched live)
    (optionally pass a day mode: `npm run screenshot -- night`)
 
 ## Application flow
@@ -34,6 +34,7 @@ sequenceDiagram
     participant cache as Runtime Cache
     participant airly as Airly API
     participant calendar as script.google.com
+    participant evangelizo as feed.evangelizo.org
     participant yr as yr.no
     participant cdn as cdn.airly.org
     kindle ->>+ screenshot: fetch
@@ -47,6 +48,9 @@ sequenceDiagram
     and
         screenshot ->> calendar: fetch upcoming events
         calendar -->> screenshot: schedule for upcoming days
+    and
+        screenshot ->> evangelizo: fetch gospel of the day<br>(mornings only)
+        evangelizo -->> screenshot: gospel reference and text
     and
         screenshot ->> yr: fetch meteogram SVG<br>(skipped at night)
         yr -->> screenshot: meteogram

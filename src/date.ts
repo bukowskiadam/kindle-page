@@ -29,6 +29,19 @@ export function formatTime(date: Date | SerializedDate): string {
   });
 }
 
+/** Local calendar day as YYYYMMDD, e.g. "20261030". */
+export function formatCompactDay(date: Date): string {
+  // the en-CA locale formats dates as YYYY-MM-DD
+  const isoDay = date.toLocaleDateString("en-CA", {
+    timeZone: TIME_ZONE,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
+  return isoDay.replaceAll("-", "");
+}
+
 export function formatDate(date: Date | SerializedDate): string {
   return dateObj(date).toLocaleString("pl-PL", {
     timeZone: TIME_ZONE,

@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 
 import type { PageData } from "../../page-data.ts";
-import type { DayMode } from "../../types.ts";
+import type { DailyText, DayMode } from "../../types.ts";
 import type { RenderAssets } from "../assets.ts";
 import { html } from "../html.ts";
 import { AirlyBar } from "./airly-bar.ts";
 import { BottomImage } from "./bottom-image.ts";
 import { Calendar } from "./calendar.ts";
 import { Forecast } from "./forecast.ts";
+import { GospelOfTheDay } from "./gospel-of-the-day.ts";
 import { Header } from "./header.ts";
 import { NightMessage } from "./night-message.ts";
 import { StatusBar } from "./status-bar.ts";
@@ -50,6 +51,12 @@ function requireMeteogram(assets: RenderAssets): string {
   return assets.meteogramDataUri;
 }
 
+function DailyTextPanel(dailyText: DailyText) {
+  return dailyText.kind === "gospel"
+    ? GospelOfTheDay({ gospel: dailyText.gospel })
+    : DailyEnglish({ dailyEnglish: dailyText.dailyEnglish });
+}
+
 function DayContent(props: LayoutProps) {
   const { data, assets } = props;
 
@@ -61,7 +68,7 @@ function DayContent(props: LayoutProps) {
       <div style=${{ display: "flex", flexDirection: "row", flexGrow: 1 }}>
         <div style=${HALF_COLUMN_STYLE}>${Calendar({ calendar: data.calendar })}</div>
         <div style=${HALF_COLUMN_STYLE}>
-          ${data.dailyEnglish && DailyEnglish({ dailyEnglish: data.dailyEnglish })}
+          ${data.dailyText && DailyTextPanel(data.dailyText)}
         </div>
       </div>
     `,
