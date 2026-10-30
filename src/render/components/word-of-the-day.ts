@@ -1,5 +1,3 @@
-import { parse } from "node-html-parser";
-
 import type { WordOfTheDayData, WordOfTheDayError } from "../../types.ts";
 import { html } from "../html.ts";
 import { FONT_WEIGHT } from "../theme.ts";
@@ -15,33 +13,25 @@ const CONTAINER_STYLE = {
   fontSize: 16,
 } as const;
 
+const PARAGRAPH_STYLE = { display: "flex", margin: "8px 0" } as const;
+
 export function WordOfTheDay({ wordOfTheDay }: WordOfTheDayProps) {
   if (wordOfTheDay.type === "error") {
     return html`<div style=${CONTAINER_STYLE}>${wordOfTheDay.error}</div>`;
   }
 
+  const { word, partOfSpeech, definition, explanation } = wordOfTheDay;
+  const definitionLine = partOfSpeech
+    ? `[${partOfSpeech}] ${definition}`
+    : definition;
+
   return html`
     <div style=${CONTAINER_STYLE}>
       <div style=${{ display: "flex", fontSize: 18, fontWeight: FONT_WEIGHT.bold }}>
-        ${htmlToText(wordOfTheDay.title)}
+        ${word}
       </div>
-      ${htmlToParagraphs(wordOfTheDay.description).map(
-        (paragraph, index) =>
-          html`<div key=${index} style=${{ display: "flex", margin: "8px 0" }}>
-            ${paragraph}
-          </div>`
-      )}
+      <div style=${PARAGRAPH_STYLE}>${definitionLine}</div>
+      ${explanation && html`<div style=${PARAGRAPH_STYLE}>${explanation}</div>`}
     </div>
   `;
-}
-
-function htmlToText(markup: string): string {
-  return parse(markup).text.trim();
-}
-
-/** The dictionary.com scraper returns HTML; each top-level block becomes a paragraph. */
-function htmlToParagraphs(markup: string): string[] {
-  return parse(markup)
-    .childNodes.map((node) => node.text.trim())
-    .filter((text) => text.length > 0);
 }

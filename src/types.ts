@@ -42,13 +42,13 @@ export type CalendarDataWithRefreshSchedule = {
 
 export type AirlyData = {
   type: "data";
-  temperature: number;
+  /** formatted for display, e.g. "9.3" or "12" */
+  temperature: string;
   humidity: number;
   pressure: number;
   airQuality: {
     label: string;
     value: number;
-    description: string;
   };
   pm25: {
     value: number;
@@ -69,8 +69,10 @@ export type AirlyError = {
 
 export type WordOfTheDayData = {
   type: "data";
-  title: string;
-  description: string;
+  word: string;
+  partOfSpeech?: string;
+  definition: string;
+  explanation?: string;
 };
 
 export type WordOfTheDayError = {

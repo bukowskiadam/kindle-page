@@ -55,7 +55,6 @@ function mapAirlyData(current: any): AirlyData {
   const airQuality = {
     label: AIRLY_INDEX_LABEL,
     value: caqi.value,
-    description: caqi.description,
   };
 
   const standards = Object.fromEntries(

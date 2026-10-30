@@ -4,7 +4,7 @@ import { Resvg } from "@resvg/resvg-js";
 
 import { FONT_FAMILY, FONT_WEIGHT } from "./theme.ts";
 
-export const FONT_FILES = {
+const FONT_FILES = {
   regular: fileURLToPath(
     new URL("../../assets/fonts/Montserrat-Medium.ttf", import.meta.url)
   ),
@@ -16,7 +16,7 @@ export const FONT_FILES = {
   ),
 } as const;
 
-export type SatoriFont = {
+type SatoriFont = {
   name: string;
   data: Buffer;
   weight: (typeof FONT_WEIGHT)[keyof typeof FONT_WEIGHT];

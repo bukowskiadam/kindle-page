@@ -111,7 +111,7 @@ async function fetchText(url: string): Promise<string> {
  * - converts `rem` units to px,
  * - replaces the root size and viewBox with the crop window.
  */
-export function prepareMeteogram(svg: string): string {
+function prepareMeteogram(svg: string): string {
   const { x, y, width, height } = METEOGRAM_CROP;
 
   return svg

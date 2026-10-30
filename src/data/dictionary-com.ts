@@ -2,59 +2,44 @@ import axios from "axios";
 import { parse } from "node-html-parser";
 import type { WordOfTheDayData, WordOfTheDayError } from "../types.ts";
 
+const WORD_OF_THE_DAY_URL = "https://www.dictionary.com/word-of-the-day";
+const HTTP_STATUS_OK = 200;
+
 export async function getWordOfTheDay(): Promise<
   WordOfTheDayData | WordOfTheDayError
 > {
-  const response = await axios.get(
-    "https://www.dictionary.com/word-of-the-day"
-  );
-  let title: string | undefined,
-    definition: string | undefined,
-    pos: string | undefined,
-    explanation: string | undefined;
+  const response = await axios.get(WORD_OF_THE_DAY_URL);
 
-  if (response.status === 200) {
-    const document = parse(response.data);
-    const container = document.querySelector(".wotd-entry-wrapper");
-
-    title = container
-      ?.querySelector(".wotd-entry-headword")
-      ?.textContent.trim();
-
-    pos = container?.querySelector(".wotd-entry-pos")?.textContent.trim();
-
-    if (title) {
-      title = `<h2 style="text-align: left;">${title}</h2>`;
-    }
-
-    definition = container
-      ?.querySelector(".wotd-entry-definition")
-      ?.textContent.trim();
-
-    explanation = container
-      ?.querySelector(".wotd-entry-explanation-section p")
-      ?.toString();
-
-    if (title && definition) {
-      return {
-        type: "data",
-        title,
-        description: `<p>[${pos}] ${definition}</p>${explanation ?? ""}`,
-      };
-    }
+  if (response.status !== HTTP_STATUS_OK) {
+    return wordOfTheDayError(
+      `Failed to fetch data: Status code ${response.status}.`
+    );
   }
 
-  const error =
-    response.status !== 200
-      ? `Failed to fetch data: Status code ${response.status}.`
-      : !title
-      ? "Failed to parse title."
-      : !definition
-      ? "Failed to parse description."
-      : "Unknown error.";
+  const container = parse(response.data).querySelector(".wotd-entry-wrapper");
+  const textOf = (selector: string) =>
+    container?.querySelector(selector)?.textContent.trim() || undefined;
+
+  const word = textOf(".wotd-entry-headword");
+  const definition = textOf(".wotd-entry-definition");
+
+  if (!word) {
+    return wordOfTheDayError("Failed to parse the word.");
+  }
+
+  if (!definition) {
+    return wordOfTheDayError("Failed to parse the definition.");
+  }
 
   return {
-    type: "error",
-    error,
+    type: "data",
+    word,
+    partOfSpeech: textOf(".wotd-entry-pos"),
+    definition,
+    explanation: textOf(".wotd-entry-explanation-section p"),
   };
+}
+
+function wordOfTheDayError(error: string): WordOfTheDayError {
+  return { type: "error", error };
 }

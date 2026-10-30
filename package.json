@@ -2,14 +2,12 @@
   "name": "kindle-page",
   "version": "1.0.0",
   "description": "Render my home dashboard for the Kindle-frame",
-  "main": "index.js",
   "private": true,
   "type": "module",
   "scripts": {
     "start": "VERCEL_ENV=development vercel dev",
     "deploy": "vercel deploy --prod",
     "vercel": "vercel",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "screenshot": "VERCEL_ENV=development AIRLY_API_KEY=mock AIRLY_LAT=0 AIRLY_LNG=0 node scripts/screenshot.ts"
   },
   "author": "Adam Bukowski",
