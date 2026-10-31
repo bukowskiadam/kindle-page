@@ -4,7 +4,8 @@ import { COLORS, FONT_WEIGHT } from "../theme.ts";
 const BATTERY_BORDER_PX = 3;
 const BATTERY_BODY_WIDTH_PX = 29;
 const BATTERY_HEIGHT_PX = 15;
-const BATTERY_TIP = { width: 3, height: 7 } as const;
+// The tip doubles as the body's right wall, as in the original clip-path design.
+const BATTERY_TIP = { width: 3, height: 9 } as const;
 
 type StatusBarProps = {
   time: string;
@@ -58,7 +59,9 @@ function BatteryIcon(percent: number) {
           display: "flex",
           width: BATTERY_BODY_WIDTH_PX,
           height: BATTERY_HEIGHT_PX,
+          boxSizing: "border-box",
           border: `${BATTERY_BORDER_PX}px solid ${COLORS.text}`,
+          borderRight: "none",
         }}
       >
         <div style=${{ width: `${percent}%`, backgroundColor: COLORS.text }} />
