@@ -67,6 +67,13 @@ export type AirlyError = {
   error: string;
 };
 
+/**
+ * BrE/AmE notes live in the displayed text, including regional words in examples.
+ * Label alternatives/preferences ("also", "usually") rather than implying bans.
+ * Shared meanings need no dialect label; notes describe the sense taught here.
+ * The collection targets C1 study with useful revision; individual entries do not
+ * carry a verified CEFR rating (levels depend on sense and construction).
+ */
 export type EnglishPhrase = {
   phrase: string;
   meaning: string;

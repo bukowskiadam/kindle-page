@@ -16,8 +16,8 @@ const CATEGORIES: PhraseCategory[] = [
   { label: "phrasal verb", phrases: phrasalVerbs },
   { label: "idiom", phrases: idioms },
   { label: "collocation", phrases: collocations },
-  { label: "false friend", phrases: falseFriends },
-  { label: "common mistake", phrases: commonMistakes },
+  { label: "false friends & confusables", phrases: falseFriends },
+  { label: "grammar & usage", phrases: commonMistakes },
 ];
 
 /** Section titles, one per day in this order. */
