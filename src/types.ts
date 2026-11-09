@@ -86,9 +86,25 @@ export type DailyPhrase = EnglishPhrase & {
   category: string;
 };
 
+/** A phrase from the previous day, recalled without its meaning and translation. */
+export type ReviewPhrase = Pick<EnglishPhrase, "phrase" | "example">;
+
+export type ReviewDay = {
+  /** e.g. "Monday" */
+  weekday: string;
+  phrases: ReviewPhrase[];
+};
+
+export type EnglishReview = {
+  title: string;
+  days: ReviewDay[];
+};
+
 export type DailyEnglish = {
   title: string;
+  /** Empty on weekends, which only review the week. */
   phrases: DailyPhrase[];
+  review: EnglishReview;
 };
 
 export type GospelData = {
