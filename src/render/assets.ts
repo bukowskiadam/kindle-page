@@ -22,7 +22,6 @@ const BROWSER_ROOT_FONT_SIZE_PX = 16;
 
 // Static URLs so Vercel's file tracer bundles the images with the function.
 const LOCAL_IMAGE_FILES = {
-  groomingCat: new URL("../../assets/images/grooming-cat.svg", import.meta.url),
   sleepingKitty: new URL("../../assets/images/sleeping-kitty.svg", import.meta.url),
 } as const;
 

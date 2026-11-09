@@ -73,7 +73,7 @@ export function getDayMode(now: Date): DayMode {
     return "night";
   } else if (formatted < "10:30") {
     return "morning";
-  } else if (formatted < "18:30") {
+  } else if (formatted < "20:00") {
     return "day";
   } else if (formatted < "22:30") {
     return "evening";

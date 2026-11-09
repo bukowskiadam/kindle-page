@@ -5,7 +5,6 @@ import type { DailyText, DayMode } from "../../types.ts";
 import type { RenderAssets } from "../assets.ts";
 import { html } from "../html.ts";
 import { AirlyBar } from "./airly-bar.ts";
-import { BottomImage } from "./bottom-image.ts";
 import { Calendar } from "./calendar.ts";
 import { Forecast } from "./forecast.ts";
 import { GospelOfTheDay } from "./gospel-of-the-day.ts";
@@ -75,10 +74,6 @@ function DayContent(props: LayoutProps) {
   ];
 }
 
-function EveningContent(props: LayoutProps) {
-  return [...DayContent(props), BottomImage({ image: props.assets.images.groomingCat })];
-}
-
 function NightContent(props: LayoutProps) {
   return [
     ...Top(props),
@@ -92,7 +87,7 @@ const DAY_LAYOUT: Layout = { withMeteogram: true, render: DayContent };
 const LAYOUTS: Record<DayMode, Layout> = {
   morning: DAY_LAYOUT,
   day: DAY_LAYOUT,
-  evening: { withMeteogram: true, render: EveningContent },
+  evening: DAY_LAYOUT,
   night: { withMeteogram: false, render: NightContent },
 };
 

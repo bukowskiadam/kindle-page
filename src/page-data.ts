@@ -35,7 +35,7 @@ const loadGospel: DailyTextLoader = async (now) => ({
 const DAILY_TEXT_LOADERS: Partial<Record<DayMode, DailyTextLoader>> = {
   morning: loadGospel,
   day: loadDailyEnglish,
-  evening: loadDailyEnglish,
+  evening: loadGospel,
 };
 
 export type PageDataOptions = {
