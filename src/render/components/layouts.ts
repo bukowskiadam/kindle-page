@@ -26,6 +26,20 @@ export type Layout = {
 
 const HALF_COLUMN_STYLE = { display: "flex", width: "50%" };
 
+/**
+ * Takes exactly the space left below the header, so a long calendar is
+ * clipped instead of pushing the English review off the screen or
+ * squeezing the sections above.
+ */
+const COLUMNS_ROW_STYLE = {
+  display: "flex",
+  flexDirection: "row",
+  flexGrow: 1,
+  flexBasis: 0,
+  minHeight: 0,
+  overflow: "hidden",
+};
+
 function Top({ data }: LayoutProps) {
   return [
     StatusBar({
@@ -64,7 +78,7 @@ function DayContent(props: LayoutProps) {
     Forecast({ meteogramDataUri: requireMeteogram(assets) }),
     Airly(props),
     html`
-      <div style=${{ display: "flex", flexDirection: "row", flexGrow: 1 }}>
+      <div style=${COLUMNS_ROW_STYLE}>
         <div style=${HALF_COLUMN_STYLE}>${Calendar({ calendar: data.calendar })}</div>
         <div style=${HALF_COLUMN_STYLE}>
           ${data.dailyText && DailyTextPanel(data.dailyText)}
